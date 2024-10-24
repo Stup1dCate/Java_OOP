@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package qlxemay;
-
+xx
 import java.util.Scanner;
 
 public class HangSX implements INhap, IXuat {
