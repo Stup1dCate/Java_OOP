@@ -5,21 +5,20 @@
 package qlxemay;
 
 import java.util.Scanner;
+import qlxemay.INhap;
+import qlxemay.IXuat;
 
-/**
- *
- * @author cuong
- */
+
 public class Quanly extends NhanSu implements INhap,IXuat{
+    Scanner sc =new Scanner(System.in);
     private int bonus;
-    
-    public Quanly(){
-        
+
+    public Quanly() {
     }
 
-    public Quanly(int bonus, String ten, int age, String ChucVu, int salary) {
-        super(ten, age, ChucVu, salary);
-        this.bonus = bonus;
+    public Quanly(String manv,String ten, int age, String sdt,String ChucVu, int salary,int bonus) {
+        super(manv,ten, age,sdt ,ChucVu, salary);
+        this.bonus=bonus;
     }
 
     public int getBonus() {
@@ -32,16 +31,15 @@ public class Quanly extends NhanSu implements INhap,IXuat{
     @Override
     public void Nhap(){
         super.Nhap();
-        System.out.println("Nhap thuong: ");
+        System.out.println("Nhap so tien thuong cua quan ly: ");
         bonus=sc.nextInt();
     }
     @Override 
     public void Xuat(){
         super.Xuat();
-        System.out.println("Thuong: "+ bonus);
-    }   
-    @Override
-     public int finalsalary(){
+        System.out.println("So tien thuong cua quan ly la: "+ bonus);
+    }
+    public int finalsalary(){
         return getSalary()+bonus;
     }
 }
