@@ -25,19 +25,22 @@ yêu cầu trong terminal:
 package qlxemay;
 import java.util.Scanner;
 
-class QLSanPham {
+class QLXeMay {
 	private DSXeMay dssp;
     Scanner scanner = new Scanner(System.in);
     String fileName = "SanPham.txt";
     String fileName2 = "SanPham_full.txt";
+	public QLXeMay()
+	{
+		
     public void menu() {
         int choice;
         do {
-        	System.out.println("1. Thêm Sản phẩm");
-            System.out.println("2. Sửa thông tin Sản phẩm");
-            System.out.println("3. Xóa Sản phẩm");
-            System.out.println("4. Tìm kiếm Sản phẩm");
-            System.out.println("5. Xem thông tin trong danh sách Sản Phẩm");
+        	System.out.println("1. Thêm Xe");
+            System.out.println("2. Sửa thông tin Xe");
+            System.out.println("3. Xóa Xe");
+            System.out.println("4. Tìm kiếm Xe");
+            System.out.println("5. Xem thông tin trong danh sách Xe");
             System.out.println("6. Tải danh sách Sản phẩm từ file");
             System.out.println("7. Xuất danh sách Sản phẩm ra file");
             System.out.println("8. Quay trở về giao diện chính");
