@@ -5,8 +5,7 @@ import java.util.Scanner;
 class QLHoaDon {
 	private DSHoaDon dshd;
     Scanner scanner = new Scanner(System.in);
-    String fileName = "HoaDon.txt";
-    String fileName2 = "HoaDon_full.txt";
+    String fileName = "input_HoaDon.txt";
     String fileNameKhachHang = "KhachHang.txt";
     String fileNameSanPham = "SanPham.txt";
     DSKhachHang dsKhachHang;
@@ -53,7 +52,7 @@ class QLHoaDon {
                     dshd.taiDanhSachTuFile(fileName, dsKhachHang, dsSanPham);
                     break;
                 case 7:            
-                    dshd.xuatDanhSachRaFile(fileName2);
+                    dshd.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
                     break;
