@@ -4,28 +4,29 @@ import java.util.Scanner;
 
 class QLKhachHang {
 	private DSKhachHang dskh;
-    Scanner scanner = new Scanner(System.in);
+    Scanner s = new Scanner(System.in);
     String fileName = "input_KhachHang.txt";
     public QLKhachHang() {
         dskh = new DSKhachHang();
     }
 
     public void menu() {
-        int choice;
+        int select;
         do {
-            System.out.println("1. Thêm Khách hàng");
-            System.out.println("2. Sửa thông tin Khách hàng");
-            System.out.println("3. Xóa Khách hàng");
-            System.out.println("4. Tìm kiếm Khách hàng");
-            System.out.println("5. Xem thông tin trong danh sách Khách hàng");
-            System.out.println("6. Tải danh sách Khách hàng từ file");
-            System.out.println("7. Xuất danh sách Khách hàng ra file");
-            System.out.println("8. Quay trở về giao diện chính");
-            System.out.print("Chọn: ");
-            choice = scanner.nextInt();
-            scanner.nextLine(); // Đọc dòng trống sau khi đọc số
+            System.out.println("1. Them khach hang");
+            System.out.println("2. Sua thong tin khach hang");
+            System.out.println("3. Xoa khach hang");
+            System.out.println("4. Tim kiem khach hang");
+            System.out.println("5. Xem thong tin danh sach khach hang");
+            System.out.println("6. Tai danh sach khach hang tu file");
+            System.out.println("7. Xuat danh sach khach hang vao file");
+            System.out.println("8. Quay tro ve giao dien Menu chinh");
+            System.out.print("Chon: ");
 
-            switch (choice) {
+            select = s.nextInt();
+            s.nextLine(); 
+
+            switch (select) {
             	case 1:
 	                dskh.them();
 	                break;
@@ -48,10 +49,11 @@ class QLKhachHang {
                     dskh.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
+                    System.out.println("Luu thay doi va quay tro ve Menu chinh.");
                     break;
                 default:
-                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+                    System.out.println("Lua chon khong hop le. Vui long nhap lai.");
             }
-        } while (choice != 8);
+        } while (select != 8);
     }
 }
