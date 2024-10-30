@@ -1,56 +1,60 @@
 package qlxemay;
 import java.util.Scanner;
 
-public class QLHangSX {
+class QLHangSX {
     private DSHangSX dshsx;
-    Scanner scanner = new Scanner(System.in);
-    String fileName = "input_HangSX"; 
-	public QLHangSX()
-	{
-		dshsx = new DSHangSX();
-	}	
-    public void menu() {
-        int choice;
-        do {
-        	System.out.println("1. Thêm Hãng Sản xuất");
-            System.out.println("2. Sửa thông tin Hãng Sản xuất");
-            System.out.println("3. Xóa Hãng Sản xuất");
-            System.out.println("4. Tìm kiếm Hãng Sản xuất");
-            System.out.println("5. Xem thông tin trong danh sách Hãng Sản xuất");
-            System.out.println("6. Tải danh sách Sản phẩm từ file");
-            System.out.println("7. Xuất danh sách Sản phẩm ra file");
-            System.out.println("8. Quay trở về giao diện chính");
-            System.out.print("Chọn: ");
-            choice = scanner.nextInt();
-            scanner.nextLine(); // Đọc dòng trống sau khi đọc số
+    private Scanner s = new Scanner(System.in);
+    private String fileName = "input_HangSX.txt"; 
 
-            switch (choice) {
-            	case 1:
-	                dshsx.them();
-	                break;
+    public QLHangSX() {
+        dshsx = new DSHangSX();
+    }
+
+    public void menu() {
+        int select;
+        do {
+            System.out.println("1. Them hang san xuat");
+            System.out.println("2. Sua thong tin hang san xuat");
+            System.out.println("3. Xoa hang san xuat");
+            System.out.println("4. Tim kiem hang san xuat");
+            System.out.println("5. Xem thong tin trong danh sach hang san xuat");
+            System.out.println("6. Tai len danh sach hang san xuat tu file");
+            System.out.println("7. Xuat danh sach hang san xuat ra file");
+            System.out.println("8. Quay tro ve giao dien Menu chinh");
+            System.out.print("Chon: ");
+
+            select = s.nextInt();
+            s.nextLine();
+            
+            switch (select) {
+                case 1:
+                    dshsx.them();
+                    break;
                 case 2:
-                	dshsx.sua();
+                    dshsx.sua();
                     break;
                 case 3:
-                	dshsx.xoa();
+                    dshsx.xoa();
                     break;
                 case 4:
-                	dshsx.timKiem();
+                    dshsx.timKiem();
                     break;
                 case 5:
-                	dshsx.xem();
+                    dshsx.xem();
                     break;
                 case 6:
-                    dshsx.taiDanhSachTuFile(fileName);
+                    dshsx.taiDanhSachTuFile(fileName); 
                     break;
-                case 7:            
-                    dshsx.xuatDanhSachRaFile(fileName);
+                case 7:
+                    dshsx.xuatDanhSachRaFile(fileName); 
                     break;
                 case 8:
+                    System.out.println("Luu thay doi va quay tro ve Menu chinh.");
                     break;
                 default:
-                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+                    System.out.println("Lua chon khong hop le. Vui long nhap lai.");
             }
-        } while (choice != 8);
+        } 
+        while (select != 8);
     }
 }
