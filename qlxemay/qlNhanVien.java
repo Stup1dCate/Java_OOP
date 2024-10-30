@@ -6,7 +6,7 @@ class QLNhanVien {
 	private DSNhanSu dsnv;
     Scanner scanner = new Scanner(System.in);
     String fileName1 = "input_NhanVien.txt";
-    String fileName2 = "NhanVien_full.txt";
+    String fileName2 = "output_NhanVien.txt";
     public QLNhanVien() {
         dsnv = new DSNhanSu();
     }
