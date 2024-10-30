@@ -29,7 +29,6 @@ class QLXeMay {
 	private DSXeMay dssp;
     Scanner scanner = new Scanner(System.in);
     String fileName = "input_XeMay.txt";
-    String fileName2 = "output_XeMay.txt";
 	public QLXeMay()
 	{
 		dssp = new DSXeMay();
@@ -69,7 +68,7 @@ class QLXeMay {
                     dssp.taiDanhSachTuFile(fileName);
                     break;
                 case 7:            
-                    dssp.xuatDanhSachRaFile(fileName2);
+                    dssp.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
                     break;
