@@ -43,10 +43,10 @@ class QLNhanSu {
                 	dsns.xem();
                     break;
                 case 6:
-                    dsnv.taiDanhSachTuFile(fileName1);
+                    dsns.taiDanhSachTuFile(fileName1);
                     break;
                 case 7:            
-                    dsnv.xuatDanhSachRaFile(fileName2);
+                    dsns.xuatDanhSachRaFile(fileName2);
                     break;
                 case 8:
                     break;
