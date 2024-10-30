@@ -29,7 +29,7 @@ class QLXeMay {
 	private DSXeMay dssp;
     Scanner scanner = new Scanner(System.in);
     String fileName = "input_XeMay.txt";
-    String fileName2 = "XeMay_full.txt";
+    String fileName2 = "output_XeMay.txt";
 	public QLXeMay()
 	{
 		dssp = new DSXeMay();
