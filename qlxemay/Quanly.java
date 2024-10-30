@@ -16,7 +16,7 @@ public class Quanly extends NhanSu implements INhap,IXuat{
     public Quanly() {
     }
 
-    public Quanly(String manv,String ten, int age, String sdt,String ChucVu, int salary,int bonus) {
+    public Quanly(int manv,String ten, int age, String sdt,String ChucVu, int salary,int bonus) {
         super(manv,ten, age,sdt ,ChucVu, salary);
         this.bonus=bonus;
     }
