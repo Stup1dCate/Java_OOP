@@ -32,7 +32,8 @@ class QLXeMay {
     String fileName2 = "SanPham_full.txt";
 	public QLXeMay()
 	{
-		
+		dssp = new DSXeMay();
+	}	
     public void menu() {
         int choice;
         do {
