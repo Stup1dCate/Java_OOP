@@ -6,7 +6,7 @@ package qlxemay;
 
 import java.util.Scanner;
 
-public class HoaDon{
+public class HoaDon {
 
     private int mahd;
     private String ngaythanhtoan;
@@ -69,11 +69,50 @@ public class HoaDon{
         this.SoSPmua = SoSPmua;
     }
 
-    public double Tong(Xemay xm){
-        return xm.getGiaban()*SoSPmua;
+    public double Tong(Xemay xm) {
+        return xm.getGiaban() * SoSPmua;
     }
+
     public void Nhap(DSXeMay dsxm) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap ten San Pham da mua: ");
+        String ten;
+        int look = 0;
+        ten = sc.nextLine();
+        for (Xemay xm : dsxm.getDsXemays()) {
+            if (xm.getTenSP().equals(ten)) {
+                System.out.println("Thong tin San pham " + ten);
+                xm.Xuat();
+                look++;
+            }
+        }
+        if (look == 0) {
+            System.out.println("Khong tim thay San pham!");
+            return;
+        }
+        if (look == 1) {
+            for (Xemay xm : dsxm.getDsXemays()) {
+                if (xm.getTenSP().equals(ten)) {
+                    masp = xm.getMasp();
+                    return;
+                }
+            }
+        }
+        System.out.println("Nhap ma San pham: ");
+        int ma = sc.nextInt();
+        int key = 0;
+        for (Xemay xm : dsxm.getDsXemays()) {
+            if (xm.getMasp() == ma) {
+                masp = ma;
+                key = 1;
+                return;
+            }
+        }
+        if (key == 0) {
+            System.out.println("Khong tim thay ma san pham!");
+            return;
+        }
+
         System.out.println("Nhap ma hoa don: ");
         mahd = sc.nextInt();
         System.out.println("Nhap ngay thanh toan: ");
@@ -81,47 +120,24 @@ public class HoaDon{
         //Nhap thong tin khach hang
         khachhang.Nhap();
         //Nhap ten sp neu sp co ton tai thi in ra dssp co cung ten neu khong bat nguoi dung nhap lai ten sp
-        System.out.println("Nhap ten san pham da mua: ");
-        String tensp = sc.nextLine();
-        int look = 0; // so sp co cung ten
-        do {
-            for (Xemay xm : dsxm.getDsXemays()) {
-                if (xm.getTenSP().equals(tensp)) {
-                    System.out.println("Thong tin san pham: ");
-                    xm.Xuat();
-                    look++;
-                }
-            }
-            if (look == 0) {
-                System.out.println("Khong ton tai san pham! Vui long nhap lai");
-            }
-        } while (look == 0);
-        //Neu chi co 1 SP cung ten thi gan masp cho masp cua hoa don
-        if (look == 1) {
-            for (Xemay xm : dsxm.getDsXemays()) {
-                if (xm.getTenSP().equals(tensp)) {
-                    masp = xm.getMasp();
-                }
-            }
-            System.out.println("Nhap so luong san pham mua: ");
-            SoSPmua=sc.nextInt();
-            return;
-        }
-        System.out.println("Nhap ma san pham: ");
-        masp = sc.nextInt();
+
     }
-    public void Xuat(DSXeMay dsxm){
+
+    public void Xuat(DSXeMay dsxm) {
         System.out.println("Ma hoa don: " + mahd);
-        System.out.println("Ngay thanh toan: "+ ngaythanhtoan);
+        System.out.println("Ngay thanh toan: " + ngaythanhtoan);
         khachhang.Xuat();
-        Xemay xm= dsxm.timkiemtheomasp(masp);
-         System.out.println("Ma san pham: " + xm.getMasp());
+        Xemay xm = dsxm.timkiemtheomasp(masp);
+        System.out.println("Ma san pham: " + xm.getMasp());
         System.out.println("Ten san pham: " + xm.getTenSP());
         System.out.println("Loai SP: " + xm.getLoaiSP());
         System.out.println("Don gia: " + xm.getGiaban());
-        if(xm instanceof XeDien) System.out.println("Dung luong pin: "+ ((XeDien) xm).getDungluongpin());
-        else  System.out.println("Dung luong pin: "+ ((XeXang)xm).getDungtich());
+        if (xm instanceof XeDien) {
+            System.out.println("Dung luong pin: " + ((XeDien) xm).getDungluongpin());
+        } else {
+            System.out.println("Dung luong pin: " + ((XeXang) xm).getDungtich());
+        }
         xm.getHangsx().Xuat();
-        System.out.println("Tong: "+ Tong(xm));
+        System.out.println("Tong: " + Tong(xm));
     }
 }

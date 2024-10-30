@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package qlxemay;
+
 import java.util.Scanner;
 
 public class HangSX implements INhap, IXuat {
 
     private String tenhang;
+    private int mahangsx;
     private String sdthang;
     private String diachi;
 
@@ -15,11 +17,14 @@ public class HangSX implements INhap, IXuat {
 
     }
 
-    public HangSX(String tenhang, String sdthang, String diachi) {
+    public HangSX(String tenhang, int mahangsx, String sdthang, String diachi) {
         this.tenhang = tenhang;
+        this.mahangsx = mahangsx;
         this.sdthang = sdthang;
         this.diachi = diachi;
     }
+
+ 
 
     public String getTenhang() {
         return tenhang;
@@ -45,11 +50,22 @@ public class HangSX implements INhap, IXuat {
         this.diachi = diachi;
     }
 
+    public int getMahangsx() {
+        return mahangsx;
+    }
+
+    public void setMahangsx(int mahangsx) {
+        this.mahangsx = mahangsx;
+    }
+
     @Override
     public void Nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap ten hang: ");
         tenhang = sc.nextLine();
+        System.out.println("Nhap ma hang san xuat: ");
+        mahangsx=sc.nextInt();
+        sc.nextLine();
         System.out.println("Nhap so dien thoai hang: ");
         sdthang = sc.nextLine();
         System.out.println("Nhap dia chi hang: ");
@@ -59,18 +75,8 @@ public class HangSX implements INhap, IXuat {
     @Override
     public void Xuat() {
         System.out.println("Ten hang: " + tenhang);
+        System.out.println("Ma hang san xuat: "+ mahangsx);
         System.out.println("So dien thoai hang: " + sdthang);
         System.out.println("Dia chi hang: " + diachi);
-    }
-
-    public void sua() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ten hang san xuat moi: ");
-        tenhang=sc.nextLine();
-        System.out.println("Nhap so dien thoai: ");
-        sdthang=sc.nextLine();
-        System.out.println("Nhap dia chi hang: ");
-        diachi = sc.nextLine();
-        
     }
 }
