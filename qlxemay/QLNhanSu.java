@@ -5,8 +5,7 @@ import java.util.Scanner;
 class QLNhanSu {
 	private DSNhanSu dsns;
     Scanner scanner = new Scanner(System.in);
-    String fileName1 = "input_NhanSu.txt";
-    String fileName2 = "output_NhanSu.txt";
+    String fileName = "input_NhanSu.txt";
     public QLNhanVien() {
         dsns = new DSNhanSu();
     }
@@ -43,10 +42,10 @@ class QLNhanSu {
                 	dsns.xem();
                     break;
                 case 6:
-                    dsns.taiDanhSachTuFile(fileName1);
+                    dsns.taiDanhSachTuFile(fileName);
                     break;
                 case 7:            
-                    dsns.xuatDanhSachRaFile(fileName2);
+                    dsns.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
                     break;
