@@ -7,7 +7,7 @@ package qlxemay;
 import java.util.Scanner;
 public abstract class NhanSu implements INhap,IXuat{
     Scanner sc =new Scanner(System.in);
-    private String manv;
+    private int manv;
     private String ten;
     private int age;
     private String sdt;
@@ -19,7 +19,7 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     
 
-    public NhanSu(String manv,String ten, int age,String sdt ,String ChucVu, int salary) {
+    public NhanSu(int manv,String ten, int age,String sdt ,String ChucVu, int salary) {
         this.manv=manv;
         this.ten = ten;
         this.age = age;
@@ -30,11 +30,11 @@ public abstract class NhanSu implements INhap,IXuat{
     }
 
     
-    public String getManv() {
+    public int getManv() {
         return manv;
     }
 
-    public void setManv(String manv) {
+    public void setManv(int manv) {
         this.manv = manv;
     }
 
@@ -82,7 +82,8 @@ public abstract class NhanSu implements INhap,IXuat{
     @Override
     public void Nhap(){
         System.out.println("Nhap ma nhan vien: ");
-        manv=sc.nextLine();
+        manv=sc.nextInt();
+        sc.nextLine();
         System.out.println("Nhap ho ten nhan vien: ");
         ten=sc.nextLine();
         System.out.println("Nhap tuoi: ");
@@ -106,7 +107,7 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     public abstract int finalsalary();
 
-    public int getSoluongnv(){
+    public static int getSoluongnv(){
         return soluongnv;
     }
 
