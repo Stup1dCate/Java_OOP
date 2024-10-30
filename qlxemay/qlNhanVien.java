@@ -3,11 +3,12 @@ package qlxemay;
 import java.util.Scanner;
 
 class QLNhanVien {
-	private DSNhanVien dsnv;
+	private DSNhanSu dsnv;
     Scanner scanner = new Scanner(System.in);
-    String fileName = "NhanVien.txt";
+    String fileName1 = "input_NhanVien.txt";
+    String fileName2 = "NhanVien_full.txt";
     public QLNhanVien() {
-        dsnv = new DSNhanVien();
+        dsnv = new DSNhanSu();
     }
 
     public void menu() {
@@ -42,10 +43,10 @@ class QLNhanVien {
                 	dsnv.xem();
                     break;
                 case 6:
-                    dsnv.taiDanhSachTuFile(fileName);
+                    dsnv.taiDanhSachTuFile(fileName1);
                     break;
                 case 7:            
-                    dsnv.xuatDanhSachRaFile(fileName);
+                    dsnv.xuatDanhSachRaFile(fileName2);
                     break;
                 case 8:
                     break;
