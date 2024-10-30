@@ -69,6 +69,9 @@ public class HoaDon{
         this.SoSPmua = SoSPmua;
     }
 
+    public double Tong(Xemay xm){
+        return xm.getGiaban()*SoSPmua;
+    }
     public void Nhap(DSXeMay dsxm) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap ma hoa don: ");
@@ -114,9 +117,11 @@ public class HoaDon{
         Xemay xm= dsxm.timkiemtheomasp(masp);
          System.out.println("Ma san pham: " + xm.getMasp());
         System.out.println("Ten san pham: " + xm.getTenSP());
-        System.out.println("Loai SP: " + xm.getTenSP());
+        System.out.println("Loai SP: " + xm.getLoaiSP());
+        System.out.println("Don gia: " + xm.getGiaban());
         if(xm instanceof XeDien) System.out.println("Dung luong pin: "+ ((XeDien) xm).getDungluongpin());
         else  System.out.println("Dung luong pin: "+ ((XeXang)xm).getDungtich());
         xm.getHangsx().Xuat();
+        System.out.println("Tong: "+ Tong(xm));
     }
 }
