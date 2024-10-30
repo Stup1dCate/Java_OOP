@@ -5,7 +5,8 @@ import java.util.Scanner;
 class QLKhachHang {
 	private DSKhachHang dskh;
     Scanner scanner = new Scanner(System.in);
-    String fileName = "KhachHang.txt";
+    String fileName = "input_KhachHang.txt";
+    String fileName2 = "output_KhachHang.txt";
     public QLKhachHang() {
         dskh = new DSKhachHang();
     }
@@ -45,7 +46,7 @@ class QLKhachHang {
                     dskh.taiDanhSachTuFile(fileName);
                     break;
                 case 7:            
-                    dskh.xuatDanhSachRaFile(fileName);
+                    dskh.xuatDanhSachRaFile(fileName2);
                     break;
                 case 8:
                     break;
