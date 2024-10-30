@@ -28,8 +28,8 @@ import java.util.Scanner;
 class QLXeMay {
 	private DSXeMay dssp;
     Scanner scanner = new Scanner(System.in);
-    String fileName = "SanPham.txt";
-    String fileName2 = "SanPham_full.txt";
+    String fileName = "input_XeMay.txt";
+    String fileName2 = "XeMay_full.txt";
 	public QLXeMay()
 	{
 		dssp = new DSXeMay();
