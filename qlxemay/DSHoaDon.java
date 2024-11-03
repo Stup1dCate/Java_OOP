@@ -24,14 +24,14 @@ class DsHoaDon{
     }
     public void xem()
     {
-        for(HoaDon hd: dsHD)
+        for(HoaDon hd: dsHoaDon)
         {
             hd.Xuat();
         }
     }
     public void them()
     {
-        HoaDon hd = NULL;
+        HoaDon hd = null;
         hd = new HoaDon();
         if(hd!=NULL)
         {
@@ -48,7 +48,7 @@ class DsHoaDon{
             if(hd.getMaHd().equals(msHDcansua))
             {
                 hd.sua();
-                System.out.printl("đã sửa thông tin hóa đơn");
+                System.out.println("đã sửa thông tin hóa đơn");
                 return;
             }
         }
@@ -63,11 +63,11 @@ class DsHoaDon{
             if(hd.getMaHd().equals(msHDcanxoa))
             {
                 hd.remove();
-                System.out.printl("đã xóa thông tin hóa đơn");
+                System.out.println("đã xóa thông tin hóa đơn");
                 return;
             }
         }
-        System.err.println("không tìm thấy hóa đơn cần xóa")
+        System.err.println("không tìm thấy hóa đơn cần xóa");
     }
     public void taiDanhSachTuFile(String fileName) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -98,22 +98,22 @@ class DsHoaDon{
         }
     }
 
-    private HoaDon parseLineToHoaDon(String line) {
-        String[] parts = line.split(";"); 
-        if (parts.length == 6) {
-            int makh = Integer.parseInt(parts[0]);
-            long sdtkh = Long.parseLong(parts[1]);
-            int sotuoikh = Integer.parseInt(parts[2]);
-            String tenkh = parts[3];
-            String diachikh = parts[4];
-            String phaikh = parts[5];
-            return new HoaDon(mahd, ngaythanhtoan, khachhang, masp, SoSPmua);
-        }
-        return null;
+   private HoaDon parseLineToHoaDon(String line) {
+    String[] parts = line.split(";");
+    if (parts.length == 5) {
+        int mahd = Integer.parseInt(parts[0]);
+        String ngaythanhtoan = parts[1];
+        KhachHang khachhang = new KhachHang(parts[2]);
+        int masp = Integer.parseInt(parts[3]);
+        int SoSPmua = Integer.parseInt(parts[4]);
+        return new HoaDon(mahd, ngaythanhtoan, khachhang, masp, SoSPmua);
     }
+    return null;
+}
+
 
     // Hàm chuyển đối tượng NhaCungCap thành dòng văn bản
     private String parseKhachHangToLine(KhachHang kh) {
-        return kh.getMahd() + ";" + kh.getNgaythanhtoan() + ";" + kh.getKhachhang() + ";" + kh.getMasp() + ";" + kh.getSoSPmua();
+        return kh.getMahd() + ";" + kh.getNgaythanhtoan() + ";" + kh.getKhachhang().toString() + ";" + kh.getMasp() + ";" + kh.getSoSPmua();
     }
 }
