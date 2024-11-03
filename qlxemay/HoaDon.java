@@ -118,7 +118,6 @@ public class HoaDon {
         System.out.println("Nhap ngay thanh toan: ");
         ngaythanhtoan = sc.nextLine();
         //Nhap thong tin khach hang
-        khachhang.Nhap();
         //Nhap ten sp neu sp co ton tai thi in ra dssp co cung ten neu khong bat nguoi dung nhap lai ten sp
 
     }
