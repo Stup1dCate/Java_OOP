@@ -33,7 +33,7 @@ class DsHoaDon{
     {
         HoaDon hd = null;
         hd = new HoaDon();
-        if(hd!=NULL)
+        if(hd!=null)
         {
             hd.Nhap();
             dsHoaDon.add(hd);
