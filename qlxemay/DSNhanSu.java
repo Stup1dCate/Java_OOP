@@ -24,8 +24,10 @@ class DSNhanSu {
 	public void Them() {
 		NhanSu ns = null;
 		int luachon;
-		System.out.println("Ban muon them 1.Nhan vien hay 2.Quan ly..");
-		System.out.println("Nhap lua chon cua ban: ");
+		System.out.println("Them nhan su cho Cua Hang: ");
+		System.out.println("1. Them nhan vien ");
+		System.out.println("2. Them quan ly: ");
+		System.out.println("Nhap lua chon: ");
 		luachon=sc.nextInt();
 		switch (luachon) {
 			case 1:
@@ -60,7 +62,7 @@ class DSNhanSu {
 					return;
 				}
 			}
-		  System.out.println("Nhap ma nhan vien can sua: ");
+		System.out.println("Nhap ma nhan vien can sua: ");
 	        int manvcanxoa = sc.nextInt();
 	        for(NhanSu ns : dsns) {
 	        	if (ns.getManv()==manvcanxoa) {
@@ -70,7 +72,7 @@ class DSNhanSu {
 	                return; // Kết thúc sau khi sửa
 	        	}
 	        }
-	        System.out.println("Khong tim thay nhan vien can sua!");
+	    System.out.println("Khong tim thay nhan vien can sua!");
 	}
 
 	public void Xoa() {
@@ -97,18 +99,20 @@ class DSNhanSu {
                 return; // Kết thúc sau khi xóa
             }
         }
-        System.out.println("Không tìm thấy nhân viên cần xóa!");
+        System.out.println("Khong tim thay nhan vien can xoa!");
 	}
 	public void TimKiem() {
 		int luachon;
-		System.out.println("Bạn muốn tìm kiếm theo 1. Mã nhân viên hay 2. Tên");
-		System.out.print("Nhập lựa chọn của bạn: ");
+		System.out.println("Lua chon phuong thuc tim kiem");
+		System.out.println("1. Theo ma nhan vien");
+		System.out.println("2. Theo ten nhan vien");
+		System.out.print("Nhap lua chon: ");
 		luachon = sc.nextInt();
 		sc.nextLine(); // Đọc bỏ dòng mới còn sót sau khi nhập số
 	
 		switch (luachon) {
 			case 1:
-				System.out.print("Nhập mã nhân viên cần tìm kiếm: ");
+				System.out.print("Nhap ma nhan vien can tim kiem: ");
 				int manv = sc.nextInt();
 				boolean foundById = false;
 				for (NhanSu ns : dsns) {
@@ -119,12 +123,12 @@ class DSNhanSu {
 					}
 				}
 				if (!foundById) {
-					System.out.println("Không tìm thấy nhân viên với mã này.");
+					System.out.println("Khong tim thay nhan vien co ma so tuong ung.");
 				}
 				break;
 	
 			case 2:
-				System.out.print("Nhập tên nhân viên cần tìm kiếm: ");
+				System.out.print("Nhap ten nhan vien can tim kiem: ");
 				String find = sc.nextLine();
 				boolean foundByName = false;
 				for (NhanSu ns : dsns) {
@@ -134,12 +138,12 @@ class DSNhanSu {
 					}
 				}
 				if (!foundByName) {
-					System.out.println("Không có nhân viên cần tìm kiếm!");
+					System.out.println("Khong co nhan vien can tim kiem!");
 				}
 				break;
 	
 			default:
-				System.out.println("Lựa chọn không hợp lệ.");
+				System.out.println("Lua chon khong hop le. Vui long chon lai:");
 				break;
 		}
 	}
@@ -153,9 +157,9 @@ class DSNhanSu {
                     dsns.add(ns);
                 }
             }
-            System.out.println("Đã tải danh sách từ tệp tin: " + fileName);
+            System.out.println("Da tai danh sach tu tep tin: " + fileName);
         } catch (FileNotFoundException e) {
-            System.out.println("Không tìm thấy tệp tin: " + fileName);
+            System.out.println("Khong tim thay tep tin: " + fileName);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -168,7 +172,7 @@ class DSNhanSu {
                 writer.write(parseNhanSuToLine(ns));
                 writer.newLine();
             }
-            System.out.println("Đã xuất danh sách ra tệp tin: " + fileName);
+            System.out.println("Da xuat danh sach ra tep tin: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
