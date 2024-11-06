@@ -39,7 +39,7 @@ class DSHoaDon {
 
     public void sua() {
         System.out.print("Nhập mã số hóa đơn cần sửa: ");
-        String msHDcansua = reader.nextLine();
+        int msHDcansua = reader.nextInt();
         for (HoaDon hd : dsHoaDon) {
             if (hd.getMahd().equals(msHDcansua)) {
                 hd.sua();
@@ -52,7 +52,7 @@ class DSHoaDon {
 
     public void xoa() {
         System.out.print("Nhập mã số hóa đơn cần xóa: ");
-        String msHDcanxoa = reader.nextLine();
+        int msHDcanxoa = reader.nextInt();
         for (HoaDon hd : dsHoaDon) {
             if (hd.getMahd().equals(msHDcanxoa)) {
                 dsHoaDon.remove(hd);
