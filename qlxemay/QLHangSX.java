@@ -37,24 +37,15 @@ class QLHangSX {
                     dshsx.xoa();
                     break;
                 case 4:
-                    dshsx.timKiem();
-                    break;
-                case 5:
                     dshsx.xem();
                     break;
-                case 6:
-                    dshsx.taiDanhSachTuFile(fileName); 
-                    break;
-                case 7:
-                    dshsx.xuatDanhSachRaFile(fileName); 
-                    break;
-                case 8:
+                case 5:
                     System.out.println("Luu thay doi va quay tro ve Menu chinh.");
                     break;
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai.");
             }
         } 
-        while (select != 8);
+        while (select != 5);
     }
 }
