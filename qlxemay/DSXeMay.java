@@ -31,7 +31,7 @@ class DSXeMay {
 	public void xem() {
 	    if (dsXemay != null) {
 	        for(XeMay sp : dsXemay) {
-	            sp.xuat();
+	            sp.Xuat();
 	        }
 	    } else {
 	        System.out.println("Danh sách sản phẩm trống.");
@@ -41,7 +41,7 @@ class DSXeMay {
 	public void them() {
         XeMay sp = new XeMay();
         if (sp != null) {
-            sp.nhap();
+            sp.Nhap();
             dsXemay.add(sp);
         }
     }
@@ -49,9 +49,9 @@ class DSXeMay {
 		  System.out.println("Nhập tên Sản phẩm cần sửa: ");
 	        String tenCanSua = scanner.nextLine();
 	        for(XeMay sp : dsXemay) {
-	        	if (sp.getTensp().equals(tenCanSua)) {
+	        	if (sp.getTenSP().equals(tenCanSua)) {
 	                // Gọi phương thức sua() của đối tượng tài liệu tương ứng
-	                sp.sua();
+	                sp.Nhap();
 	                System.out.println("Đã sửa thông tin của sản phẩm!");
 	                return; // Kết thúc sau khi sửa
 	        	}
@@ -62,7 +62,7 @@ class DSXeMay {
 		System.out.println("Nhập tên Sản phẩm cần xóa: ");
         String tenCanXoa = scanner.nextLine();
         for(XeMay sp : dsXemay) {
-        	if (sp.getTensp().equals(tenCanXoa)) {
+        	if (sp.getTenSP().equals(tenCanXoa)) {
                 // Gọi phương thức xoa() của đối tượng tài liệu tương ứng
         		dsXemay.remove(sp);
                 System.out.println("Đã xóa sản phẩm!");
@@ -76,8 +76,8 @@ class DSXeMay {
 		String find = scanner.nextLine();
 		boolean found = true;
 		for(XeMay sp : dsXemay) {
-			if (sp.getTensp().contains(find)) {
-				sp.xuat();
+			if (sp.getTenSP().contains(find)) {
+				sp.Xuat();
 			}
 			if (!found) {
 				System.out.println("Không có sản phẩm tìm kiếm !");
