@@ -33,6 +33,7 @@ public class Quanly extends NhanSu implements INhap,IXuat{
         super.Nhap();
         System.out.println("Nhap so tien thuong cua quan ly: ");
         bonus=sc.nextInt();
+        sc.nextLine();
     }
     @Override 
     public void Xuat(){
