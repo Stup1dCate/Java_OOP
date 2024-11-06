@@ -10,7 +10,7 @@ public abstract class NhanSu implements INhap,IXuat{
     private int manv;
     private String ten;
     private int age;
-    private String sdt;
+    private long sdt;
     protected String ChucVu;
     private int salary;
     public static int soluongnv=0;
@@ -19,7 +19,7 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     
 
-    public NhanSu(int manv,String ten, int age,String sdt ,String ChucVu, int salary) {
+    public NhanSu(int manv,String ten, int age,long sdt ,String ChucVu, int salary) {
         this.manv=manv;
         this.ten = ten;
         this.age = age;
@@ -55,11 +55,11 @@ public abstract class NhanSu implements INhap,IXuat{
     }
 
     
-    public String getSDT() {
+    public long getSDT() {
         return sdt;
     }
 
-    public void setSDT(String sdt) {
+    public void setSDT(long sdt) {
         this.sdt = sdt;
     }
 
@@ -90,7 +90,7 @@ public abstract class NhanSu implements INhap,IXuat{
         age=sc.nextInt();
         System.out.println("Nhap so dien thoai: ");
         sc.nextLine();
-        sdt=sc.nextLine();
+        sdt=sc.nextLong();
         System.out.println("Nhap chuc vu: ");
         ChucVu=sc.nextLine();
         System.out.println("Nhap luong: ");

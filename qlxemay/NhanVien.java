@@ -13,7 +13,7 @@ public class NhanVien extends NhanSu implements INhap,IXuat{
     public NhanVien() {
     }
 
-    public NhanVien(int manv,String ten, int age,String sdt, String ChucVu, int salary,int SoSPban) {
+    public NhanVien(int manv,String ten, int age,long sdt, String ChucVu, int salary,int SoSPban) {
         super(manv, ten, age,sdt ,ChucVu, salary);
         this.SoSPban=SoSPban;
     }
