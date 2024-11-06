@@ -37,7 +37,7 @@ public class DSHangSX {
     }
 
     public void them() {
-        HangSX hang = null;
+        HangSX hang = new HangSX();
         hang.Nhap();
         if (hang != null) {
             dsHang.add(hang);
