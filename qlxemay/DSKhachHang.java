@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 class DSKhachHang {
 	Scanner scanner = new Scanner(System.in);
-	private ArrayList<KhachHang> dsKhachHang;  // Thêm biến này để lưu trữ danh sách khách hàng
+	private ArrayList<KhachHang> dsKhachHang;  
 	private static int makhtt;
 	public DSKhachHang() {
 		dsKhachHang = new ArrayList<>();  // Khởi tạo danh sách khách hàng
@@ -47,33 +47,33 @@ class DSKhachHang {
 		}
 	}
 	public void sua() {
-		  System.out.println("Nhập tên Khách hàng cần sửa: ");
+		  System.out.println("Nhap ten khach hang can sua: ");
 	        String tenCanSua = scanner.nextLine();
 	        for(KhachHang kh : dsKhachHang) {
 	        	if (kh.getTenkh().equals(tenCanSua)) {
 	                // Gọi phương thức sua() của đối tượng tài liệu tương ứng
 	                kh.sua();
-	                System.out.println("Đã sửa thông tin của nhân viên!");
+	                System.out.println("Da sua thanh cong thong tin khach hang.");
 	                return; // Kết thúc sau khi sửa
 	        	}
 	        }
-	        System.out.println("Không tìm thấy nhân viên cần sửa!");
+	        System.out.println("Khong tim thay khach hang can sua.");
 	}
 	public void xoa() {
-		System.out.println("Nhập tên Khách hàng cần xóa: ");
+		System.out.println("Nhap ten khach hang can xoa: ");
         String tenCanXoa = scanner.nextLine();
         for(KhachHang kh : dsKhachHang) {
         	if (kh.getTenkh().equals(tenCanXoa)) {
                 // Gọi phương thức xoa() của đối tượng tài liệu tương ứng
         		dsKhachHang.remove(kh);
-                System.out.println("Đã xóa khách hàng!");
+                System.out.println("Da xoa thanh cong khach hang.");
                 return; // Kết thúc sau khi xóa
             }
         }
-        System.out.println("Không tìm thấy khách hàng cần xóa!");
+        System.out.println("Khong tim thay khach hang can xoa.");
 	}
 	public void timKiem() {
-		System.out.println("Nhập tên Khách hàng cần tìm kiếm: ");
+		System.out.println("Nhap ten khach hang can tim kiem: ");
 		String find = scanner.nextLine();
 		boolean found = true;
 		for(KhachHang kh : dsKhachHang) {
@@ -81,7 +81,7 @@ class DSKhachHang {
 				kh.xuat();
 			}
 			if (!found) {
-				System.out.println("Không có khách hàng tìm kiếm !");
+				System.out.println("Khong co khach hang can tim kiem.");
 			}
 		}
 	}
@@ -95,9 +95,9 @@ class DSKhachHang {
                     dsKhachHang.add(kh);  // Thêm vào danh sách dsKhachHang
                 }
             }
-            System.out.println("Đã tải danh sách từ tệp tin: " + fileName);
+            System.out.println("Da tai danh sach tu tap tin: " + fileName);
         } catch (FileNotFoundException e) {
-            System.out.println("Không tìm thấy tệp tin: " + fileName);
+            System.out.println("Khong tim thay tap tin: " + fileName);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -110,7 +110,7 @@ class DSKhachHang {
                 writer.write(parseKhachHangToLine(kh));
                 writer.newLine();
             }
-            System.out.println("Đã xuất danh sách ra tệp tin: " + fileName);
+            System.out.println("Da xuat danh sach ra tap tin: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

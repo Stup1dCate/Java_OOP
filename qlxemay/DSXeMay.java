@@ -1,16 +1,20 @@
 package qlxemay;
 
+//đọc/ghi file
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+//thoát chương trình khi không tìm thấy file 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+//sử dụng dữ liệu mảng
 import java.util.ArrayList;
+//nhập input trực tiếp
 import java.util.Scanner;
 
 class DSXeMay {
-	Scanner scanner = new Scanner(System.in);
+	Scanner s = new Scanner(System.in);
 	private ArrayList<XeMay> dsXemay;
 	private static int masptt;
     public DSXeMay() {
@@ -29,83 +33,106 @@ class DSXeMay {
 	}
 	
 	public void xem() {
-	    if (dsXemay != null) {
-	        for(XeMay sp : dsXemay) {
-	            sp.Xuat();
-	        }
-	    } else {
-	        System.out.println("Danh sách sản phẩm trống.");
-	    }
+		if (dsXemay != null) {
+			if (!dsXemay.isEmpty()) {
+				for (int i = 0; i < dsXemay.size(); i++) {
+					XeMay sp = dsXemay.get(i);
+					sp.xuat(); 
+				}
+			} else {
+				System.out.println("Danh sach san pham trong. \n"); 
+			}
+		} 
+		else {
+			System.out.println("Danh sach san pham trong. \n");  
+		}
 	}
+	
 
 	public void them() {
+		System.out.println("\tNHAP LAN LUOT THONG TIN SAN PHAM CAN THEM: ");  
         XeMay sp = new XeMay();
         if (sp != null) {
-            sp.Nhap();
+            sp.nhap();
             dsXemay.add(sp);
         }
     }
 	public void sua() {
-		  System.out.println("Nhập tên Sản phẩm cần sửa: ");
-	        String tenCanSua = scanner.nextLine();
-	        for(XeMay sp : dsXemay) {
-	        	if (sp.getTenSP().equals(tenCanSua)) {
-	                // Gọi phương thức sua() của đối tượng tài liệu tương ứng
-	                sp.Nhap();
-	                System.out.println("Đã sửa thông tin của sản phẩm!");
-	                return; // Kết thúc sau khi sửa
-	        	}
-	        }
-	        System.out.println("Không tìm thấy sản phẩm cần sửa!");
-	}
-	public void xoa() {
-		System.out.println("Nhập tên Sản phẩm cần xóa: ");
-        String tenCanXoa = scanner.nextLine();
-        for(XeMay sp : dsXemay) {
-        	if (sp.getTenSP().equals(tenCanXoa)) {
-                // Gọi phương thức xoa() của đối tượng tài liệu tương ứng
-        		dsXemay.remove(sp);
-                System.out.println("Đã xóa sản phẩm!");
-                return; // Kết thúc sau khi xóa
-            }
-        }
-        System.out.println("Không tìm thấy sản phẩm cần xóa!");
-	}
-	public void timKiem() {
-		System.out.println("Nhập tên Sản phẩm cần tìm kiếm: ");
-		String find = scanner.nextLine();
-		boolean found = true;
-		for(XeMay sp : dsXemay) {
-			if (sp.getTenSP().contains(find)) {
-				sp.Xuat();
-			}
-			if (!found) {
-				System.out.println("Không có sản phẩm tìm kiếm !");
+		System.out.print("Nhap ma san pham can sua: ");
+		int maCanSua = s.nextInt();
+		s.nextLine(); 
+		for (int i=0;i<dsXemay.size();i++) {
+			XeMay sp = dsXemay.get(i);
+			if (sp.getMasp() == maCanSua) {
+				System.out.println("Sua thong tin cua san pham co ma: " + maCanSua);
+				sp.sua();
+				System.out.println("Da cap nhat thong tin san pham!");
+				return; 
 			}
 		}
+		System.out.println("Khong tim thay san pham co ma: " + maCanSua);
 	}
+	public void xoa() {
+		System.out.println("Nhap ma xe may can xoa: ");
+		int maCanXoa = s.nextInt();
+		boolean found = false;
+		for (int i = 0; i < dsXemay.size(); i++) {
+			XeMay sp = dsXemay.get(i); 
+			
+			if (sp.getMasp() == maCanXoa) { 
+				dsXemay.remove(i); 
+				System.out.println("Da xoa san pham thanh cong.");
+				found = true;
+				break; 
+			}
+		}
+		if (!found) {
+			System.out.println("Khong tim thay san pham co ma " + maCanXoa);
+		}
+	}	
+	public void timKiem() {
+		System.out.println("Nhap ma san pham can tim kiem: ");
+		int maCanTim = s.nextInt();
+		boolean found = false;
+		for (int i = 0; i < dsXemay.size(); i++) {
+			XeMay sp = dsXemay.get(i); 
+			
+			if (sp.getMasp() == maCanTim) { 
+				dsXemay.remove(i); 
+				System.out.println("Da xoa san pham thanh cong.");
+				found = true;
+				break; 
+			}
+		}
+		if (!found) {
+			System.out.println("Khong tim thay san pham co ma " + maCanTim);
+		}
+	}
+	 
 	public void taiDanhSachTuFile(String fileName) {
 	    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
 	        String line;
-	        // Kiểm tra xem danh sách có dữ liệu không
 	        if (dsXemay.isEmpty()) {
-	            System.out.println("Danh sách sản phẩm trống.");
+	            System.out.println("Danh sach san pham trong.");
 	        }
-	    } catch (FileNotFoundException e) {
-	        System.out.println("Không tìm thấy tệp tin: " + fileName);
-	    } catch (IOException ex) {
+	    } 
+		catch (FileNotFoundException e) {
+	        System.out.println("Khong tim thay tep tin: " + fileName);
+	    } 
+		catch (IOException ex) {
 	        ex.printStackTrace();
 	    }
 	}
 
 
-    public void xuatDanhSachRaFile(String fileName2) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName2))) {
+    public void xuatDanhSachRaFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
         	for(XeMay sp : dsXemay) {
                 writer.newLine();
             }
-            System.out.println("Đã xuất danh sách ra tệp tin: " + fileName2);
-        } catch (IOException e) {
+            System.out.println("Da xuat danh sach ra tap tin: " + fileName);
+        } 
+		catch (IOException e) {
             e.printStackTrace();
         }
     }
