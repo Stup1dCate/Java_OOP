@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package qlxemay;
-
 import java.util.Scanner;
-public class XeDien extends Xemay{
-    private double dungluongpin;
 
+public class XeDien extends XeMay{
+
+    private double dungluongpin;
     public XeDien() {
     }
     
@@ -19,21 +19,19 @@ public class XeDien extends Xemay{
     public double getDungluongpin() {
         return dungluongpin;
     }
-
     public void setDungluongpin(double dungluongpin) {
         this.dungluongpin = dungluongpin;
     }
     @Override
-    public void Nhap(){
+    public void nhap(){
         Scanner sc = new Scanner(System.in);
-        super.Nhap();
+        super.nhap();
         System.out.println("Nhap dung luong pin: ");
         dungluongpin=sc.nextDouble();
     }
     @Override
-    public void Xuat(){
-        super.Xuat();
+    public void xuat(){
+        super.xuat();
         System.out.println("Dung luong pin: " + dungluongpin);
     }
-    
 }
