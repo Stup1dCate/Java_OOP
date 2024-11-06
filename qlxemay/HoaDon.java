@@ -5,8 +5,9 @@
 package qlxemay;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class HoaDon {
+public class HoaDon{
 
     private int mahd;
     private String ngaythanhtoan;
@@ -72,9 +73,31 @@ public class HoaDon {
     public double Tong(Xemay xm) {
         return xm.getGiaban() * SoSPmua;
     }
-
-    public void Nhap(DSXeMay dsxm) {
+    public void Nhap(ArrayList<Khachhang> dskh,DSXeMay dsxm) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ma hoa don: ");
+        mahd = sc.nextInt();
+        sc.nextLine();
+        System.out.print("nhap ten khach hang: ");
+        String tenkhachhang = sc.nextLine();
+        boolean find = false;
+        for(Khachhang kh : dskh)
+        {
+            if(kh.getTenkh().equals(tenkhachhang))
+            {
+                find = true;
+                System.out.println("khach hang da co trong danh sach, nhap them hoa don cho khach hang nay");
+                khachhang = kh;
+                break;
+            }
+        }
+        if(!find)
+        {
+            System.out.println("khach hang chua co trong danh sach, nhap thong tin moi cho khach hang nay");
+            khachhang = new Khachhang();
+            khachhang.Nhap();
+            dskh.add(khachhang);  
+        }
         System.out.println("Nhap ten San Pham da mua: ");
         String ten;
         int look = 0;
@@ -112,16 +135,12 @@ public class HoaDon {
             System.out.println("Khong tim thay ma san pham!");
             return;
         }
-
-        System.out.println("Nhap ma hoa don: ");
-        mahd = sc.nextInt();
         System.out.println("Nhap ngay thanh toan: ");
         ngaythanhtoan = sc.nextLine();
         //Nhap thong tin khach hang
         //Nhap ten sp neu sp co ton tai thi in ra dssp co cung ten neu khong bat nguoi dung nhap lai ten sp
 
     }
-
     public void Xuat(DSXeMay dsxm) {
         System.out.println("Ma hoa don: " + mahd);
         System.out.println("Ngay thanh toan: " + ngaythanhtoan);
