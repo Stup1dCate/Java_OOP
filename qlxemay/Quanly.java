@@ -3,11 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package qlxemay;
-
 import java.util.Scanner;
-import qlxemay.INhap;
-import qlxemay.IXuat;
-
 
 public class Quanly extends NhanSu implements INhap,IXuat{
     Scanner sc =new Scanner(System.in);
@@ -16,7 +12,7 @@ public class Quanly extends NhanSu implements INhap,IXuat{
     public Quanly() {
     }
 
-    public Quanly(int manv,String ten, int age, String sdt,String ChucVu, int salary,int bonus) {
+    public Quanly(int manv,String ten, int age, long sdt,String ChucVu, int salary,int bonus) {
         super(manv,ten, age,sdt ,ChucVu, salary);
         this.bonus=bonus;
     }
@@ -29,15 +25,14 @@ public class Quanly extends NhanSu implements INhap,IXuat{
         this.bonus = bonus;
     }
     @Override
-    public void Nhap(){
-        super.Nhap();
+    public void nhap(){
+        super.nhap();
         System.out.println("Nhap so tien thuong cua quan ly: ");
         bonus=sc.nextInt();
-        sc.nextLine();
     }
     @Override 
-    public void Xuat(){
-        super.Xuat();
+    public void xuat(){
+        super.xuat();
         System.out.println("So tien thuong cua quan ly la: "+ bonus);
     }
     public int finalsalary(){

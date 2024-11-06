@@ -18,7 +18,7 @@ class DSNhanSu {
 
 	public void Xem() {
 		for(NhanSu ns : dsns) {
-			ns.Xuat();
+			ns.xuat();
 		}
 	}
 	public void Them() {
@@ -31,14 +31,14 @@ class DSNhanSu {
 			case 1:
 				ns=new NhanVien();
 				if(ns!= null){
-					ns.Nhap();
+					ns.nhap();
 					dsns.add(ns);
 				}
 				break;
 			case 2:
 			ns=new Quanly();
 				if(ns!= null){
-					ns.Nhap();
+					ns.nhap();
 					dsns.add(ns);
 				}
 				break;
@@ -52,7 +52,7 @@ class DSNhanSu {
 			String tennvcansua=sc.nextLine();
 			for(NhanSu ns: dsns){
 				if (ns.getTen().equals(tennvcansua)){
-					ns.Xuat();
+					ns.xuat();
 					
 				}
 				else{
@@ -78,7 +78,7 @@ class DSNhanSu {
 		String tennvcanxoa=sc.nextLine();
 			for(NhanSu ns: dsns){
 				if (ns.getTen().equals(tennvcanxoa)){
-					ns.Xuat();
+					ns.xuat();
 					
 				}
 				else{
@@ -113,7 +113,7 @@ class DSNhanSu {
 				boolean foundById = false;
 				for (NhanSu ns : dsns) {
 					if (ns.getManv() == manv) {
-						ns.Xuat();
+						ns.xuat();
 						foundById = true;
 						break; // Ngừng tìm kiếm sau khi tìm thấy
 					}
@@ -129,7 +129,7 @@ class DSNhanSu {
 				boolean foundByName = false;
 				for (NhanSu ns : dsns) {
 					if (ns.getTen().contains(find)) {
-						ns.Xuat();
+						ns.xuat();
 						foundByName = true;
 					}
 				}
@@ -176,25 +176,25 @@ class DSNhanSu {
 
   
     private NhanSu parseLineToNhanSu(String line) {
-        String[] parts = line.split(";"); // Giả sử dữ liệu được phân tách bằng dấu chấm phẩy
-        if (parts.length == 7) {
-            int manv = Integer.parseInt(parts[0]);
-            String ten = (parts[1]);
-            int age= Integer.parseInt(parts[2]);
-            String sdt = parts[3];
-            String chucvu = parts[4];
-            int salary = Integer.parseInt(parts[5]);
-			if(chucvu.equals("NhanVien")){
-				int SoSPban=Integer.parseInt(parts[6]);
-				return new NhanVien(manv,ten,age,sdt,chucvu,salary,SoSPban);
+		String[] parts = line.split(";"); 
+		if (parts.length == 7) {
+			int manv = Integer.parseInt(parts[0]);
+			String ten = parts[1];
+			int age = Integer.parseInt(parts[2]);
+			long sdt = Long.parseLong(parts[3]);
+			String chucvu = parts[4];
+			int salary = Integer.parseInt(parts[5]);
+			if (chucvu.equals("NhanVien")) {
+				int SoSPban = Integer.parseInt(parts[6]);
+				return new NhanVien(manv, ten, age, sdt, chucvu, salary, SoSPban);
+			} else if (chucvu.equals("QuanLy")) {
+				int bonus = Integer.parseInt(parts[6]);
+				return new Quanly(manv, ten, age, sdt, chucvu, salary, bonus);
 			}
-			else if(chucvu.equals("QuanLy")){
-				int bonus=Integer.parseInt(parts[6]);
-				return new Quanly(manv,ten,age,sdt,chucvu,salary,bonus);
-			}
-        }
-        return null;
-    }
+		}
+		return null;
+	}
+	
 
 
 
