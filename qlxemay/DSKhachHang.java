@@ -72,7 +72,7 @@ class DSKhachHang {
         }
         System.out.println("Khong tim thay khach hang can xoa.");
 	}
-	public void timKiem() {
+	public void timkiem() {
 		System.out.println("Nhap ten khach hang can tim kiem: ");
 		String find = scanner.nextLine();
 		boolean found = true;
@@ -116,7 +116,7 @@ class DSKhachHang {
         }
     }
 
-    // Hàm chuyển dòng văn bản thành đối tượng NhaCungCap
+    // Hàm chuyển dòng văn bản thành đối tượng hangSX
     private KhachHang parseLineToKhachHang(String line) {
         String[] parts = line.split(";"); // Giả sử dữ liệu được phân tách bằng dấu chấm phẩy
         if (parts.length == 6) {
@@ -131,7 +131,7 @@ class DSKhachHang {
         return null;
     }
 
-    // Hàm chuyển đối tượng NhaCungCap thành dòng văn bản
+    // Hàm chuyển đối tượng HangSX thành dòng văn bản
     private String parseKhachHangToLine(KhachHang kh) {
         return kh.getMakh() + ";" + kh.getSdtkh() + ";" + kh.getTenkh() + ";" + kh.getDiachikh() + ";" + kh.getPhai() + ";" + kh.getSotuoi();
     }
