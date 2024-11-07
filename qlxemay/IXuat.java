@@ -9,5 +9,5 @@ package qlxemay;
  * @author cuong
  */
 public interface IXuat {
-    public void Xuat();
+    public void xuat();
 }

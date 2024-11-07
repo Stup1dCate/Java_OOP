@@ -9,6 +9,5 @@ package qlxemay;
  * @author cuong
  */
 public interface INhap {
-    public void Nhap();
-
+    public void nhap();
 }
