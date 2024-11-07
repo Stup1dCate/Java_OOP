@@ -35,7 +35,7 @@ public class MenuCuaHang {
 			System.out.println("[======================]");
             System.out.println("1. Quan ly Xe May");
 			System.out.println("2. Quan ly Hang San Xuat");
-            System.out.println("3. Quan ly Nhan Vien");
+            System.out.println("3. Quan ly Nhan Su");
             System.out.println("4. Quan ly Khach Hang");
             System.out.println("5. Quan ly Hoa Don");
             System.out.println("6. Luu Thay doi va thoat chuong trinh");

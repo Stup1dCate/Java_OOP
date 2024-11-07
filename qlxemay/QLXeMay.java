@@ -3,18 +3,28 @@ import java.util.Scanner;
 
 class QLXeMay {
 	private DSXeMay dssp;
+    public QLXeMay() {
+        dssp = new DSXeMay(); 
+        dsHangSX = new DSHangSX();
+        dsHangSX.taiDanhSachTuFile(fileNameHangSanXuat);
+    }
     Scanner s = new Scanner(System.in);
     String fileName = "input_XeMay.txt";
+    String fileNameHangSanXuat = "input_HangSX.txt";
+    DSHangSX dsHangSX;
     public void menu() {
         int select;
         do {
+            System.out.println("[======================]");
+			System.out.println("\t XE MAY");
+			System.out.println("[======================]");
         	System.out.println("1. Them xe may");
             System.out.println("2. Sua thong tin xe may");
             System.out.println("3. Xoa mot xe may");
             System.out.println("4. Tim kiem xe may (theo masp)");
             System.out.println("5. Xem thong tin chi tiet danh sach xe may");
-            System.out.println("6. Tai danh sach xe may tufile");
-            System.out.println("7. Xuat danh sach xe may ra file");            
+            System.out.println("6. Tai danh sach xe may tu file");
+            System.out.println("7. Cap nhat danh sach xe may vao file");            
             System.out.println("8. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
             
@@ -31,19 +41,19 @@ class QLXeMay {
                 	dssp.xoa();
                     break;
                 case 4:
-                	dssp.timKiem();
+                	dssp.timkiem();
                     break;
                 case 5:
                 	dssp.xem();
                     break;
                 case 6:
-                    dssp.taiDanhSachTuFile(fileName);
+                    dssp.taiDanhSachTuFile(fileName, dsHangSX);
                     break;
                 case 7:            
                     dssp.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
-                    System.out.println("Luu thay doi va quay tro ve Menu chinh.");
+                    System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     break;
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai.");
@@ -52,4 +62,3 @@ class QLXeMay {
         while (select != 8);
     }
 }
-

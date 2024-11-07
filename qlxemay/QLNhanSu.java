@@ -13,14 +13,17 @@ class QLNhanSu {
     public void menu() {
         int choice;
         do {
-            System.out.println("1. Thêm Nhân sự");
-            System.out.println("2. Sửa thông tin Nhân sự");
-            System.out.println("3. Xóa Nhân sự");
-            System.out.println("4. Tìm kiếm Nhân sự");
-            System.out.println("5. Xem thông tin trong danh sách Nhân sự");
-            System.out.println("6. Tải danh sách Nhân viên từ file");
-            System.out.println("7. Xuất danh sách Nhân viên ra file");
-            System.out.println("8. Quay trở về giao diện chính");
+            System.out.println("[======================]");
+			System.out.println("\tNHAN SU");
+			System.out.println("[======================]");
+            System.out.println("1. Them nhan su");
+            System.out.println("2. Sua thong tin nhan su");
+            System.out.println("3. Xoa nhan su");
+            System.out.println("4. Tim kiem nhan su");
+            System.out.println("5. Xem thong tin danh sach nhan su");
+            System.out.println("6. Tai danh sach nhan su tu file");
+            System.out.println("7. Xuat danh sach nhan su ra file");
+            System.out.println("8. Quay tro ve giao dien Menu chinh");
             System.out.print("Chọn: ");
             choice = scanner.nextInt();
             scanner.nextLine(); // Đọc dòng trống sau khi đọc số
@@ -48,9 +51,10 @@ class QLNhanSu {
                     dsns.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
+                    System.out.println("Da luu thay doi va quay tro ve Menu chinh.\n");
                     break;
                 default:
-                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+                    System.out.println("Lua chon khong hop le. Vui long nhap lai \n");
             }
         } while (choice != 8);
     }

@@ -13,6 +13,9 @@ class QLKhachHang {
     public void menu() {
         int select;
         do {
+            System.out.println("[=======================]");
+			System.out.println("\tKHACH HANG");
+			System.out.println("[=======================]");
             System.out.println("1. Them khach hang");
             System.out.println("2. Sua thong tin khach hang");
             System.out.println("3. Xoa khach hang");
@@ -37,7 +40,7 @@ class QLKhachHang {
                 	dskh.xoa();
                     break;
                 case 4:
-                	dskh.timKiem();
+                	dskh.timkiem();
                     break;
                 case 5:
                 	dskh.xem();
@@ -49,7 +52,7 @@ class QLKhachHang {
                     dskh.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
-                    System.out.println("Luu thay doi va quay tro ve Menu chinh.");
+                    System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     break;
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai.");

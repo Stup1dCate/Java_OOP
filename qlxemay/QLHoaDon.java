@@ -23,6 +23,9 @@ class QLHoaDon {
     public void menu() {
         int select;
         do {
+            System.out.println("[======================]");
+			System.out.println("\tHOA DON");
+			System.out.println("[======================]");
             System.out.println("1. Them Hoa Don");
             System.out.println("2. Sua thong tin hoa don");
             System.out.println("3. Xoa hoa don");
@@ -46,7 +49,7 @@ class QLHoaDon {
                 	dshd.xoa();
                     break;
                 case 4:
-                	dshd.timKiem();
+                	dshd.timkiem();
                     break;
                 case 5:
                 	dshd.xem();
@@ -58,7 +61,7 @@ class QLHoaDon {
                     dshd.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
-                    System.out.println("Luu thay doi va quay tro ve Menu chinh.");
+                    System.out.println("Da luu thay doi va quay tro ve Menu chinh.\n");
                     break;
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai.");

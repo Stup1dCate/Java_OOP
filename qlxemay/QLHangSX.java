@@ -13,12 +13,17 @@ class QLHangSX {
     public void menu() {
         int select;
         do {
+            System.out.println("[==========================]");
+			System.out.println("\tHANG SAN XUAT");
+			System.out.println("[==========================]");
             System.out.println("1. Them hang san xuat");
             System.out.println("2. Sua thong tin hang san xuat");
             System.out.println("3. Xoa hang san xuat");
             System.out.println("4. Tim kiem hang san xuat");
             System.out.println("5. Xem thong tin trong danh sach hang san xuat");
-            System.out.println("6. Quay tro ve giao dien Menu chinh");
+            System.out.println("6. Tai len danh sach hang san xuat tu file");
+            System.out.println("7. Cap nhat danh sach hang san xuat vao file");
+            System.out.println("8. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
 
             select = s.nextInt();
@@ -35,17 +40,24 @@ class QLHangSX {
                     dshsx.xoa();
                     break;
                 case 4:
-                    dshsx.timkiem();;
+                    dshsx.timkiem();
                     break;
                 case 5:
                     dshsx.xem();
+                    break;
                 case 6:
-                    System.out.println("Luu thay doi va quay tro ve Menu chinh.");
+                    dshsx.taiDanhSachTuFile(fileName); 
+                    break;
+                case 7:
+                    dshsx.xuatDanhSachRaFile(fileName); 
+                    break;
+                case 8:
+                    System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     break;
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai.");
             }
         } 
-        while (select != 6);
+        while (select != 8);
     }
 }
