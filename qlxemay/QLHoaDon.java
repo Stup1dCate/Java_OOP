@@ -66,7 +66,14 @@ class QLHoaDon {
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai.");
             }
+            // Hỏi người dùng có muốn tiếp tục chọn không
+            System.out.print("tiep tuc lua chon Menu (y/n)? ");
+            String choice = s.nextLine().trim().toLowerCase();
+            if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
+                System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
+                break;  
+            }
         } 
-        while (select != 8);
+        while (true);
     }
 }

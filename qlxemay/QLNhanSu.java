@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 class QLNhanSu {
 	private DSNhanSu dsns;
-    Scanner scanner = new Scanner(System.in);
+    Scanner s = new Scanner(System.in);
     String fileName = "input_NhanSu.txt";
     public QLNhanSu() {
         dsns = new DSNhanSu();
     }
 
     public void menu() {
-        int choice;
+        int select;
         do {
             System.out.println("[======================]");
 			System.out.println("\tNHAN SU");
@@ -25,24 +25,24 @@ class QLNhanSu {
             System.out.println("7. Xuat danh sach nhan su ra file");
             System.out.println("8. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
-            choice = scanner.nextInt();
-            scanner.nextLine(); // Đọc dòng trống sau khi đọc số
+            select = s.nextInt();
+            s.nextLine(); // Đọc dòng trống sau khi đọc số
 
-            switch (choice) {
+            switch (select) {
             	case 1:
-	                dsns.Them();
+	                dsns.them();
 	                break;
                 case 2:
-                	dsns.Sua();
+                	dsns.sua();
                     break;
                 case 3:
-                	dsns.Xoa();
+                	dsns.xoa();
                     break;
                 case 4:
-                	dsns.TimKiem();
+                	dsns.timkiem();
                     break;
                 case 5:
-                	dsns.Xem();
+                	dsns.xem();
                     break;
                 case 6:
                     dsns.taiDanhSachTuFile(fileName);
@@ -56,6 +56,13 @@ class QLNhanSu {
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai \n");
             }
-        } while (choice != 8);
+            // Hỏi người dùng có muốn tiếp tục chọn không
+            System.out.print("tiep tuc lua chon Menu (y/n)? ");
+            String choice = s.nextLine().trim().toLowerCase();
+            if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
+                System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
+                break;  
+            }
+        } while (true);
     }
 }

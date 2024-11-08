@@ -3,15 +3,16 @@ import java.util.Scanner;
 
 class QLXeMay {
 	private DSXeMay dssp;
-    public QLXeMay() {
-        dssp = new DSXeMay(); 
-        dsHangSX = new DSHangSX();
-        dsHangSX.taiDanhSachTuFile(fileNameHangSanXuat);
-    }
     Scanner s = new Scanner(System.in);
     String fileName = "input_XeMay.txt";
     String fileNameHangSanXuat = "input_HangSX.txt";
     DSHangSX dsHangSX;
+    public QLXeMay() {
+        dsHangSX = new DSHangSX();
+        dsHangSX.taiDanhSachTuFile(fileNameHangSanXuat);
+        dssp = new DSXeMay(); 
+    }
+    
     public void menu() {
         int select;
         do {
@@ -58,7 +59,14 @@ class QLXeMay {
                 default:
                     System.out.println("Lua chon khong hop le. Vui long nhap lai.");
             }
+            // Hỏi người dùng có muốn tiếp tục chọn không
+            System.out.print("tiep tuc lua chon Menu (y/n)? ");
+            String choice = s.nextLine().trim().toLowerCase();
+            if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
+                System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
+                break;  
+            }
         } 
-        while (select != 8);
+        while (true);
     }
 }
