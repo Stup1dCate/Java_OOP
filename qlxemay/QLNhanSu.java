@@ -24,7 +24,7 @@ class QLNhanSu {
             System.out.println("6. Tai danh sach nhan su tu file");
             System.out.println("7. Xuat danh sach nhan su ra file");
             System.out.println("8. Quay tro ve giao dien Menu chinh");
-            System.out.print("Chọn: ");
+            System.out.print("Chon: ");
             choice = scanner.nextInt();
             scanner.nextLine(); // Đọc dòng trống sau khi đọc số
 
