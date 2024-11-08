@@ -1,178 +1,146 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package qlxemay;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DSHangSX {
+	Scanner s = new Scanner(System.in);
+	private ArrayList<HangSX> dshsx;
+	private static int mahsx;
+	public DSHangSX() {
+		dshsx = new ArrayList<>();
+	}
 
-    private ArrayList<HangSX> dsHang;
-    Scanner sc = new Scanner(System.in);
+	public static int getMahsx() {
+		return mahsx;
+	}
+	public static void setMahsx(int mahsx) {
+		DSHangSX.mahsx = mahsx;
+	}
+	
+	public ArrayList<HangSX> getDshsx() {
+		return dshsx;
+	}
+	public void setDshsx(ArrayList<HangSX> dshsx) {
+		this.dshsx = dshsx;
+	}
 
-    public DSHangSX() {
-        dsHang = new ArrayList<>();
-    }
+	public void xem() {
+		if (dshsx != null && !dshsx.isEmpty()) {
+			for (HangSX hsx : dshsx) {
+				hsx.xuat();
+			}
+		} else {
+			System.out.println("Danh sach trong.\n");
+		}
+	}
+	
 
-    public ArrayList<HangSX> getDsHang() {
-        return dsHang;
-    }
+	public void them() {
+		System.out.print("\t NHAP THONG TIN HANG SAN XUAT CAN THEM: \n");
+		HangSX hsx = null;
+		hsx = new HangSX();
+		if (hsx != null) {
+			hsx.nhap();
+			dshsx.add(hsx);
+		}
+		System.out.println("\n===== DA LUU DU LIEU HANG SAN XUAT THANH CONG ! =====\n");
+	}
 
-    public void setDsHang(ArrayList<HangSX> dsHang) {
-        this.dsHang = dsHang;
-    }
+	public void sua() {
+		System.out.println("Nhap ma hang san xuat can sua: ");
+		int maCanSua = s.nextInt();
+		s.nextLine(); // Consume the newline left-over
+	
+		for (HangSX hsx : dshsx) {
+			if (hsx.getMahsx() == maCanSua) {
+				hsx.sua(); // Call the update method for this supplier
+				System.out.println("Da chinh sua thong tin hang san xuat!");
+				return; // Exit after editing
+			}
+		}
+		System.out.println("Khong tim thay hang san xuat can chinh sua!");
+	}
 
-    public void xem() {
-        for (HangSX hang : dsHang) {
-            hang.Xuat();
-        }
-    }
+	public void xoa() {
+		System.out.println("Nhap ten hang san xuat can xoa: ");
+		String tenCanXoa = s.nextLine();
+		boolean removed = dshsx.removeIf(hsx -> hsx.getTenhsx().equals(tenCanXoa));
+		if (removed) {
+			System.out.println("Da xoa hang san xuat!");
+		} else {
+			System.out.println("Khong tim thay hang san xuat can xoa!");
+		}
+	}
 
-    public void them() {
-        HangSX hang = new HangSX();
-        hang.Nhap();
-        if (hang != null) {
-            dsHang.add(hang);
-        }
-    }
 
-    public void sua() {
-        System.out.println("Nhap ten hang san xuat can sua: ");
-        String tensua;
-        int look = 0;
-        tensua = sc.nextLine();
-        for (HangSX hang : dsHang) {
-            if (hang.getTenhang().equals(tensua)) {
-                System.out.println("Thong tin hang san xuat " + tensua);
-                hang.Xuat();
-                look++;
-            }
-        }
-        if (look == 0) {
-            System.out.println("Khong tim thay hang SX!");
-            return;
-        }
-        if (look == 1) {
-            for (HangSX hang : dsHang) {
-                if (hang.getTenhang().equals(tensua)) {
-                    hang.Nhap();
-                    System.out.println("Sua thanh cong!");
-                    return;
+	public void timkiem() {
+		System.out.println("Nhap ten hang san xuat can tim kiem: ");
+		String find = s.nextLine();
+		boolean found = false;
+		for (HangSX hsx : dshsx) {
+			if (hsx.getTenhsx().contains(find)) {
+				hsx.xuat();
+				found = true;
+			}
+		}
+		if (!found) {
+			System.out.println("Khong co hang san xuat can tim kiem.");
+		}
+	}
+	
+	public void taiDanhSachTuFile(String fileName) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Chuyển dòng văn bản thành đối tượng HangSX và thêm vào danh sách
+                HangSX hsx = parseLineToHangSX(line);
+                if (hsx != null) {
+                    dshsx.add(hsx);
                 }
             }
-        }
-        System.out.println("Nhap ma hang san xuat muon sua: ");
-        int ma = sc.nextInt();
-        for (HangSX hang : dsHang) {
-            if (hang.getMahangsx()==ma) {
-                hang.Nhap();
-                System.out.println("Sua thanh cong!");
-                return;
-            }
+            System.out.println("Da tai danh sach tu tep tin: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("Khong tim thay tep tin: " + fileName);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
-    public void xoa() {
-       System.out.println("Nhap ten hang san xuat can xoa: ");
-        String tenxoa;
-        int look = 0;
-        tenxoa = sc.nextLine();
-        for (HangSX hang : dsHang) {
-            if (hang.getTenhang().equals(tenxoa)) {
-                System.out.println("Thong tin hang san xuat " + tenxoa);
-                hang.Xuat();
-                look++;
-            }
-        }
-        if (look == 0) {
-            System.out.println("Khong tim thay hang SX!");
-            return;
-        }
-        if (look == 1) {
-            for (HangSX hang : dsHang) {
-                if (hang.getTenhang().equals(tenxoa)) {
-                    dsHang.remove(hang);
-                    System.out.println("Xoa thanh cong!");
-                    return;
-                }
-            }
-        }
-        System.out.println("Nhap ma hang san xuat muon xoa: ");
-        int ma = sc.nextInt();
-        for (HangSX hang : dsHang) {
-            if (hang.getMahangsx()==ma) {
-                dsHang.remove(hang);
-                System.out.println("Xoa thanh cong!");
-                return;
-            }
-        }
-    }
-
-    public void timkiem() {
-        
-        System.out.println("Nhap ten hang san xuat can tim:");
-        String search = sc.nextLine();
-        for (HangSX hang : dsHang) {
-            if (hang.getTenhang().equals(search)) {
-                hang.Xuat();
-            }
-            return;
-        }
-        System.out.println("Khong tim thay!");
-    }
-
-    private String parseHangSXtoLine(HangSX hang) {
-        String tenhang = hang.getTenhang();
-        String Sdthang = hang.getSdthang();
-        String diachi = hang.getDiachi();
-        int mahang=hang.getMahangsx();
-        return tenhang + ";" +mahang+";" + Sdthang + ";" + diachi;
-    }
-
-    public void XuatDSraFile(String filename) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-            for (HangSX hang : dsHang) {
-                writer.write(parseHangSXtoLine(hang));
+    public void xuatDanhSachRaFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (HangSX hsx : dshsx) {
+                // Ghi đối tượng HangSX thành dòng văn bản và xuống dòng
+                writer.write(parseHangSXToLine(hsx));
                 writer.newLine();
             }
+            System.out.println("Da xuat danh sach vao tap tin: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private HangSX parseLinetoHangSX(String line) {
-        String[] pack = line.split(";");
-        String tenhang = pack[0];
-        int mahang=Integer.parseInt(pack[1]);
-        String Sdthang = pack[2];
-        String diachi = pack[3];
-        HangSX hang = new HangSX(tenhang,mahang, Sdthang, diachi);
-        return hang;
+    // Hàm chuyển dòng văn bản thành đối tượng HangSX
+    private HangSX parseLineToHangSX(String line) {
+        String[] parts = line.split(";"); // Giả sử dữ liệu được phân tách bằng dấu chấm phẩy
+        if (parts.length == 4) {
+            int mahsx = Integer.parseInt(parts[0]);
+            String sdthsx = parts[1];
+            String tenhsx = parts[2];
+            String diachihsx = parts[3];
+            return new HangSX(mahsx, tenhsx, diachihsx, sdthsx);
+        }
+        return null;
     }
 
-    public void LoadFiletoDS(String filename) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                HangSX hang = new HangSX();
-                hang = parseLinetoHangSX(line);
-                dsHang.add(hang);
-            }
-            System.out.println("Đã tải danh sách từ tệp tin: " + filename);
-        } catch (FileNotFoundException e) {
-            System.out.println("Không tìm thấy tệp tin: " + filename);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    // Hàm chuyển đối tượng HangSX thành dòng văn bản
+    private String parseHangSXToLine(HangSX hsx) {
+        return hsx.getMahsx() + ";" + hsx.getSdthsx() + ";" + hsx.getTenhsx() + ";" + hsx.getDiachihsx();
     }
 }
