@@ -33,9 +33,11 @@ public class DSHangSX {
 
 	public void xem() {
 		if (dshsx != null && !dshsx.isEmpty()) {
+			System.out.println("\nTHONG TIN DANH SACH HANG SAN XUAT: ");
 			for (HangSX hsx : dshsx) {
 				hsx.xuat();
 			}
+			System.out.println("\n");
 		} else {
 			System.out.println("Danh sach trong.\n");
 		}
@@ -54,28 +56,28 @@ public class DSHangSX {
 	}
 
 	public void sua() {
-		System.out.println("Nhap ma hang san xuat can sua: ");
+		System.out.print("Nhap ma hang san xuat can sua: ");
 		int maCanSua = s.nextInt();
 		s.nextLine(); // Consume the newline left-over
 	
 		for (HangSX hsx : dshsx) {
 			if (hsx.getMahsx() == maCanSua) {
 				hsx.sua(); // Call the update method for this supplier
-				System.out.println("Da chinh sua thong tin hang san xuat!");
+				System.out.println("\nDA CHINH SUA THONG TIN HANG SAN XUAT !\n");
 				return; // Exit after editing
 			}
 		}
-		System.out.println("Khong tim thay hang san xuat can chinh sua!");
+		System.out.println("Khong tim thay hang san xuat can chinh sua !");
 	}
 
 	public void xoa() {
-		System.out.println("Nhap ten hang san xuat can xoa: ");
+		System.out.print("Nhap ten hang san xuat can xoa: ");
 		String tenCanXoa = s.nextLine();
 		boolean removed = dshsx.removeIf(hsx -> hsx.getTenhsx().equals(tenCanXoa));
 		if (removed) {
 			System.out.println("Da xoa hang san xuat!");
 		} else {
-			System.out.println("Khong tim thay hang san xuat can xoa!");
+			System.out.println("Khong tim thay hang san xuat can xoa !");
 		}
 	}
 
@@ -91,7 +93,7 @@ public class DSHangSX {
 			}
 		}
 		if (!found) {
-			System.out.println("Khong co hang san xuat can tim kiem.");
+			System.out.println("Khong co hang san xuat can tim kiem !");
 		}
 	}
 	
@@ -105,9 +107,9 @@ public class DSHangSX {
                     dshsx.add(hsx);
                 }
             }
-            System.out.println("Da tai danh sach tu tep tin: " + fileName);
+            System.out.println("Da tai danh sach tu tep tin: " + fileName + "\n");
         } catch (FileNotFoundException e) {
-            System.out.println("Khong tim thay tep tin: " + fileName);
+            System.out.println("Khong tim thay tep tin: " + fileName + "\n");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -120,7 +122,7 @@ public class DSHangSX {
                 writer.write(parseHangSXToLine(hsx));
                 writer.newLine();
             }
-            System.out.println("Da xuat danh sach vao tap tin: " + fileName);
+            System.out.println("Da cap nhat danh sach vao tap tin: " + fileName + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }

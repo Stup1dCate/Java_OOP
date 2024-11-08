@@ -1,82 +1,77 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package qlxemay;
-
 import java.util.Scanner;
 
-public class HangSX implements INhap, IXuat {
+public class HangSX implements INhap,IXuat{
+	private int mahsx;
+	private String tenhsx;
+	private String diachihsx;
+	private String sdthsx;
+	public HangSX() {
+		
+	}
+	public HangSX(int mahsx, String tenhsx, String diachihsx, String sdthsx) {
+		this.mahsx = mahsx;
+		this.tenhsx = tenhsx;
+		this.diachihsx = diachihsx;
+		this.sdthsx = sdthsx;
+	}
+	public int getMahsx() {
+		return mahsx;
+	}
+	public void setMahsx(int mahsx) {
+		this.mahsx = mahsx;
+	}
+	public String getTenhsx() {
+		return tenhsx;
+	}
+	public void setTenhsx(String tenhsx) {
+		this.tenhsx = tenhsx;
+	}
+	public String getDiachihsx() {
+		return diachihsx;
+	}
+	public void setDiachihsx(String diachihsx) {
+		this.diachihsx = diachihsx;
+	}
+	public String getSdthsx() {
+		return sdthsx;
+	}
+	public void setSdthsx(String sdthsx) {
+		this.sdthsx = sdthsx;
+	}
 
-    private String tenhang;
-    private int mahangsx;
-    private String sdthang;
-    private String diachi;
-
-    public HangSX() {
-
-    }
-
-    public HangSX(String tenhang, int mahangsx, String sdthang, String diachi) {
-        this.tenhang = tenhang;
-        this.mahangsx = mahangsx;
-        this.sdthang = sdthang;
-        this.diachi = diachi;
-    }
-
- 
-
-    public String getTenhang() {
-        return tenhang;
-    }
-
-    public void setTenhang(String tenhang) {
-        this.tenhang = tenhang;
-    }
-
-    public String getSdthang() {
-        return sdthang;
-    }
-
-    public void setSdthang(String sdthang) {
-        this.sdthang = sdthang;
-    }
-
-    public String getDiachi() {
-        return diachi;
-    }
-
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
-    }
-
-    public int getMahangsx() {
-        return mahangsx;
-    }
-
-    public void setMahangsx(int mahangsx) {
-        this.mahangsx = mahangsx;
-    }
-
-    @Override
-    public void Nhap() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ten hang: ");
-        tenhang = sc.nextLine();
-        System.out.println("Nhap ma hang san xuat: ");
-        mahangsx=sc.nextInt();
-        sc.nextLine();
-        System.out.println("Nhap so dien thoai hang: ");
-        sdthang = sc.nextLine();
-        System.out.println("Nhap dia chi hang: ");
-        diachi = sc.nextLine();
-    }
-
-    @Override
-    public void Xuat() {
-        System.out.println("Ten hang: " + tenhang);
-        System.out.println("Ma hang san xuat: "+ mahangsx);
-        System.out.println("So dien thoai hang: " + sdthang);
-        System.out.println("Dia chi hang: " + diachi);
+	@Override
+	public void nhap() {
+		Scanner s = new Scanner(System.in);
+		System.out.print("Ma so hang san xuat: ");
+		mahsx = s.nextInt();
+		System.out.print("Nhap so dien thoai hang san xuat: ");
+		sdthsx = s.nextLine();
+		s.nextLine();
+		System.out.print("Ten hang san xuat: ");
+		tenhsx = s.nextLine();
+		System.out.print("Nhap dia chi hang san xuat: ");
+		diachihsx = s.nextLine();
+	}
+	@Override
+	public void xuat() {
+		System.out.println("\tMa so hang san xuat: " + mahsx);
+		System.out.println("\tTen hang: " + tenhsx);
+		System.out.println("\tDia chi: " + diachihsx);
+		System.out.println("\tSo dien thoai: " + sdthsx);
+		System.out.println("____________________________________________________________________");
+	}
+    public void sua() { 
+        Scanner s = new Scanner(System.in);
+        System.out.println("\tCHINH SUA THONG TIN HANG SAN XUAT:  ");
+        System.out.println("Nhap ma moi cua hang san xuat: ");
+        this.setMahsx(s.nextInt());
+        s.nextLine();
+        System.out.println("Nhap ten moi cua hang san xuat: ");
+        this.setTenhsx(s.nextLine());
+        System.out.println("Nhap so dien thoai moi cua hang san xuat: ");
+        this.setSdthsx(s.nextLine());
+        System.out.println("Nhap dia chi moi cua hang san xuat: ");
+        this.setDiachihsx(s.nextLine());
     }
 }
