@@ -49,9 +49,11 @@ class QLHangSX {
                     dshsx.taiDanhSachTuFile(fileName); 
                     break;
                 case 7:
+                    System.out.println("Da cap nhat danh sach vao tap tin: " + fileName);
                     dshsx.xuatDanhSachRaFile(fileName); 
                     break;
                 case 8:
+                    dshsx.xuatDanhSachRaFile(fileName); 
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     return;
                 default:
@@ -60,7 +62,7 @@ class QLHangSX {
             }
             // Hỏi người dùng có muốn tiếp tục chọn không
             if(select != 8){
-                System.out.print("tiep tuc lua chon Menu (y/n)? ");
+                System.out.print("tiep tuc lua chon Menu ? (y/n): ");
                 String choice = s.nextLine().trim().toLowerCase();
                 if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");

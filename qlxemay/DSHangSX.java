@@ -83,7 +83,7 @@ public class DSHangSX {
 
 
 	public void timkiem() {
-		System.out.println("Nhap ten hang san xuat can tim kiem: ");
+		System.out.print("Nhap ten hang san xuat can tim kiem: ");
 		String find = s.nextLine();
 		boolean found = false;
 		for (HangSX hsx : dshsx) {
@@ -122,7 +122,6 @@ public class DSHangSX {
                 writer.write(parseHangSXToLine(hsx));
                 writer.newLine();
             }
-            System.out.println("Da cap nhat danh sach vao tap tin: " + fileName + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
