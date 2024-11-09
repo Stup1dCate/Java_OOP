@@ -50,10 +50,12 @@ class QLXeMay {
                 case 6:
                     dssp.taiDanhSachTuFile(fileName, dsHangSX);
                     break;
-                case 7:            
+                case 7:       
+                    System.out.println("Da cap nhat danh sach vao tap tin: " + fileName);
                     dssp.xuatDanhSachRaFile(fileName);
                     break;
                 case 8:
+                    dssp.xuatDanhSachRaFile(fileName);
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     return;
                 default:
@@ -62,7 +64,7 @@ class QLXeMay {
             }
             // Hỏi người dùng có muốn tiếp tục chọn không
             if(select != 8){
-                System.out.print("tiep tuc lua chon Menu (y/n)? ");
+                System.out.print("tiep tuc lua chon Menu ? (y/n): ");
                 String choice = s.nextLine().trim().toLowerCase();
                 if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
