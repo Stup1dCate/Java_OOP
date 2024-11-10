@@ -30,19 +30,19 @@ class QLNhanSu {
 
             switch (select) {
             	case 1:
-	                dsns.them();
+	                dsns.Them();
 	                break;
                 case 2:
-                	dsns.sua();
+                	dsns.Sua();
                     break;
                 case 3:
-                	dsns.xoa();
+                	dsns.Xoa();
                     break;
                 case 4:
-                	dsns.timkiem();
+                	dsns.TimKiem();
                     break;
                 case 5:
-                	dsns.xem();
+                	dsns.Xem();
                     break;
                 case 6:
                     dsns.taiDanhSachTuFile(fileName);
