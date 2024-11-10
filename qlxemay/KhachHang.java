@@ -8,17 +8,17 @@ import java.util.Scanner;
 
 public class KhachHang implements INhap,IXuat{
 	private int makh;
-	private int sotuoi;
-	private long sdtkh;
+	private String age;
+	private String sdtkh;
 	private String tenkh;
 	private String diachikh;
 	private String phai;
 	public KhachHang() {
 		
 	}
-	public KhachHang(int makh, int sotuoi, long sdtkh, String tenkh, String diachikh, String phai) {
+	public KhachHang(int makh, String age, String sdtkh, String tenkh, String diachikh, String phai) {
 		this.makh = makh;
-		this.sotuoi = sotuoi;
+		this.age = age;
 		this.sdtkh = sdtkh;
 		this.tenkh = tenkh;
 		this.diachikh = diachikh;
@@ -30,16 +30,16 @@ public class KhachHang implements INhap,IXuat{
 	public void setMakh(int makh) {
 		this.makh = makh;
 	}
-	public int getSotuoi() {
-		return sotuoi;
+	public String getAge() {
+		return age;
 	}
-	public void setSotuoi(int sotuoi) {
-		this.sotuoi = sotuoi;
+	public void setAge(String age) {
+		this.age = age;
 	}
-	public long getSdtkh() {
+	public String getSdtkh() {
 		return sdtkh;
 	}
-	public void setSdtkh(long sdtkh) {
+	public void setSdtkh(String sdtkh) {
 		this.sdtkh = sdtkh;
 	}
 	public String getTenkh() {
@@ -65,51 +65,51 @@ public class KhachHang implements INhap,IXuat{
 		Scanner in = new Scanner(System.in);
 		System.out.println("nhap ma so khach hang: ");
 		makh = in.nextInt();
-		System.out.println("Nhap so dien thoai khach hang: ");
-		sdtkh = in.nextLong();
-		System.out.println("Nhap so tuoi khach hang: ");
-		sotuoi = in.nextInt();
 		in.nextLine();
+		System.out.println("Nhap so dien thoai: ");
+		sdtkh = in.nextLine();
+		System.out.println("Nhap ngay sinh: ");
+		age = in.nextLine();
 		System.out.println("Nhap ho ten khach hang: ");
 		tenkh = in.nextLine();
-		System.out.println("Nhap gioi tinh khach hang: ");
+		System.out.println("Nhap gioi tinh: ");
 		phai = in.nextLine();
-		System.out.println("Nhap dia chi khach hang: ");
+		System.out.println("Nhap dia chi: ");
 		diachikh = in.nextLine();
 	}
 	@Override
 	public void xuat() {
-		System.out.println("Ma so khach hang: " + makh);
-		System.out.println("Ho va ten: " + tenkh);
-		System.out.println("Gioi tinh: " + phai);
-		System.out.println("So tuoi: " + sotuoi);
-		System.out.println("So dien thoai: " +sdtkh);
-		System.out.println("Dia chi: " + diachikh);		
+		System.out.println("\tMa so khach hang: " + makh);
+		System.out.println("\tHo va ten: " + tenkh);
+		System.out.println("\tGioi tinh: " + phai);
+		System.out.println("\tNgay sinh: " + age);
+		System.out.println("\tSo dien thoai: " +sdtkh);
+		System.out.println("\tDia chi: " + diachikh);	
+		System.out.println("____________________________________________________________________");
 	}
 	@Override
 	public String toString() {
 		return "Ma so khach hang: " + makh +
 	            "\nHo va ten: " + tenkh +
 	            "\nGioi tinh: " + phai +
-	            "\nSo tuoi: " + sotuoi +
+	            "\nNgay sinh: " + age +
 	            "\nSo dien thoai: " + sdtkh +
 	            "\nDia chi: " + diachikh;
 	}
 	public void sua() { // ------
-        Scanner scanner = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
         System.out.println("Nhap ma so khach hang moi: ");
-        this.setMakh(scanner.nextInt());
-        scanner.nextLine();
+        this.setMakh(s.nextInt());
+        s.nextLine();
         System.out.println("Nhap ten khach hang: ");
-        this.setTenkh(scanner.nextLine());
-        System.out.println("Nhap so tuoi cua khach hang: ");
-        this.setSotuoi(scanner.nextInt());
+        this.setTenkh(s.nextLine());
+        System.out.println("Nhap nam sinh: ");
+        this.setAge(s.nextLine());
         System.out.println("Nhap so dien thoai: ");
-        this.setSdtkh(scanner.nextLong());
-        scanner.nextLine();
+        this.setSdtkh(s.nextLine());
         System.out.println("Nhap gioi tinh: ");
-        this.setPhai(scanner.nextLine());
+        this.setPhai(s.nextLine());
         System.out.println("Nhap dia chi: ");
-        this.setDiachikh(scanner.nextLine());
+        this.setDiachikh(s.nextLine());
     }
 }

@@ -14,8 +14,8 @@ public class HoaDon implements INhap,IXuat{
 	private ChiTietHoaDon cthd;
 	// Thêm các thuộc tính từ KhachHang
 	private int makh;
-	private int sotuoi;
-	private long sdtkh;
+	private String age;
+	private String sdtkh;
 	private String tenkh;
 	private String diachikh;
 	private String phai;
@@ -69,17 +69,17 @@ public class HoaDon implements INhap,IXuat{
 		this.makh = makh;
 	}
 
-	public int getSotuoi() {
-		return sotuoi;
+	public String getAge() {
+		return age;
 	}
-	public void setSotuoi(int sotuoi) {
-		this.sotuoi = sotuoi;
+	public void setAge(String age) {
+		this.age = age;
 	}
 
-	public long getSdtkh() {
+	public String getSdtkh() {
 		return sdtkh;
 	}
-	public void setSdtkh(long sdtkh) {
+	public void setSdtkh(String sdtkh) {
 		this.sdtkh = sdtkh;
 	}
 
@@ -203,7 +203,7 @@ public class HoaDon implements INhap,IXuat{
         
         setMakh(kh.getMakh());
         setTenkh(kh.getTenkh());
-        setSotuoi(kh.getSotuoi());
+        setAge(kh.getAge());
         setPhai(kh.getPhai());
         setSdtkh(kh.getSdtkh());
         setDiachikh(kh.getDiachikh());

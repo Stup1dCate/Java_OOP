@@ -56,7 +56,7 @@ public class DSHoaDon {
 	            System.out.println("Ho va ten khach hang: " + kh.getTenkh());
 	            System.out.println("So dien thoai: " + kh.getSdtkh());
 	            System.out.println("Gioi tinh: " + kh.getPhai());
-	            System.out.println("So tuoi: " + kh.getSotuoi());
+	            System.out.println("So tuoi: " + kh.getAge());
 	            System.out.println("Dia chi khach hang: " + kh.getDiachikh());
 	            
 	            // In chi tiết hóa đơn
@@ -187,7 +187,7 @@ public class DSHoaDon {
         ChiTietHoaDon cthd = hd.getChiTietHoaDon();
         
         // Ghi các đối tượng thành dòng văn bản và xuống dòng
-        return hd.getMahd() + ";" + hd.getNgaythanhtoan() + ";" + kh.getMakh() + ";" + kh.getTenkh() + ";" + kh.getSotuoi() +
+        return hd.getMahd() + ";" + hd.getNgaythanhtoan() + ";" + kh.getMakh() + ";" + kh.getTenkh() + ";" + kh.getAge() +
         kh.getDiachikh() + ";" + kh.getSdtkh() + ";" + sp.getMasp() + sp.getTensp() + ";" + cthd.getSoluongmua() + ";" ;
     }
 }
