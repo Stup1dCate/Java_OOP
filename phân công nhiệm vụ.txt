@@ -1,0 +1,31 @@
+Bảng phân công nhiệm vụ nhóm 10 - OOP
+Trần Hồ Hoàng Cường: Thiết kế lớp đối tượng cơ bản và kế thừa, xây dựng interface, xây dựng lớp danh sách khách hàng, hãng sản xuất
+•	Nhiệm vụ:
+o	Xây dựng ít nhất 3 lớp đối tượng như XeMay, KhachHang, NhanVien.
+o	Tạo hàm thiết lập (constructor) cho các lớp này.
+o	Thiết kế kế thừa hợp lý (ví dụ: lớp XeMay có thể là lớp cha, và các loại xe cụ thể như XeDien, XeXang sẽ kế thừa từ XeMay).
+o	Đảm bảo các lớp tuân thủ nguyên tắc lập trình hướng đối tượng và sử dụng các phương thức cần thiết.
+o	Triển khai tính đa hình bằng cách sử dụng override phương thức trong các lớp kế thừa 
+o	Xây dựng lớp DSKhachHang, DSHangSX
+Vũ Ngọc Tùng: Cài đặt danh sách đối tượng và quản lý dữ liệu, xây dựng lớp danh sách xe
+•	Nhiệm vụ:
+o	Xây dựng lớp mảng các đối tượng để quản lý danh sách xe máy, khách hàng, nhân viên.
+o	Cài đặt các phương thức để thêm, sửa, xóa, tìm kiếm đối tượng từ danh sách này.
+o	Triển khai chức năng đọc và ghi dữ liệu lên file (text) để lưu trữ danh sách các đối tượng vào file văn bản.
+o	Đảm bảo việc xử lý dữ liệu từ file hoạt động ổn định và không lỗi.
+o	Xây dựng lớp DSXeMay
+Nguyễn Võ Anh Kỳ: Sử dụng thuộc tính static, phương thức static và thiết kế lớp trừu tượng, xây dung lớp danh sách nhân sự
+•	Nhiệm vụ:
+o	Thiết kế và triển khai thuộc tính static và phương thức static trong các lớp (ví dụ: sử dụng biến đếm số lượng xe đã tạo, phương thức static để kiểm tra mã xe có hợp lệ hay không).
+o	Xây dựng lớp trừu tượng (abstract) cho các đối tượng chung (ví dụ: có thể tạo lớp Nhansu là lớp trừu tượng và Nhanvien Quanly sẽ kế thừa từ lớp này).
+o	Triển khai các hàm trừu tượng (abstract method) trong lớp trừu tượng và cài đặt chúng trong các lớp con.
+o	Xây dựng lớp DSNhanSu
+Võ Văn Truyền Vũ: Xây dựng các lớp quản lý, kiểm thử, xây dựng lớp danh sách hóa đơn
+•	Nhiệm vụ:
+o	Thiết kế và triển khai các lớp quản lý cho các chức năng chung (ví dụ: QuanLy là interface chứa các phương thức như them, xoa, timKiem để quản lý các đối tượng).
+o	Phụ trách kiểm thử hệ thống (viết các test case cho từng chức năng thêm, sửa, xóa, tìm kiếm).
+o	Đảm bảo hệ thống chạy ổn định và đạt đủ yêu cầu.
+o	Xây dựng lớp DSHoaDon
+
+*Tất cả mọi người trong nhóm đều tham gia sửa lỗi để giúp chương trình hoạt động tốt nhất.
+
