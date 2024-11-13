@@ -10,9 +10,9 @@ o	Xây dựng lớp DSKhachHang, DSHangSX
 Vũ Ngọc Tùng: Cài đặt danh sách đối tượng và quản lý dữ liệu, xây dựng lớp danh sách xe
 •	Nhiệm vụ:
 o	Xây dựng lớp mảng các đối tượng để quản lý danh sách xe máy, khách hàng, nhân viên.
-o	Cài đặt các phương thức để thêm, sửa, xóa, tìm kiếm đối tượng từ danh sách này.
 o	Triển khai chức năng đọc và ghi dữ liệu lên file (text) để lưu trữ danh sách các đối tượng vào file văn bản.
-o	Đảm bảo việc xử lý dữ liệu từ file hoạt động ổn định và không lỗi.
+o	Đảm bảo việc xử lý dữ liệu từ nhập/xuất file hoạt động ổn định và không lỗi, bố cục output hiển thị gọn gàng, hợp lý.
+o Thiết kế sơ đồ DiagramClass
 o	Xây dựng lớp DSXeMay
 Nguyễn Võ Anh Kỳ: Sử dụng thuộc tính static, phương thức static và thiết kế lớp trừu tượng, xây dung lớp danh sách nhân sự
 •	Nhiệm vụ:
