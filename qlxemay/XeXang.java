@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package qlxemay;
+
 import java.util.Scanner;
 
 public class XeXang extends XeMay {
 
     private double dungtich;
+
     public XeXang() {
     }
 
@@ -19,20 +21,33 @@ public class XeXang extends XeMay {
     public double getDungtich() {
         return dungtich;
     }
+
     public void setDungtich(double dungtich) {
         this.dungtich = dungtich;
     }
 
     @Override
-    public void nhap() {
+    public void nhap(String filehsx) {
         Scanner sc = new Scanner(System.in);
-        super.nhap();
         System.out.println("Nhap dung tich: ");
-        dungtich=sc.nextDouble();
+        dungtich = sc.nextDouble();
+        super.nhap(filehsx);
+
     }
+
     @Override
-    public void xuat(){
+    public void xuat() {
+        System.out.println("\tThong tin san pham ");
+        System.out.println("Dung tich: " + dungtich);
         super.xuat();
-        System.out.println("Dung tich: "+ dungtich);
+
+    }
+
+    @Override
+    public void sua() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap dung tich moi:");
+        dungtich = sc.nextDouble();
+        super.sua();
     }
 }

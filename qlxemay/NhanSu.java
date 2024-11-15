@@ -6,11 +6,10 @@ package qlxemay;
 
 import java.util.Scanner;
 public abstract class NhanSu implements INhap,IXuat{
-    Scanner sc =new Scanner(System.in);
     private int manv;
     private String ten;
     private int age;
-    private long sdt;
+    private String sdt;
     protected String ChucVu;
     private int salary;
     public static int soluongnv=0;
@@ -19,7 +18,7 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     
 
-    public NhanSu(int manv,String ten, int age,long sdt ,String ChucVu, int salary) {
+    public NhanSu(int manv,String ten, int age,String sdt ,String ChucVu, int salary) {
         this.manv=manv;
         this.ten = ten;
         this.age = age;
@@ -28,7 +27,6 @@ public abstract class NhanSu implements INhap,IXuat{
         this.salary = salary;
         soluongnv++;
     }
-
     
     public int getManv() {
         return manv;
@@ -55,11 +53,11 @@ public abstract class NhanSu implements INhap,IXuat{
     }
 
     
-    public long getSDT() {
+    public String getSDT() {
         return sdt;
     }
 
-    public void setSDT(long sdt) {
+    public void setSDT(String sdt) {
         this.sdt = sdt;
     }
 
@@ -81,20 +79,16 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     @Override
     public void nhap(){
-        System.out.println("Nhap ma nhan vien: ");
-        manv=sc.nextInt();
-        sc.nextLine();
+        Scanner s=new Scanner(System.in);
         System.out.println("Nhap ho ten nhan vien: ");
-        ten=sc.nextLine();
+        ten=s.nextLine();
         System.out.println("Nhap tuoi: ");
-        age=sc.nextInt();
+        age=s.nextInt();
         System.out.println("Nhap so dien thoai: ");
-        sc.nextLine();
-        sdt=sc.nextLong();
-        System.out.println("Nhap chuc vu: ");
-        ChucVu=sc.nextLine();
+        s.nextLine();
+        sdt=s.nextLine();
         System.out.println("Nhap luong: ");
-        salary=sc.nextInt();
+        salary=s.nextInt();
     }
     @Override
     public void xuat(){
@@ -103,7 +97,8 @@ public abstract class NhanSu implements INhap,IXuat{
         System.out.println("Tuoi: " +age);
         System.out.println("So dien thoai: "+sdt);
         System.out.println("Chuc vu: "+ ChucVu);
-        System.out.println("Luong: " +finalsalary());
+        System.out.println("Luong co ban: " +salary);
+     
     }
     public abstract int finalsalary();
 
@@ -112,7 +107,16 @@ public abstract class NhanSu implements INhap,IXuat{
     }
 
     public void Sua(){
-        nhap();
+        Scanner s=new Scanner(System.in);
+            System.out.println("Nhap ho ten nhan vien moi: ");
+        ten=s.nextLine();
+        System.out.println("Nhap tuoi: ");
+        age=s.nextInt();
+        System.out.println("Nhap so dien thoai: ");
+        s.nextLine();
+        sdt=s.nextLine();
+        System.out.println("Nhap luong: ");
+        salary=s.nextInt();
     }
 
 }

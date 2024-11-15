@@ -34,7 +34,7 @@ public class MenuCuaHang {
 			System.out.println("\t  MENU");
 			System.out.println("[======================]");
             System.out.println("1. Quan ly Xe May");
-			System.out.println("2. Quan ly Hang San Xuat");
+	    System.out.println("2. Quan ly Hang San Xuat");
             System.out.println("3. Quan ly Nhan Su");
             System.out.println("4. Quan ly Khach Hang");
             System.out.println("5. Quan ly Hoa Don");
@@ -45,11 +45,11 @@ public class MenuCuaHang {
             s.nextLine();
 			switch(select) {
 			case 1:
-				QLXeMay ql1 = new QLXeMay();
+				 QLXeMay ql1 = new QLXeMay();
 				ql1.menu();
 				break;
 			case 2:
-				QLHangSX ql2 = new QLHangSX();
+				 QLHangSX ql2 = new QLHangSX();
 				ql2.menu();
 				break;
 			case 3:
@@ -57,7 +57,7 @@ public class MenuCuaHang {
 				ql3.menu();
 				break;
 			case 4:
-				QLKhachHang ql4 = new QLKhachHang();
+				 QLKhachHang ql4 = new QLKhachHang();
 				ql4.menu();
 				break;
 			case 5:
@@ -69,6 +69,7 @@ public class MenuCuaHang {
 				break;
 			default:
 	            System.out.println("Lua chon khong hop le. Vui long nhap lai \n");
+                    
 			}
 		} 
 		while (select != 6);

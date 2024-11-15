@@ -11,6 +11,7 @@ class QLKhachHang {
     }
 
     public void menu() {
+        dskh.taiDanhSachTuFile(fileName);
         int select;
         do {
             System.out.println("[=======================]");
@@ -21,9 +22,7 @@ class QLKhachHang {
             System.out.println("3. Xoa khach hang");
             System.out.println("4. Tim kiem khach hang");
             System.out.println("5. Xem thong tin danh sach khach hang");
-            System.out.println("6. Tai danh sach khach hang tu file");
-            System.out.println("7. Xuat danh sach khach hang vao file");
-            System.out.println("8. Quay tro ve giao dien Menu chinh");
+            System.out.println("6. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
 
             select = s.nextInt();
@@ -46,13 +45,6 @@ class QLKhachHang {
                 	dskh.xem();
                     break;
                 case 6:
-                    dskh.taiDanhSachTuFile(fileName);
-                    break;
-                case 7:     
-                    System.out.println("Da cap nhat danh sach vao tap tin: " + fileName);
-                    dskh.xuatDanhSachRaFile(fileName);
-                    break;
-                case 8:
                     dskh.xuatDanhSachRaFile(fileName);
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     return;
@@ -61,7 +53,7 @@ class QLKhachHang {
                     continue;
             }
             // Hỏi người dùng có muốn tiếp tục chọn không
-            if(select != 8){
+            if(select != 6){
                 System.out.print("tiep tuc lua chon Menu ? (y/n): ");
                 String choice = s.nextLine().trim().toLowerCase();
                 if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {

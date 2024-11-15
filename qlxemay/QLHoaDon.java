@@ -6,21 +6,14 @@ class QLHoaDon {
 	private DSHoaDon dshd;
     Scanner s = new Scanner(System.in);
     String fileName = "input_HoaDon.txt";
-    String fileName_KhachHang = "input_KhachHang.txt";
-    String fileName_XeMay = "intput_XeMay.txt";
-    String fileName_HangSX = "input_HangSX.txt";
-    DSKhachHang dsKhachHang;
-    DSXeMay dsXeMay;
-    DSHangSX dsHangSX;
+    String fileName_XeMay = "input_XeMay.txt";
 
     public QLHoaDon() {
-        dsKhachHang = new DSKhachHang();
-        dsKhachHang.taiDanhSachTuFile(fileName_KhachHang); 
-        dsXeMay = new DSXeMay();
         dshd = new DSHoaDon();
     }
 
     public void menu() {
+        dshd.taiDanhSachTuFile(fileName);
         int select;
         do {
             System.out.println("[======================]");
@@ -30,20 +23,18 @@ class QLHoaDon {
             System.out.println("2. Sua thong tin hoa don");
             System.out.println("3. Xoa hoa don");
             System.out.println("4. Tim kiem hoa don");
-            System.out.println("5. Xem thong tin chi tiet hoa don");
-            System.out.println("6. Tai danh sach hoa don tu file");
-            System.out.println("7. Xuat danh sach hoa don ra file");
-            System.out.println("8. Quay tro ve giao dien Menu chinh");
+            System.out.println("5. Xem thong tin chi tiet danh sach hoa don");
+            System.out.println("6. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
             
             select = s.nextInt();
             s.nextLine();
             switch (select) {
             	case 1:
-	                dshd.them();
+	                dshd.them(fileName_XeMay);
 	                break;
                 case 2:
-                	dshd.sua();
+                	dshd.sua(fileName_XeMay);
                     break;
                 case 3:
                 	dshd.xoa();
@@ -55,13 +46,6 @@ class QLHoaDon {
                 	dshd.xem();
                     break;
                 case 6:
-                    dshd.taiDanhSachTuFile(fileName, dsKhachHang, dsXeMay);
-                    break;
-                case 7:            
-                    System.out.println("Da cap nhat danh sach vao tap tin: " + fileName);
-                    dshd.xuatDanhSachRaFile(fileName); 
-                    break;
-                case 8:
                     dshd.xuatDanhSachRaFile(fileName); 
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh.\n");
                     return;
@@ -70,10 +54,11 @@ class QLHoaDon {
                     continue;
             }
             // Hỏi người dùng có muốn tiếp tục chọn không
-            if(select != 8){
+            if(select != 6){
                 System.out.print("tiep tuc lua chon Menu ? (y/n): ");
                 String choice = s.nextLine().trim().toLowerCase();
                 if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
+                    dshd.xuatDanhSachRaFile(fileName); 
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     break;  
                 }

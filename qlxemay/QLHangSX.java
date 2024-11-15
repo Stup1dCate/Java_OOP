@@ -9,8 +9,8 @@ class QLHangSX {
     public QLHangSX() {
         dshsx = new DSHangSX();
     }
-
     public void menu() {
+        dshsx.taiDanhSachTuFile(fileName);
         int select;
         do {
             System.out.println("[==========================]");
@@ -21,14 +21,10 @@ class QLHangSX {
             System.out.println("3. Xoa hang san xuat");
             System.out.println("4. Tim kiem hang san xuat");
             System.out.println("5. Xem thong tin trong danh sach hang san xuat");
-            System.out.println("6. Tai len danh sach hang san xuat tu file");
-            System.out.println("7. Cap nhat danh sach hang san xuat vao file");
-            System.out.println("8. Quay tro ve giao dien Menu chinh");
+            System.out.println("6. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
-
             select = s.nextInt();
-            s.nextLine();
-            
+            s.nextLine(); 
             switch (select) {
                 case 1:
                     dshsx.them();
@@ -46,13 +42,6 @@ class QLHangSX {
                     dshsx.xem();
                     break;
                 case 6:
-                    dshsx.taiDanhSachTuFile(fileName); 
-                    break;
-                case 7:
-                    System.out.println("Da cap nhat danh sach vao tap tin: " + fileName);
-                    dshsx.xuatDanhSachRaFile(fileName); 
-                    break;
-                case 8:
                     dshsx.xuatDanhSachRaFile(fileName); 
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     return;
@@ -61,10 +50,11 @@ class QLHangSX {
                     continue;
             }
             // Hỏi người dùng có muốn tiếp tục chọn không
-            if(select != 8){
+            if(select != 6){
                 System.out.print("tiep tuc lua chon Menu ? (y/n): ");
                 String choice = s.nextLine().trim().toLowerCase();
                 if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
+                    dshsx.xuatDanhSachRaFile(fileName);
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     break;  
                 }

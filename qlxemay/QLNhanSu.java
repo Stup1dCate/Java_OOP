@@ -11,6 +11,7 @@ class QLNhanSu {
     }
 
     public void menu() {
+        dsns.taiDanhSachTuFile(fileName);
         int select;
         do {
             System.out.println("[======================]");
@@ -21,9 +22,7 @@ class QLNhanSu {
             System.out.println("3. Xoa nhan su");
             System.out.println("4. Tim kiem nhan su");
             System.out.println("5. Xem thong tin danh sach nhan su");
-            System.out.println("6. Tai danh sach nhan su tu file");
-            System.out.println("7. Xuat danh sach nhan su ra file");
-            System.out.println("8. Quay tro ve giao dien Menu chinh");
+            System.out.println("6. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
             select = s.nextInt();
             s.nextLine(); // Đọc dòng trống sau khi đọc số
@@ -45,13 +44,6 @@ class QLNhanSu {
                 	dsns.Xem();
                     break;
                 case 6:
-                    dsns.taiDanhSachTuFile(fileName);
-                    break;
-                case 7:
-                    System.out.println("Da cap nhat danh sach vao tap tin: " + fileName);           
-                    dsns.xuatDanhSachRaFile(fileName);
-                    break;
-                case 8:
                     dsns.xuatDanhSachRaFile(fileName);
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh.\n");
                     return;
@@ -60,10 +52,11 @@ class QLNhanSu {
                     continue;
             }
             // Hỏi người dùng có muốn tiếp tục chọn không
-            if(select != 8){
+            if(select != 6){
                 System.out.print("tiep tuc lua chon Menu ? (y/n): ");
                 String choice = s.nextLine().trim().toLowerCase();
                 if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
+                    dsns.xuatDanhSachRaFile(fileName);
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh. \n");
                     break;  
                 }

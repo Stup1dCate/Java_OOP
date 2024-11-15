@@ -43,11 +43,8 @@ public class HangSX implements INhap,IXuat{
 	@Override
 	public void nhap() {
 		Scanner s = new Scanner(System.in);
-		System.out.print("Ma so hang san xuat: ");
-		mahsx = s.nextInt();
 		System.out.print("Nhap so dien thoai hang san xuat: ");
 		sdthsx = s.nextLine();
-		s.nextLine();
 		System.out.print("Ten hang san xuat: ");
 		tenhsx = s.nextLine();
 		System.out.print("Nhap dia chi hang san xuat: ");
@@ -59,14 +56,12 @@ public class HangSX implements INhap,IXuat{
 		System.out.println("\tTen hang: " + tenhsx);
 		System.out.println("\tDia chi: " + diachihsx);
 		System.out.println("\tSo dien thoai: " + sdthsx);
-		System.out.println("____________________________________________________________________");
+
 	}
+        
+        
     public void sua() { 
         Scanner s = new Scanner(System.in);
-        System.out.println("\tCHINH SUA THONG TIN HANG SAN XUAT:  ");
-        System.out.println("Nhap ma moi cua hang san xuat: ");
-        this.setMahsx(s.nextInt());
-        s.nextLine();
         System.out.println("Nhap ten moi cua hang san xuat: ");
         this.setTenhsx(s.nextLine());
         System.out.println("Nhap so dien thoai moi cua hang san xuat: ");

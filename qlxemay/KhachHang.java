@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class KhachHang implements INhap,IXuat{
 	private int makh;
-	private String age;
+	private int age;
 	private String sdtkh;
 	private String tenkh;
 	private String diachikh;
@@ -16,7 +16,7 @@ public class KhachHang implements INhap,IXuat{
 	public KhachHang() {
 		
 	}
-	public KhachHang(int makh, String age, String sdtkh, String tenkh, String diachikh, String phai) {
+	public KhachHang(int makh, int age, String sdtkh, String tenkh, String diachikh, String phai) {
 		this.makh = makh;
 		this.age = age;
 		this.sdtkh = sdtkh;
@@ -30,10 +30,10 @@ public class KhachHang implements INhap,IXuat{
 	public void setMakh(int makh) {
 		this.makh = makh;
 	}
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 	public String getSdtkh() {
@@ -63,13 +63,11 @@ public class KhachHang implements INhap,IXuat{
 	@Override
 	public void nhap() {
 		Scanner in = new Scanner(System.in);
-		System.out.println("nhap ma so khach hang: ");
-		makh = in.nextInt();
-		in.nextLine();
 		System.out.println("Nhap so dien thoai: ");
 		sdtkh = in.nextLine();
-		System.out.println("Nhap ngay sinh: ");
-		age = in.nextLine();
+		System.out.println("Nhap tuoi: ");
+		age = in.nextInt();
+                in.nextLine();
 		System.out.println("Nhap ho ten khach hang: ");
 		tenkh = in.nextLine();
 		System.out.println("Nhap gioi tinh: ");
@@ -82,7 +80,7 @@ public class KhachHang implements INhap,IXuat{
 		System.out.println("\tMa so khach hang: " + makh);
 		System.out.println("\tHo va ten: " + tenkh);
 		System.out.println("\tGioi tinh: " + phai);
-		System.out.println("\tNgay sinh: " + age);
+		System.out.println("\tTuoi: " + age);
 		System.out.println("\tSo dien thoai: " +sdtkh);
 		System.out.println("\tDia chi: " + diachikh);	
 		System.out.println("____________________________________________________________________");
@@ -98,13 +96,11 @@ public class KhachHang implements INhap,IXuat{
 	}
 	public void sua() { // ------
         Scanner s = new Scanner(System.in);
-        System.out.println("Nhap ma so khach hang moi: ");
-        this.setMakh(s.nextInt());
-        s.nextLine();
-        System.out.println("Nhap ten khach hang: ");
+        System.out.println("Nhap ten khach hang moi: ");
         this.setTenkh(s.nextLine());
-        System.out.println("Nhap nam sinh: ");
-        this.setAge(s.nextLine());
+        System.out.println("Nhap tuoi : ");
+        this.setAge(s.nextInt());
+        s.nextLine();
         System.out.println("Nhap so dien thoai: ");
         this.setSdtkh(s.nextLine());
         System.out.println("Nhap gioi tinh: ");
