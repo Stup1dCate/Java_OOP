@@ -88,6 +88,10 @@ public class DSHoaDon {
     public void sua() {
         System.out.print("Nhap ma so hoa don can sua: ");
         int msHDcansua = s.nextInt();
+        if (dshd.stream().noneMatch(hd -> hd.getMahd() == msHDcansua)) {
+            System.err.println("Khong tim thay ma hoa don.");
+            return;
+        }
         for (HoaDon hd : dshd) {
             if (hd.getMahd() == msHDcansua) { 
                 hd.sua();
@@ -101,6 +105,10 @@ public class DSHoaDon {
     public void xoa() {
         System.out.print("Nhap ma so hoa don can thanh toan: ");
         int msHDcanxoa = s.nextInt();
+        if (dshd.stream().noneMatch(hd -> hd.getMahd() == msHDcanxoa)) {
+            System.err.println("Khong tim thay ma hoa don.");
+            return;
+        }
         for (HoaDon hd : dshd) {
             if (hd.getMahd() == msHDcanxoa) { 
                 dshd.remove(hd);
@@ -129,7 +137,7 @@ public class DSHoaDon {
     }
     
     private void tinhTong(ChiTietHoaDon cthd) {
-	    double thanhTien = cthd.tinhTien() * cthd.tinhTien();
+	    double thanhTien = cthd.tinhTien();
 	    System.out.println("Thanh tien: " + thanhTien);
 	}
     
@@ -155,7 +163,7 @@ public class DSHoaDon {
                 cthd.setSoluongmua(Integer.parseInt(parts[3]));
 
                 // Tạo đối tượng XeMay từ DSXeMay
-                int maXeMay = Integer.parseInt(parts[2]);
+                int maXeMay = Integer.parseInt(parts[4]);
                 XeMay xm = dsXeMay.timKiemXeMayTheoMa(maXeMay);
                 cthd.setXeMay(xm);
                 hd.setChiTietHoaDon(cthd);
@@ -188,6 +196,6 @@ public class DSHoaDon {
         
         // Ghi các đối tượng thành dòng văn bản và xuống dòng
         return hd.getMahd() + ";" + hd.getNgaythanhtoan() + ";" + kh.getMakh() + ";" + kh.getTenkh() + ";" + kh.getAge() +
-        kh.getDiachikh() + ";" + kh.getSdtkh() + ";" + sp.getMasp() + sp.getTensp() + ";" + cthd.getSoluongmua() + ";" ;
+        kh.getDiachikh() + ";" + kh.getSdtkh() + ";" + sp.getMasp() + sp.getTensp() + ";" + cthd.getSoluongmua();
     }
 }
