@@ -136,4 +136,13 @@ class DSXeMay {
             e.printStackTrace();
         }
     }
+    public XeMay timKiemXeMayTheoMa(int maXeMay) {
+        for (XeMay xm : dsXemay) {
+            if (xm.getMasp() == maXeMay) {
+                return xm;
+            }
+        }
+		System.out.println("Khong tim thay khach hang voi ma so: " + maXeMay);
+        return null; // Trả về null nếu không tìm thấy
+    }
 }
