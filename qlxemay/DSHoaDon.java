@@ -1,6 +1,7 @@
 package qlxemay;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -64,6 +65,7 @@ public class DSHoaDon {
             dshd.add(hd);
 
         }
+        s.close();
         System.out.println("\n===== DA LUU DU LIEU HOA DON THANH CONG ! =====\n");
     }
 
@@ -88,11 +90,12 @@ public class DSHoaDon {
                 System.out.println("Vui long nhap lai hoac nhap 0 de thoat.");
             } 
             if(test==true) hoaDon.setMahd(mahdmoi);
-        }while(test = false);
+        }while(!test);
         hoaDon.sua(filedsxm);
         return;
             }
         }
+        sc.close();
         System.out.println("Khong tim thay ma hoa don can sua");
     }
     
@@ -100,13 +103,16 @@ public class DSHoaDon {
       Scanner sc=new Scanner(System.in);
         System.out.println("Nhap ma hoa don can xoa: ");
         int maxoa=sc.nextInt();
-        for(HoaDon hd:dshd){
-            if(maxoa==hd.getMahd()) {
-                dshd.remove(hd);
+        Iterator<HoaDon> iterator = dshd.iterator();
+        while (iterator.hasNext()) {
+            HoaDon hd = iterator.next();
+            if (hd.getMahd() == maxoa) {
+                iterator.remove();
                 System.out.println("Da xoa thanh cong!");
                 return;
             }
         }
+        sc.close();
         System.out.println("Khong tim thay hoa don!");
     }
 
@@ -120,6 +126,7 @@ public class DSHoaDon {
                 return;
             }
         }
+        sc.close();
         System.out.println("Khong tim thay hoa don!");
     }
     
@@ -165,29 +172,36 @@ public class DSHoaDon {
         }
     }
     private HoaDon parseLineToHoaDon(String line){
-        String[] parts=line.split(";");
-        int mahd=Integer.parseInt(parts[0]);
-        String ntt=parts[1];
-        int soSPmua=Integer.parseInt(parts[2]);
-            int masp = Integer.parseInt(parts[3]);
-            int soluong = Integer.parseInt(parts[4]);
-            String tensp = parts[5];
-            String loaisp = parts[6];
-            Double gianhap = Double.parseDouble(parts[7]);
-            Double giaban = Double.parseDouble(parts[8]);
-            int mahsx = Integer.parseInt(parts[9]);
-            String sdthsx = parts[10];
-            String tenhsx = parts[11];
-            String diachi = parts[12];
-            Double dtodl = Double.parseDouble(parts[13]);
-            HangSX hangsx = new HangSX(mahsx, tenhsx, diachi, sdthsx);
-            XeMay xm=null;
-               if (loaisp.equals("Xe dien")) {
-                xm= new XeDien(dtodl, masp, soluong, tensp, loaisp, gianhap, giaban, hangsx);
-            }
-            if (loaisp.equals("Xe xang")) {
-                xm= new XeXang(dtodl, masp, soluong, tensp, loaisp, gianhap, giaban, hangsx);
-            }
-            return new HoaDon(mahd,ntt,xm, soSPmua);
-    }
+       try
+       {
+    	   String[] parts=line.split(";");
+           int mahd=Integer.parseInt(parts[0]);
+           String ntt=parts[1];
+           int soSPmua=Integer.parseInt(parts[2]);
+               int masp = Integer.parseInt(parts[3]);
+               int soluong = Integer.parseInt(parts[4]);
+               String tensp = parts[5];
+               String loaisp = parts[6];
+               Double gianhap = Double.parseDouble(parts[7]);
+               Double giaban = Double.parseDouble(parts[8]);
+               int mahsx = Integer.parseInt(parts[9]);
+               String sdthsx = parts[10];
+               String tenhsx = parts[11];
+               String diachi = parts[12];
+               Double dtodl = Double.parseDouble(parts[13]);
+               HangSX hangsx = new HangSX(mahsx, tenhsx, diachi, sdthsx);
+               XeMay xm=null;
+                  if (loaisp.equals("Xe dien")) {
+                   xm= new XeDien(dtodl, masp, soluong, tensp, loaisp, gianhap, giaban, hangsx);
+               }
+               if (loaisp.equals("Xe xang")) {
+                   xm= new XeXang(dtodl, masp, soluong, tensp, loaisp, gianhap, giaban, hangsx);
+               }
+               return new HoaDon(mahd,ntt,xm, soSPmua);
+       }
+       catch (Exception e) {
+           System.out.println("Loi khi phan tich du lieu: " + line);
+           return null;
+       }
+}
 }
