@@ -43,9 +43,20 @@ class DSNhanSu {
                 if (ns != null) {
                     System.out.println("Nhap ma Nhan vien: ");
                     int count;
+                    int mans;
                     do {
                         count = 0;
-                        int mans = sc.nextInt();
+                        while (true) {
+                            if (sc.hasNextInt()) {
+                                mans = sc.nextInt();  // Nhập vào giá trị số nguyên
+                                break;  // Nếu là số, thoát vòng lặp
+                                
+                            } else {
+                                System.out.println("Ma so phai la so, vui long nhap lai!");
+                                sc.next();  // Loại bỏ đầu vào không hợp lệ
+                            }
+                        }
+
                         if (mans == 0) {
                             return;
                         }
@@ -68,6 +79,8 @@ class DSNhanSu {
                     dsns.add(ns);
                 }
                 break;
+                        
+                       
             case 2:
                 ns = new Quanly();
                 if (ns != null) {
