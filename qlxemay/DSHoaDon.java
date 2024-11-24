@@ -113,10 +113,11 @@ public class DSHoaDon {
             if (hd.getMahd() == maxoa) {
                 iterator.remove();
                 System.out.println("Da xoa thanh cong!");
+                isModified = true;
+                xuatDanhSachRaFile("fileName.txt");
                 return;
             }
         }
-        xuatDanhSachRaFile("fileName.txt");
         sc.close();
         System.out.println("Khong tim thay hoa don!");
     }
