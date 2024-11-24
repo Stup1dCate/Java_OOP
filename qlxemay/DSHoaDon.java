@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 
 public class DSHoaDon {
     private ArrayList<HoaDon> dshd;
+    private boolean isModified = false;
     public DSHoaDon() {
 		dshd = new ArrayList<>();
 	}
@@ -63,7 +64,8 @@ public class DSHoaDon {
             } while (count == 1);
             hd.Nhap(filedsxm);
             dshd.add(hd);
-
+            isModified = true;
+            xuatDanhSachRaFile("fileName.txt");
         }
         s.close();
         System.out.println("\n===== DA LUU DU LIEU HOA DON THANH CONG ! =====\n");
@@ -92,6 +94,8 @@ public class DSHoaDon {
             if(test==true) hoaDon.setMahd(mahdmoi);
         }while(!test);
         hoaDon.sua(filedsxm);
+        isModified = true;
+        xuatDanhSachRaFile("fileName.txt");
         return;
             }
         }
@@ -112,6 +116,7 @@ public class DSHoaDon {
                 return;
             }
         }
+        xuatDanhSachRaFile("fileName.txt");
         sc.close();
         System.out.println("Khong tim thay hoa don!");
     }
@@ -133,33 +138,48 @@ public class DSHoaDon {
     
 
     public void taiDanhSachTuFile(String fileName) {
+    	dshd.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 HoaDon hd = parseLineToHoaDon(line);
-                if (hd!= null) {
-                    dshd.add(hd);  
+                if (hd != null) {
+                    dshd.add(hd);
+                }
+                else {
+                    System.out.println("Lỗi khi phân tích dòng: " + line);
                 }
             }
-            System.out.println("Da tai danh sach tu tap tin: " + fileName + "\n");
+            System.out.println("Đã tải danh sách từ file: " + fileName);
+            System.out.println("Số lượng hóa đơn: " + dshd.size());
         } catch (FileNotFoundException e) {
-            System.out.println("Khong tim thay tap tin: " + fileName + "\n");
+            System.out.println("Không tìm thấy file: " + fileName);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
+
     public void xuatDanhSachRaFile(String fileName) {
+    	if (dshd == null || dshd.isEmpty()) {
+    	    System.out.println("Danh sách rỗng, không ghi vào file.");
+    	    return;
+    	}
+    	if (!isModified) {
+    	    System.out.println("Không có thay đổi nào, không ghi vào file.");
+    	    return;
+    	}
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (HoaDon hd : dshd) {
                 writer.write(parseHoaDonToLine(hd));
                 writer.newLine();
             }
-            System.out.println("Da xuat danh sach ra tap tin " + fileName);
+            System.out.println("Đã xuất danh sách ra file " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     private String parseHoaDonToLine(HoaDon hd) {
         XeMay xemay=hd.getXm();
@@ -182,7 +202,7 @@ public class DSHoaDon {
                int soluong = Integer.parseInt(parts[4]);
                String tensp = parts[5];
                String loaisp = parts[6];
-               Double gianhap = Double.parseDouble(parts[7]);
+               double gianhap = Double.parseDouble(parts[7]);
                Double giaban = Double.parseDouble(parts[8]);
                int mahsx = Integer.parseInt(parts[9]);
                String sdthsx = parts[10];
@@ -200,8 +220,10 @@ public class DSHoaDon {
                return new HoaDon(mahd,ntt,xm, soSPmua);
        }
        catch (Exception e) {
-           System.out.println("Loi khi phan tich du lieu: " + line);
-           return null;
-       }
+    	    System.out.println("Lỗi khi phân tích dữ liệu: " + line);
+    	    e.printStackTrace();
+    	    return null;
+    	}
+
 }
 }
