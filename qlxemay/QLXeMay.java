@@ -29,7 +29,14 @@ class QLXeMay {
             System.out.println("6. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
             
-            select = s.nextInt();
+              while (true) {
+                            if (s.hasNextInt()) {
+                                select= s.nextInt();
+                                break;
+                            }
+                            System.out.println("Khong hop le! . Vui long nhap lai.");
+                            s.nextLine();
+                        }
             s.nextLine(); 
             switch (select) {
             	case 1:

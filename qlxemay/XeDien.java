@@ -30,13 +30,22 @@ public class XeDien extends XeMay {
     public void nhap(String filehxs) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap dung luong pin: ");
-        dungluongpin = sc.nextDouble();
+         while(true){
+            if(sc.hasNextDouble()){
+              dungluongpin = sc.nextDouble();
+                  break;
+            }
+            System.out.println("Dung luong pin phai la so . Vui long nhap lai.");
+            sc.nextLine();
+        }
+       
         super.nhap(filehxs);
     }
 
     @Override
     public void xuat() {
         System.out.println("\tThong tin san pham ");
+        
         System.out.println("Dung luong pin: " + dungluongpin);
         super.xuat();
     }
@@ -45,7 +54,14 @@ public class XeDien extends XeMay {
     public void sua() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap dung luong moi:");
-        dungluongpin = sc.nextDouble();
+         while(true){
+            if(sc.hasNextDouble()){
+              dungluongpin = sc.nextDouble();
+                  break;
+            }
+            System.out.println("Dung luong pin phai la so . Vui long nhap lai.");
+            sc.nextLine();
+        }
         super.sua();
     }
 }

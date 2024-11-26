@@ -65,7 +65,15 @@ class DSXeMay {
         System.out.println("1. Them xe dien ");
         System.out.println("2. Them xe xang ");
         System.out.println("Nhap lua chon: ");
-        luachon = sc.nextInt();
+        while (true) {
+            if (sc.hasNextInt()) {
+                luachon = sc.nextInt();
+                break;
+            }
+            System.out.println("Lua chon khong hop le! . Vui long nhap lai.");
+            sc.nextLine();
+        }
+
         switch (luachon) {
             case 1:
                 xm = new XeDien();
@@ -75,7 +83,16 @@ class DSXeMay {
                     int count;
                     do {
                         count = 0;
-                        int maxm = sc.nextInt();
+                        int maxm;
+                        while (true) {
+                            if (sc.hasNextInt()) {
+                                maxm = sc.nextInt();
+                                break;
+                            }
+                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
+                            sc.nextLine();
+                        }
+
                         if (maxm == 0) {
                             return;
                         }
@@ -105,7 +122,16 @@ class DSXeMay {
                     int count;
                     do {
                         count = 0;
-                        int maxm = sc.nextInt();
+                       int maxm;
+                        while (true) {
+                            if (sc.hasNextInt()) {
+                                maxm = sc.nextInt();
+                                break;
+                            }
+                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
+                            sc.nextLine();
+                        }
+
                         if (maxm == 0) {
                             return;
                         }
@@ -173,7 +199,15 @@ class DSXeMay {
                     System.out.println("1.Xe dien ");
                     System.out.println("2.Xe xang ");
                     System.out.println("Nhap lua chon: ");
-                    int choice = s.nextInt();
+                    int choice ;
+                     while (true) {
+            if (s.hasNextInt()) {
+                choice = s.nextInt();
+                break;
+            }
+            System.out.println("Lua chon khong hop le! . Vui long nhap lai.");
+            s.nextLine();
+        }
                     switch (choice) {
                         case 1:
                             xm = new XeDien();
@@ -194,7 +228,16 @@ class DSXeMay {
                     int count;
                     do {
                         count = 0;
-                        int masp = s.nextInt();
+                        int masp;
+                        while (true) {
+                            if (s.hasNextInt()) {
+                                masp = s.nextInt();
+                                break;
+                            }
+                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
+                            s.nextLine();
+                        }
+
                         if (masp == 0) {
                             return;
                         }
@@ -254,14 +297,30 @@ class DSXeMay {
         }
         // Kiem tra xem ma ns moi co trung voi ma ns co trong danh sach khong
         System.out.println("Nhap ma xe may muon sua: ");
-        int ma = s.nextInt();
+        int ma;
+                        while (true) {
+                            if (s.hasNextInt()) {
+                                ma = s.nextInt();
+                                break;
+                            }
+                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
+                            s.nextLine();
+                        }
         for (XeMay xm : dstam) {
             if (xm.getMasp() == ma) {
                 System.out.println("Nhap ma moi cua xe may: ");
                 int count;
                 do {
                     count = 0;
-                    int maxm = s.nextInt();
+                    int maxm ;
+                    while (true) {
+                            if (s.hasNextInt()) {
+                                maxm = s.nextInt();
+                                break;
+                            }
+                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
+                            s.nextLine();
+                        }
                     if (maxm == 0) {
                         return;
                     }
@@ -288,7 +347,15 @@ class DSXeMay {
                 System.out.println("1.Xe dien ");
                 System.out.println("2.Xe xang ");
                 System.out.println("Nhap lua chon: ");
-                int choice = s.nextInt();
+                int choice;
+                while (true) {
+                            if (s.hasNextInt()) {
+                                choice = s.nextInt();
+                                break;
+                            }
+                            System.out.println("Khong hop le . Vui long nhap lai.");
+                            s.nextLine();
+                        }
                 switch (choice) {
                     case 1:
                         xm = new XeDien();
@@ -324,19 +391,19 @@ class DSXeMay {
                         return;
                     }
                 }
-                 for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                        if (dshsx.getDshsx().get(i).getMahsx() == hsx.getMahsx()) {
-                            dshsx.getDshsx().remove(i);
-                        }
+                for (int i = 0; i < dshsx.getDshsx().size(); i++) {
+                    if (dshsx.getDshsx().get(i).getMahsx() == hsx.getMahsx()) {
+                        dshsx.getDshsx().remove(i);
                     }
-                    for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                        if (dshsx.getDshsx().get(i).getMahsx() == xm.getHangSX().getMahsx()) {
-                            dshsx.getDshsx().set(i, xm.getHangSX());
-                            dshsx.xuatDanhSachRaFile(filehangsx);
-                            return;
-                        }
+                }
+                for (int i = 0; i < dshsx.getDshsx().size(); i++) {
+                    if (dshsx.getDshsx().get(i).getMahsx() == xm.getHangSX().getMahsx()) {
+                        dshsx.getDshsx().set(i, xm.getHangSX());
+                        dshsx.xuatDanhSachRaFile(filehangsx);
+                        return;
+                    }
 
-                    }
+                }
                 dshsx.getDshsx().add(xm.getHangSX());
                 dshsx.xuatDanhSachRaFile(filehangsx);
                 return;
@@ -346,13 +413,13 @@ class DSXeMay {
     }
 
     public void xoa() {
-       ArrayList<XeMay> dstam = new ArrayList<>();
+        ArrayList<XeMay> dstam = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap ten xe may can xoa: ");
         String tenxoa;
         int look = 0;
         tenxoa = sc.nextLine();
-        for (XeMay xm:dsXemay) {
+        for (XeMay xm : dsXemay) {
             if (xm.getTensp().equals(tenxoa)) {
                 System.out.println("Thong tin xe may " + tenxoa);
                 xm.xuat();
@@ -365,7 +432,7 @@ class DSXeMay {
             return;
         }
         if (look == 1) {
-            for (XeMay xm:dsXemay) {
+            for (XeMay xm : dsXemay) {
                 if (xm.getTensp().equals(tenxoa)) {
                     dsXemay.remove(xm);
                     System.out.println("Xoa thanh cong!");
@@ -374,9 +441,18 @@ class DSXeMay {
             }
         }
         System.out.println("Nhap ma xe may muon xoa: ");
-        int ma = sc.nextInt();
+        
+        int ma;
+        while (true) {
+                            if (sc.hasNextInt()) {
+                                ma = sc.nextInt();
+                                break;
+                            }
+                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
+                            sc.nextLine();
+                        }
         for (XeMay xm : dstam) {
-            if (xm.getMasp()== ma) {
+            if (xm.getMasp() == ma) {
                 dsXemay.remove(xm);
                 System.out.println("Xoa thanh cong!");
                 return;
@@ -386,21 +462,36 @@ class DSXeMay {
     }
 
     public void timKiem() {
-            Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int luachon;
         System.out.println("Lua chon phuong thuc tim kiem");
         System.out.println("1. Theo ma xe may");
         System.out.println("2. Theo ten xe may");
         System.out.print("Nhap lua chon: ");
-        luachon = sc.nextInt();
+        while (true) {
+                            if (sc.hasNextInt()) {
+                                luachon= sc.nextInt();
+                                break;
+                            }
+                            System.out.println("Khong hop le! . Vui long nhap lai.");
+                            sc.nextLine();
+                        }
         sc.nextLine(); // Đọc bỏ dòng mới còn sót sau khi nhập số
 
         switch (luachon) {
             case 1:
                 System.out.print("Nhap ma xe may can tim kiem: ");
-                int maxm = sc.nextInt();
+                int maxm;
+                while (true) {
+                            if (sc.hasNextInt()) {
+                                maxm = sc.nextInt();
+                                break;
+                            }
+                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
+                            sc.nextLine();
+                        }
                 boolean foundById = false;
-                for (XeMay xm: dsXemay) {
+                for (XeMay xm : dsXemay) {
                     if (xm.getMasp() == maxm) {
                         xm.xuat();
                         foundById = true;
@@ -416,7 +507,7 @@ class DSXeMay {
                 System.out.print("Nhap ten Xe may can tim kiem: ");
                 String find = sc.nextLine();
                 boolean foundByName = false;
-                for (XeMay xm:dsXemay) {
+                for (XeMay xm : dsXemay) {
                     if (xm.getTensp().contains(find)) {
                         xm.xuat();
                         foundByName = true;

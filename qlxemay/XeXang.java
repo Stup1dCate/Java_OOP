@@ -30,7 +30,15 @@ public class XeXang extends XeMay {
     public void nhap(String filehsx) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap dung tich: ");
-        dungtich = sc.nextDouble();
+         while(true){
+            if(sc.hasNextDouble()){
+            dungtich = sc.nextDouble();
+                  break;
+            }
+            System.out.println("Dung ltich phai la so . Vui long nhap lai.");
+            sc.nextLine();
+        }
+        
         super.nhap(filehsx);
 
     }
@@ -47,7 +55,15 @@ public class XeXang extends XeMay {
     public void sua() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap dung tich moi:");
-        dungtich = sc.nextDouble();
+         while(true){
+            if(sc.hasNextDouble()){
+              dungtich = sc.nextDouble();
+                  break;
+            }
+            System.out.println("Dung luong pin phai la so . Vui long nhap lai.");
+            sc.nextLine();
+        }
+       
         super.sua();
     }
 }

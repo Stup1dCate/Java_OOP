@@ -125,18 +125,52 @@ public class XeMay implements IXuat {
     public void nhap(String filehsx) {
         Scanner in = new Scanner(System.in);
         System.out.print("So luong hang nhap: ");
-        soluongnhaphang = in.nextInt();
+        while(true){
+            if(in.hasNextInt()){
+                  soluongnhaphang = in.nextInt();
+                  break;
+            }
+            System.out.println("So luong nhap hang phai la so nguyen. Vui long nhap lai.");
+             in.nextLine();
+        }
+      
         System.out.print("So tien nhap hang (1 san pham): ");
-        tiennhaphang = in.nextDouble();
+         while(true){
+            if(in.hasNextDouble()){
+                    tiennhaphang = in.nextDouble();
+                  break;
+            }
+            System.out.println("So tien nhap hang phai la so . Vui long nhap lai.");
+            in.nextLine();
+        }
+      
+     
         System.out.print("Gia ban san pham (1 san pham): ");
-        giasp = in.nextDouble();
+          while(true){
+            if(in.hasNextDouble()){
+                     giasp = in.nextDouble();
+                  break;
+            }
+            System.out.println("So tien ban phai la so . Vui long nhap lai.");
+            in.nextLine();
+        }
+       
         in.nextLine();
         System.out.print("Ten san pham: ");
         tensp = in.nextLine();
         // Nhập thông tin hang san xuat
         System.out.println("\tNHAP THONG TIN HANG SAN XUAT TUONG UNG:");
         System.out.println("Nhap ma so hang san xuat");
-        int ma = in.nextInt();
+        int ma;
+          while(true){
+            if(in.hasNextInt()){
+                   ma = in.nextInt();
+                  break;
+            }
+            System.out.println("Ma hang san xuat phai la so . Vui long nhap lai.");
+            in.nextLine();
+        }
+       
         DSHangSX dshsx = new DSHangSX();
         dshsx.taiDanhSachTuFile(filehsx);
         for(HangSX hang:dshsx.getDshsx()){
@@ -173,15 +207,51 @@ public class XeMay implements IXuat {
         // Sửa thông tin mã sản phẩm, tên sản phẩm, loại sản phẩm, số lượng nhập hàng, giá tiền, và thông tin nhà cung cấp
         Scanner in = new Scanner(System.in);
         System.out.println("Nhap ten san pham moi: ");
+        
         this.setTensp(in.nextLine());
         System.out.println("Nhap so luong hang nhap moi: ");
-        this.setSoluongnhaphang(in.nextInt());
+       
+          while(true){
+            if(in.hasNextInt()){
+                   this.setSoluongnhaphang(in.nextInt());
+                  break;
+            }
+            System.out.println("So luong hang nhap phai la so nguyen . Vui long nhap lai.");
+            in.nextLine();
+        }
+       
         System.out.println("Nhap so tien nhap moi: ");
-        this.setTiennhaphang(in.nextDouble());
+           while(true){
+            if(in.hasNextDouble()){
+                   this.setTiennhaphang(in.nextDouble());
+                  break;
+            }
+            System.out.println("So tien nhap hang phai la so . Vui long nhap lai.");
+            in.nextLine();
+        }
+       
         System.out.println("Nhap so tien ban moi: ");
-        this.setGiasp(in.nextDouble());
+         while(true){
+            if(in.hasNextDouble()){
+                   this.setGiasp(in.nextDouble());
+                  break;
+            }
+            System.out.println("So tien ban phai la so . Vui long nhap lai.");
+            in.nextLine();
+        }
+       
+       
           System.out.println("Nhap ma so hang san xuat:");
-        int ma = in.nextInt();
+        int ma;
+         while(true){
+            if(in.hasNextDouble()){
+                 ma = in.nextInt();
+                  break;
+            }
+            System.out.println("Ma so hang san xuat phai la so . Vui long nhap lai.");
+            in.nextLine();
+        }
+   
         hangSX.setMahsx(ma);
         // Sửa thông tin nhà cung cấp
         hangSX.sua();
