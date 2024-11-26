@@ -10,13 +10,14 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
 
     Scanner sc = new Scanner(System.in);
     private int SoSPban;
-
+    private int TienThuongSP;
     public NhanVien() {
     }
 
-    public NhanVien(int manv, String ten, int age, String sdt, String ChucVu, int salary, int SoSPban) {
+    public NhanVien(int manv, String ten, int age, String sdt, String ChucVu, int salary, int SoSPban,int TienThuongSP) {
         super(manv, ten, age, sdt, ChucVu, salary);
         this.SoSPban = SoSPban;
+        this.TienThuongSP=TienThuongSP;
     }
 
     public int getSoSPban() {
@@ -27,18 +28,29 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
         this.SoSPban = SoSPban;
     }
 
+    public int getTienThuongSP(){
+        return TienThuongSP;
+    }
+
+    public void setTienThuongSP(int TienThuongSP){
+        this.TienThuongSP=TienThuongSP;
+    }
+
     @Override
     public void nhap() {
         Scanner s = new Scanner(System.in);
         super.nhap();
         System.out.println("Nhap so san pham ban duoc: ");
         SoSPban = s.nextInt();
+        System.out.println("Nhap so tien thuong tren moi san pham ban duoc: (ngan dong)");
+        TienThuongSP=s.nextInt();
     }
 
     @Override
     public void xuat() {
         super.xuat();
         System.out.println("So SP ban duoc: " + SoSPban);
+        System.out.println("So tien thuong tren moi san pham ban duoc: "+TienThuongSP);
         System.out.println("Luong cuoi cung: " + finalsalary());
         System.out.println("____________________________________________________________________");
     }
@@ -49,12 +61,13 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
         super.Sua();
         System.out.println("Nhap so san pham ban duoc: ");
         SoSPban = sc.nextInt();
-        
+        System.out.println("Nhap tien thuong tren moi san pham ban duoc: ");
+        TienThuongSP=sc.nextInt();
         System.out.println("Sua thanh cong!");
     }
 
     @Override
     public int finalsalary() {
-        return getSalary() + 50 * SoSPban;
+        return getSalary() + TienThuongSP * SoSPban;
     }
 }
