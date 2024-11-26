@@ -10,8 +10,13 @@ public class Quanly extends NhanSu implements INhap, IXuat {
 
     Scanner sc = new Scanner(System.in);
     private int bonus;
+    private static int soluongnv=0;
 
     public Quanly() {
+        soluongnv++;
+    }
+    public static void SoLuongQuanLy(){
+        System.out.println("So luong quan ly: "+ soluongnv);
     }
 
     public Quanly(int manv, String ten, int age, String sdt, String ChucVu, int salary, int bonus) {

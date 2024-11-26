@@ -12,9 +12,8 @@ public abstract class NhanSu implements INhap,IXuat{
     private String sdt;
     protected String ChucVu;
     private int salary;
-    public static int soluongnv=0;
+
     public NhanSu() {
-        soluongnv++;
     }
     
 
@@ -25,7 +24,6 @@ public abstract class NhanSu implements INhap,IXuat{
         this.sdt=sdt;
         this.ChucVu = ChucVu;
         this.salary = salary;
-        soluongnv++;
     }
     
     public int getManv() {
@@ -146,10 +144,7 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     public abstract int finalsalary();
 
-    public static int getSoluongnv(){
-        return soluongnv;
-    }
-
+  
     public void Sua(){
         Scanner s=new Scanner(System.in);
             System.out.println("Nhap ho ten nhan vien moi: ");

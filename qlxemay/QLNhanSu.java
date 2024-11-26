@@ -22,7 +22,8 @@ class QLNhanSu {
             System.out.println("3. Xoa nhan su");
             System.out.println("4. Tim kiem nhan su");
             System.out.println("5. Xem thong tin danh sach nhan su");
-            System.out.println("6. Quay tro ve giao dien Menu chinh");
+            System.out.println("6.Xem so luong nhan vien");
+            System.out.println("7. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
             select = s.nextInt();
             s.nextLine(); // Đọc dòng trống sau khi đọc số
@@ -44,6 +45,9 @@ class QLNhanSu {
                 	dsns.Xem();
                     break;
                 case 6:
+                    Quanly.SoLuongQuanLy();
+                    NhanVien.Soluongnhanvien();
+                case 7:
                     dsns.xuatDanhSachRaFile(fileName);
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh.\n");
                     return;
@@ -52,7 +56,7 @@ class QLNhanSu {
                     continue;
             }
             // Hỏi người dùng có muốn tiếp tục chọn không
-            if(select != 6){
+            if(select != 7){
                 System.out.print("tiep tuc lua chon Menu ? (y/n): ");
                 String choice = s.nextLine().trim().toLowerCase();
                 if (!choice.equals("y") && !choice.equals("yes") && !choice.equals("1")) {
