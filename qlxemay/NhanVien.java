@@ -8,10 +8,15 @@ import java.util.Scanner;
 
 public class NhanVien extends NhanSu implements INhap, IXuat {
 
-    Scanner sc = new Scanner(System.in);
+   Scanner sc = new Scanner(System.in);
     private int SoSPban;
-    private int TienThuongSP;
+    private static int soluongnv = 0;
+
     public NhanVien() {
+        soluongnv++;
+    }
+    public static void Soluongnhanvien(){
+        System.out.println("So luong nhan vien: "+soluongnv);
     }
 
     public NhanVien(int manv, String ten, int age, String sdt, String ChucVu, int salary, int SoSPban,int TienThuongSP) {
