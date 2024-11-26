@@ -382,7 +382,7 @@ class DSNhanSu {
 
     private NhanSu parseLineToNhanSu(String line) {
         String[] parts = line.split(";");
-        if (parts.length == 7) {
+        if (parts.length == 8) {
             int manv = Integer.parseInt(parts[0]);
             String ten = parts[1];
             int age = Integer.parseInt(parts[2]);
@@ -391,7 +391,8 @@ class DSNhanSu {
             int salary = Integer.parseInt(parts[5]);
             if (chucvu.equals("Nhan Vien")) {
                 int SoSPban = Integer.parseInt(parts[6]);
-                return new NhanVien(manv, ten, age, sdt, chucvu, salary, SoSPban);
+                int TienThuongSP = Integer.parseInt(parts[7]);
+                return new NhanVien(manv, ten, age, sdt, chucvu, salary, SoSPban,TienThuongSP);
             } else if (chucvu.equals("Quan Ly")) {
                 int bonus = Integer.parseInt(parts[6]);
                 return new Quanly(manv, ten, age, sdt, chucvu, salary, bonus);
@@ -404,7 +405,7 @@ class DSNhanSu {
     private String parseNhanSuToLine(NhanSu ns) {
         if (ns.getChucVu().equals("Nhan Vien")) {
             NhanVien nv = (NhanVien) ns;
-            return ns.getManv() + ";" + ns.getTen() + ";" + ns.getAge() + ";" + ns.getSDT() + ";" + ns.getChucVu() + ";" + ns.getSalary() + ";" + nv.getSoSPban();
+            return ns.getManv() + ";" + ns.getTen() + ";" + ns.getAge() + ";" + ns.getSDT() + ";" + ns.getChucVu() + ";" + ns.getSalary() + ";" + nv.getSoSPban() + ";" + nv.getTienThuongSP();
         } else if (ns.getChucVu().equals("Quan Ly")) {
             Quanly ql = (Quanly) ns;
             return ns.getManv() + ";" + ns.getTen() + ";" + ns.getAge() + ";" + ns.getSDT() + ";" + ns.getChucVu() + ";" + ns.getSalary() + ";" + ql.getBonus();
