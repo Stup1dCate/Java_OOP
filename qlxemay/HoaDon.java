@@ -18,7 +18,12 @@ public class HoaDon implements IXuat {
 
     public HoaDon() {
     }
-
+    public HoaDon(HoaDon hoaDon){
+        this.mahd=hoaDon.mahd;
+        this.SoSPmua=hoaDon.SoSPmua;
+        this.ngaythanhtoan=hoaDon.ngaythanhtoan;
+        this.xm=hoaDon.xm;
+    }
     public HoaDon(int mahd, String ngaythanhtoan, XeMay dsxm, int SoSPmua) {
         this.mahd = mahd;
         this.ngaythanhtoan = ngaythanhtoan;
