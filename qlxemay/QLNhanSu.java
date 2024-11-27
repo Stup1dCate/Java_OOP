@@ -47,6 +47,7 @@ class QLNhanSu {
                 case 6:
                     Quanly.SoLuongQuanLy();
                     NhanVien.Soluongnhanvien();
+                    break;
                 case 7:
                     dsns.xuatDanhSachRaFile(fileName);
                     System.out.println("Da luu thay doi va quay tro ve Menu chinh.\n");

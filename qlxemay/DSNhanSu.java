@@ -28,6 +28,17 @@ class DSNhanSu {
         }
     }
 
+public void XemSoLuong(){
+    if (dsns != null && !dsns.isEmpty()) {
+        System.out.println("\nSO LUONG NHAN SU: ");
+        for (NhanSu ns : dsns) {
+            ns.xuat();
+        }
+    } else {
+        System.out.println("Danh sach trong.\n");
+    }
+}
+
     public void Them() {
         Scanner sc = new Scanner(System.in);
         NhanSu ns = null;
@@ -77,6 +88,7 @@ class DSNhanSu {
                     ns.nhap();
                     ns.setChucVu("Nhan Vien");
                     dsns.add(ns);
+                
                 }
                 break;
                         
