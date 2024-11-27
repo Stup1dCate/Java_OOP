@@ -58,7 +58,7 @@ public class HoaDon implements IXuat {
         this.SoSPmua = SoSPmua;
     }
 
-    private Double Tong() {
+    private int Tong() {
         return xm.getGiasp() * SoSPmua;
     }
 
