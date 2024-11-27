@@ -81,8 +81,10 @@ public class HoaDon implements IXuat {
             }
             if (dsxm.timKiemXeMayTheoMa(ma) != null) {
                 xm = dsxm.timKiemXeMayTheoMa(ma);
-                    System.out.println("San pham da het hang");
+                   if(xm.getSoluongnhaphang()==0){
+                       System.out.printn("San pham da het hang");
                 return;
+                   }
             } else {
                 System.out.println("Khong tim thay ma xe!");
                 System.out.println("Vui long nhap lai hoac nhap 0 de thoat");
@@ -146,8 +148,10 @@ public class HoaDon implements IXuat {
             }
             if (dsxm.timKiemXeMayTheoMa(ma) != null) {
                 xm = dsxm.timKiemXeMayTheoMa(ma);
-                    System.out.println("San pham da het hang");
+   if(xm.getSoluongnhaphang()==0){
+                       System.out.printn("San pham da het hang");
                 return;
+                   }
             } else {
                 System.out.println("Khong tim thay ma xe!");
                 System.out.println("Vui long nhap lai hoac nhap 0 de thoat");
