@@ -63,12 +63,12 @@ public class DSHoaDon {
                 }
             } while (count == 1);
             hd.Nhap(filedsxm);
-            dshd.add(hd);
-            isModified = true;
-            xuatDanhSachRaFile("fileName.txt");
+      if(hd.getXm()==null){
+          return;
+      }
+      dshd.add(hd);
         }
-        s.close();
-        System.out.println("\n===== DA LUU DU LIEU HOA DON THANH CONG ! =====\n");
+        System.out.println("aaa");
     }
 
     public void sua(String filedsxm) {
