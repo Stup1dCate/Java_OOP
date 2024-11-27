@@ -63,23 +63,21 @@ public class DSHoaDon {
                 }
             } while (count == 1);
             hd.Nhap(filedsxm);
-      if(hd.getXm()==null){
+        if(hd.getXm()==null || hd.getXm().getSoluongnhaphang()==0){
           return;
       }
       dshd.add(hd);
         }
-        System.out.println("aaa");
     }
 
     public void sua(String filedsxm) {
         Scanner sc=new Scanner(System.in);
         System.out.println("Nhap ma hoa don can sua:");
         int mahdcu=sc.nextInt();
-        boolean found =  false;
         for(HoaDon hoaDon:dshd){
             if(hoaDon.getMahd()==mahdcu){
-            	found = true;
                 System.out.println("Nhap ma hoa don moi:");
+                HoaDon hdon=new HoaDon(hoaDon);
         int mahdmoi;
         boolean test=true;
         do{
@@ -96,15 +94,20 @@ public class DSHoaDon {
             if(test==true) hoaDon.setMahd(mahdmoi);
         }while(!test);
         hoaDon.sua(filedsxm);
+        if(hoaDon.getXm().getSoluongnhaphang()==0){
+            hoaDon.setMahd(hdon.getMahd());
+           hoaDon.setNgaythanhtoan(hdon.getNgaythanhtoan());
+           hoaDon.setSoSPmua(hdon.getSoSPmua());
+           hoaDon.setXm(hdon.getXm());
+            return;
+        }
         isModified = true;
         xuatDanhSachRaFile("fileName.txt");
         return;
             }
         }
-        if(!found) {
-        	System.out.println("Khong tim thay ma hoa don can sua");
-        }
-        	
+        sc.close();
+        System.out.println("Khong tim thay ma hoa don can sua");
     }
     
     public void xoa() {
