@@ -22,7 +22,7 @@ class QLNhanSu {
             System.out.println("3. Xoa nhan su");
             System.out.println("4. Tim kiem nhan su");
             System.out.println("5. Xem thong tin danh sach nhan su");
-            System.out.println("6.Xem so luong nhan vien");
+            System.out.println("6.Xem so luong nhan su");
             System.out.println("7. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
             select = s.nextInt();
