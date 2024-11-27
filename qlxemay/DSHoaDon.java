@@ -68,6 +68,7 @@ public class DSHoaDon {
       }
       dshd.add(hd);
         }
+	    isModified = true;
     }
 
     public void sua(String filedsxm) {
