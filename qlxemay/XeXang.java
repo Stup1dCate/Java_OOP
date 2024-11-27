@@ -13,7 +13,7 @@ public class XeXang extends XeMay {
     public XeXang() {
     }
 
-    public XeXang(double dungtich, int masp, int soluong, String tenSP, String loaiSP, double gianhap, double giaban, HangSX hangsx) {
+    public XeXang(double dungtich, int masp, int soluong, String tenSP, String loaiSP, int gianhap, int giaban, HangSX hangsx) {
         super(masp, soluong, tenSP, loaiSP, gianhap, giaban, hangsx);
         this.dungtich = dungtich;
     }

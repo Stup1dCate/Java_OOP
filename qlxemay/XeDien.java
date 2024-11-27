@@ -13,7 +13,7 @@ public class XeDien extends XeMay {
     public XeDien() {
     }
 
-    public XeDien(double dungluongpin, int masp, int soluong, String tenSP, String loaiSP, double gianhap, double giaban, HangSX hangsx) {
+    public XeDien(double dungluongpin, int masp, int soluong, String tenSP, String loaiSP, int gianhap, int giaban, HangSX hangsx) {
         super(masp, soluong, tenSP, loaiSP, gianhap, giaban, hangsx);
         this.dungluongpin = dungluongpin;
     }

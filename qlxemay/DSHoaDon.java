@@ -75,8 +75,10 @@ public class DSHoaDon {
         Scanner sc=new Scanner(System.in);
         System.out.println("Nhap ma hoa don can sua:");
         int mahdcu=sc.nextInt();
+        boolean found =  false;
         for(HoaDon hoaDon:dshd){
             if(hoaDon.getMahd()==mahdcu){
+            	found = true;
                 System.out.println("Nhap ma hoa don moi:");
         int mahdmoi;
         boolean test=true;
@@ -99,8 +101,10 @@ public class DSHoaDon {
         return;
             }
         }
-        sc.close();
-        System.out.println("Khong tim thay ma hoa don can sua");
+        if(!found) {
+        	System.out.println("Khong tim thay ma hoa don can sua");
+        }
+        	
     }
     
     public void xoa() {
@@ -203,13 +207,13 @@ public class DSHoaDon {
                int soluong = Integer.parseInt(parts[4]);
                String tensp = parts[5];
                String loaisp = parts[6];
-               double gianhap = Double.parseDouble(parts[7]);
-               Double giaban = Double.parseDouble(parts[8]);
-               int mahsx = Integer.parseInt(parts[9]);
-               String sdthsx = parts[10];
-               String tenhsx = parts[11];
-               String diachi = parts[12];
-               Double dtodl = Double.parseDouble(parts[13]);
+               int gianhap = Integer.parseInt(parts[7]);
+               int giaban = Integer.parseInt(parts[9]);
+               int mahsx = Integer.parseInt(parts[10]);
+               String sdthsx = parts[11];
+               String tenhsx = parts[12];
+               String diachi = parts[13];
+               Double dtodl = Double.parseDouble(parts[8]);
                HangSX hangsx = new HangSX(mahsx, tenhsx, diachi, sdthsx);
                XeMay xm=null;
                   if (loaisp.equals("Xe dien")) {

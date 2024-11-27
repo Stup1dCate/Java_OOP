@@ -8,8 +8,8 @@ public class XeMay implements IXuat {
     private int soluongnhaphang;
     private String tensp;
     protected String loaisp;
-    private double tiennhaphang;
-    private double giasp;
+    private int tiennhaphang;
+    private int giasp;
     private HangSX hangSX;
 
     // Thêm các thuộc tính từ NhaCungCap
@@ -24,7 +24,7 @@ public class XeMay implements IXuat {
     }
 
     // Constructor có tham số
-    public XeMay(int masp, int soluongnhaphang, String tensp, String loaisp, double tiennhaphang, double giasp, HangSX hangSX) {
+    public XeMay(int masp, int soluongnhaphang, String tensp, String loaisp, int tiennhaphang, int giasp, HangSX hangSX) {
         this.masp = masp;
         this.soluongnhaphang = soluongnhaphang;
         this.tensp = tensp;
@@ -50,11 +50,11 @@ public class XeMay implements IXuat {
         this.soluongnhaphang = soluongnhaphang;
     }
 
-    public double getGiasp() {
+    public int getGiasp() {
         return giasp;
     }
 
-    public void setGiasp(double giasp) {
+    public void setGiasp(int giasp) {
         this.giasp = giasp;
     }
 
@@ -74,11 +74,11 @@ public class XeMay implements IXuat {
         this.loaisp = loaisp;
     }
 
-    public double getTiennhaphang() {
+    public int getTiennhaphang() {
         return tiennhaphang;
     }
 
-    public void setTiennhaphang(double tiennhaphang) {
+    public void setTiennhaphang(int tiennhaphang) {
         this.tiennhaphang = tiennhaphang;
     }
 
@@ -137,7 +137,7 @@ public class XeMay implements IXuat {
         System.out.print("So tien nhap hang (1 san pham): ");
          while(true){
             if(in.hasNextDouble()){
-                    tiennhaphang = in.nextDouble();
+                    tiennhaphang = in.nextInt();
                   break;
             }
             System.out.println("So tien nhap hang phai la so . Vui long nhap lai.");
@@ -148,7 +148,7 @@ public class XeMay implements IXuat {
         System.out.print("Gia ban san pham (1 san pham): ");
           while(true){
             if(in.hasNextDouble()){
-                     giasp = in.nextDouble();
+                     giasp = in.nextInt();
                   break;
             }
             System.out.println("So tien ban phai la so . Vui long nhap lai.");
@@ -223,7 +223,7 @@ public class XeMay implements IXuat {
         System.out.println("Nhap so tien nhap moi: ");
            while(true){
             if(in.hasNextDouble()){
-                   this.setTiennhaphang(in.nextDouble());
+                   this.setTiennhaphang(in.nextInt());
                   break;
             }
             System.out.println("So tien nhap hang phai la so . Vui long nhap lai.");
@@ -233,7 +233,7 @@ public class XeMay implements IXuat {
         System.out.println("Nhap so tien ban moi: ");
          while(true){
             if(in.hasNextDouble()){
-                   this.setGiasp(in.nextDouble());
+                   this.setGiasp(in.nextInt());
                   break;
             }
             System.out.println("So tien ban phai la so . Vui long nhap lai.");
