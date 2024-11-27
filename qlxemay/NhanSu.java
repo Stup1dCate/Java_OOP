@@ -116,11 +116,11 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     
     while (true) {
-        System.out.println("Nhap luong: ");
+        System.out.println("Nhap luong: (ngan dong)");
         if (s.hasNextInt()) {
             salary = s.nextInt();
             // Kiểm tra salary là số nguyên và nhỏ hơn 999
-            if (salary < 999) {
+            if (salary < 999999) {
                 break;
             } else {
                 System.out.println("Luong phai nho hon 999 trieu. Vui long nhap lai!");

@@ -11,6 +11,7 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
    Scanner sc = new Scanner(System.in);
     private int SoSPban;
     private static int soluongnv = 0;
+    private int TienThuongSP;
 
     public NhanVien() {
         soluongnv++;
