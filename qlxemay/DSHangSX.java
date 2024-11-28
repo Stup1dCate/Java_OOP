@@ -48,180 +48,261 @@ public class DSHangSX {
     }
 
     public void them() {
-        Scanner s = new Scanner(System.in);
+          Scanner s = new Scanner(System.in);
         System.out.print("\t NHAP THONG TIN HANG SAN XUAT CAN THEM: \n");
         HangSX hsx = null;
         hsx = new HangSX();
         if (hsx != null) {
-            System.out.println("Nhap ma hang san xuat: ");
-            int count;
-            do {
-                count = 0;
-                int masp = s.nextInt();
-                if (masp == 0) {
-                    return;
-                }
-                for (HangSX hang : dshsx) {
-                    if (hang.getMahsx() == masp) {
-                        count++;
-                    }
-                    if (count == 1) {
-                        System.out.println("Ma hang san xuat da ton tai!");
-                        System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                        break;
-                    }
-                }
-                if (count == 0) {
-                    hsx.setMahsx(masp);
-                }
-            } while (count == 1);
-            hsx.nhap();
-            dshsx.add(hsx);
+          int mahsx=0;
+          for(HangSX hsx1:dshsx){
+              mahsx=hsx1.getMahsx()+1;
+          }
+          hsx.setMahsx(mahsx);
+          hsx.nhap();
+          dshsx.add(hsx);
         }
         System.out.println("\n===== DA LUU DU LIEU HANG SAN XUAT THANH CONG ! =====\n");
     }
 
     public void sua() {
-        ArrayList<HangSX> dstam = new ArrayList<>();
-        System.out.println("Nhap ten hang san xuat can sua: ");
+          ArrayList<HangSX> dstam = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        String tensua;
-        int look = 0;
-        tensua = sc.nextLine();
-        for (HangSX hang : dshsx) {
-            if (hang.getTenhsx().equals(tensua)) {
-                System.out.println("Thong tin hang san xuat " + tensua);
-                dstam.add(hang);
-                hang.xuat();
-                look++;
+        System.out.println("1.Sua theo ten hang san xuat");
+        System.out.println("2.Sua theo ma hang san xuat");
+        int select;
+        while (true) {
+            if (sc.hasNextInt()) {
+                select = sc.nextInt();
+                break;
+            } else {
+                sc.nextLine();
+                System.out.println("Khong hop le! Vui long nhap lai");
             }
         }
-        if (look == 0) {
-            System.out.println("Khong tim thay hang SX!");
-            return;
-        }
-        if (look == 1) {
-            for (HangSX hang : dshsx) {
-                if (hang.getTenhsx().equals(tensua)) {
-                    int ma = hang.getMahsx();
-                    System.out.println("Nhap ma moi cua hang san xuat: ");
-                    int count;
-                    do {
-                        count = 0;
-                        int masp = sc.nextInt();
-                        if (masp == 0) {
-                            return;
-                        }
-                        for (HangSX hsx : dshsx) {
-                            if (hsx.getMahsx() == masp) {
-                                count++;
-                            }
-                            if (ma == masp) {
-                                count = 0;
-                            }
-                            if (count == 1) {
-                                System.out.println("Ma hang san xuat da ton tai!");
-                                System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                                break;
-                            }
-                        }
-                        if (count == 0) {
-                            hang.setMahsx(masp);
-                        }
-                    } while (count == 1);
-                    hang.sua();
-                    System.out.println("Sua thanh cong!");
+        switch (select) {
+            case 1:
+                System.out.println("Nhap ten hang san xuat:");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (HangSX hsx: dshsx) {
+                    if (hsx.getTenhsx().equals(tensua)) {
+                        dstam.add(hsx);
+                        hsx.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten hang san xuat!");
                     return;
                 }
-            }
-        }
-        System.out.println("Nhap ma hang san xuat muon sua: ");
-        // Kiem tra xem ma hang san xuat moi co trung voi ma hang san xuat co trong danh sach khong
-        int ma = sc.nextInt();
-        for (HangSX hang : dstam) {
-            if (hang.getMahsx() == ma) {
-                System.out.println("Nhap ma moi cua hang san xuat: ");
-                int count;
-                do {
-                    count = 0;
-                    int masp = sc.nextInt();
-                    if (masp == 0) {
-                        return;
-                    }
-                    for (HangSX hsx : dshsx) {
-                        if (hsx.getMahsx() == masp) {
-                            count++;
+                if (dstam.size() == 1) {
+                    for (HangSX hsx: dshsx) {
+                        if (hsx.getTenhsx().equals(tensua)) {
+                            hsx.sua();
+                            System.out.println("Sua thanh cong!");
+                            return;
                         }
-                        if (count == 1) {
-                            System.out.println("Ma hang san xuat da ton tai!");
-                            System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
+                    }
+                } else {
+                    System.out.println("Nhap ma hang san xuat can sua:");
+                    int mahsx;
+                    while (true) {                        
+                        if(sc.hasNextInt()){
+                            mahsx=sc.nextInt();
                             break;
                         }
+                        else{
+                            System.out.println("Ma hang san xuat phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
                     }
-                    if (count == 0) {
-                        hang.setMahsx(masp);
+                    for (HangSX hsx : dstam) {
+                        if (hsx.getMahsx()== mahsx) {
+                            hsx.sua();
+                            System.out.println("Sua thanh cong!");
+                            return;
+                        }
                     }
-                } while (count == 1);
-                hang.sua();
+                    System.out.printf("Khong tim thay hang san xuat  ten %s co  ma %d",tensua,mahsx);
+                    return;
+
+                }
+                System.out.println("Khong tim thay ten hang san xuat");
                 return;
-            }
+            case 2:
+                int mahsx;
+                 while (true) {                        
+                        if(sc.hasNextInt()){
+                            mahsx=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma hang san xuat phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                 for(HangSX hsx:dshsx){
+                     if(hsx.getMahsx()==mahsx) {
+                         hsx.sua();
+                         System.out.println("Sua thanh cong!");
+                         return;
+                     }
+                     
+                 }
+                System.out.println("Khong tim thay ma hang san xuat.");
+                return;
+            default:
+                System.out.println("Khong hop le!");
+                return;
         }
-        System.out.printf("Khong ton tai hang san xuat %s co ma: %d\n", tensua, ma);
     }
 
     public void xoa() {
+         ArrayList<HangSX> dstam = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        ArrayList<HangSX> dstam = new ArrayList<>();
-        System.out.println("Nhap ten hang san xuat can xoa: ");
-        String tenxoa;
-        int look = 0;
-        tenxoa = sc.nextLine();
-        for (HangSX hang : dshsx) {
-            if (hang.getTenhsx().equals(tenxoa)) {
-                System.out.println("Thong tin hang san xuat " + tenxoa);
-                hang.xuat();
-                dstam.add(hang);
-                look++;
+        System.out.println("1.Xoa theo ten hang san xuat");
+        System.out.println("2.Xoa theo ma hang san xuat");
+        int select;
+        while (true) {
+            if (sc.hasNextInt()) {
+                select = sc.nextInt();
+                break;
+            } else {
+                sc.nextLine();
+                System.out.println("Khong hop le! Vui long nhap lai");
             }
         }
-        if (look == 0) {
-            System.out.println("Khong tim thay hang SX!");
-            return;
-        }
-        if (look == 1) {
-            for (HangSX hang : dshsx) {
-                if (hang.getTenhsx().equals(tenxoa)) {
-                    dshsx.remove(hang);
-                    System.out.println("Xoa thanh cong!");
+        switch (select) {
+            case 1:
+                System.out.println("Nhap ten hang san xuat:");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (HangSX hsx : dshsx) {
+                    if (hsx.getTenhsx().equals(tensua)) {
+                        dstam.add(hsx);
+                        hsx.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten hang san xuat!");
                     return;
                 }
-            }
-        }
-        System.out.println("Nhap ma hang san xuat muon xoa: ");
-        int ma = sc.nextInt();
-        for (HangSX hang : dstam) {
-            if (hang.getMahsx() == ma) {
-                dshsx.remove(hang);
-                System.out.println("Xoa thanh cong!");
+                if (dstam.size() == 1) {
+                    for (HangSX hsx:dshsx) {
+                        if (hsx.getTenhsx().equals(tensua)) {
+                            dshsx.remove(hsx);
+                            System.out.println("Xoa thanh cong!");
+                            return;
+                        }
+                    }
+                } else {
+                    System.out.println("Nhap ma hang san xuat can xoa:");
+                    int mahsx;
+                    while (true) {                        
+                        if(sc.hasNextInt()){
+                            mahsx=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma hang san xuat phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                    for (HangSX hsx:dstam) {
+                        if (hsx.getMahsx() == mahsx) {
+                            dshsx.remove(hsx);
+                            System.out.println("Xoa thanh cong!");
+                            return;
+                        }
+                    }
+                    System.out.printf("Khong tim thay hang san xuat ten %s co  ma %d",tensua,mahsx);
+                    return;
+
+                }
+                System.out.println("Khong tim thay ten hang san xuat");
                 return;
-            }
+            case 2:
+                int mahsx;
+                 while (true) {                        
+                        if(sc.hasNextInt()){
+                            mahsx=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma hang san xuat phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                 for(HangSX hsx:dshsx){
+                     if(hsx.getMahsx()==mahsx) {
+                         dshsx.remove(hsx);
+                         System.out.println("Xoa thanh cong!");
+                         return;
+                     }
+                     
+                 }
+                System.out.println("Khong tim thay ma hang san xuat.");
+                return;
+            default:
+                System.out.println("Khong hop le!");
+                return;
         }
-        System.out.printf("Khong ton tai hang san xuat %s co ma: %d\n", tenxoa, ma);
     }
 
     public void timkiem() {
-        Scanner s = new Scanner(System.in);
-        System.out.print("Nhap ten hang san xuat can tim kiem: ");
-        String find = s.nextLine();
-        boolean found = false;
-        for (HangSX hsx : dshsx) {
-            if (hsx.getTenhsx().contains(find)) {
-                hsx.xuat();
-                found = true;
+        ArrayList<HangSX> dstam = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1.Tim kiem theo ten hang san xuat");
+        System.out.println("2.Tim kiem theo ma hang san xuat");
+        int select;
+        while (true) {
+            if (sc.hasNextInt()) {
+                select = sc.nextInt();
+                break;
+            } else {
+                sc.nextLine();
+                System.out.println("Khong hop le! Vui long nhap lai");
             }
         }
-        if (!found) {
-            System.out.println("Khong co hang san xuat can tim kiem !");
+        switch (select) {
+            case 1:
+                System.out.println("Nhap ten hang san xuat:");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (HangSX hsx : dshsx) {
+                    if (hsx.getTenhsx().equals(tensua)) {
+                        dstam.add(hsx);
+                        hsx.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten hang san xuat!");
+                    return;
+                }
+                return;
+            case 2:
+                int mahsx;
+                 while (true) {                        
+                        if(sc.hasNextInt()){
+                            mahsx=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma hang san xuat phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                 for(HangSX hsx:dshsx){
+                     if(hsx.getMahsx()==mahsx) {
+                        hsx.xuat();
+                         return;
+                     }
+                     
+                 }
+                System.out.println("Khong tim thay ma hang san xuat.");
+                return;
+            default:
+                System.out.println("Khong hop le!");
+                return;
         }
     }
 

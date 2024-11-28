@@ -52,179 +52,254 @@ class DSKhachHang {
         KhachHang kh = null;
         kh = new KhachHang();
         if (kh != null) {
-            System.out.println("Nhap ma Khach hang: ");
-            int count;
-            do {
-                count = 0;
-                int makh = s.nextInt();
-                if (makh == 0) {
-                    return;
-                }
-                for (KhachHang khg : dsKhachHang) {
-                    if (khg.getMakh() == makh) {
-                        count++;
-                    }
-                    if (count == 1) {
-                        System.out.println("Ma khach hang da ton tai!");
-                        System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                        break;
-                    }
-                }
-                if (count == 0) {
-                    kh.setMakh(makh);
-                }
-            } while (count == 1);
-            kh.nhap();
-            dsKhachHang.add(kh);
-
+          int makh=0;
+          for(KhachHang kh1:dsKhachHang){
+              makh=kh1.getMakh()+1;
+          }
+          kh.setMakh(makh);
+          kh.nhap();
+          dsKhachHang.add(kh);
         }
         System.out.println("\n===== DA LUU DU LIEU KHACH HANG THANH CONG ! =====\n");
     }
 
     public void sua() {
-        Scanner sc = new Scanner(System.in);
         ArrayList<KhachHang> dstam = new ArrayList<>();
-        System.out.println("Nhap ten khach hang can sua: ");
-        String tensua;
-        int look = 0;
-        tensua = sc.nextLine();
-        for (KhachHang kh : dsKhachHang) {
-            if (kh.getTenkh().equals(tensua)) {
-                System.out.println("Thong tin khach hang " + tensua);
-                dstam.add(kh);
-                kh.xuat();
-                look++;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1.Sua theo ten khach hang");
+        System.out.println("2.Sua theo ma khach hang");
+        int select;
+        while (true) {
+            if (sc.hasNextInt()) {
+                select = sc.nextInt();
+                break;
+            } else {
+                sc.nextLine();
+                System.out.println("Khong hop le! Vui long nhap lai");
             }
         }
-        if (look == 0) {
-            System.out.println("Khong tim thay thong tin khach hang!");
-            return;
-        }
-        if (look == 1) {
-            for (KhachHang kh : dsKhachHang) {
-                if (kh.getTenkh().equals(tensua)) {
-                    int ma = kh.getMakh();
-                    System.out.println("Nhap ma moi cua khach hang: ");
-                    int count;
-                    do {
-                        count = 0;
-                        int makh = sc.nextInt();
-                        if (makh == 0) {
-                            return;
-                        }
-                        for (KhachHang khg : dsKhachHang) {
-                            if (khg.getMakh() == makh) {
-                                count++;
-                            }
-                            if (ma == makh) {
-                                count = 0;
-                            }
-                            if (count == 1) {
-                                System.out.println("Ma khach hang da ton tai!");
-                                System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                                break;
-                            }
-                        }
-                        if (count == 0) {
-                            kh.setMakh(makh);
-                        }
-                    } while (count == 1);
-                    kh.sua();
-                    System.out.println("Sua thanh cong!");
+        switch (select) {
+            case 1:
+                System.out.println("Nhap ten khach hang:");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (KhachHang kh : dsKhachHang) {
+                    if (kh.getTenkh().equals(tensua)) {
+                        dstam.add(kh);
+                        kh.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten khach hang!");
                     return;
                 }
-            }
-        }
-        // Kiem tra xem ma kh moi co trung voi ma hang kh co trong danh sach khong
-        System.out.println("Nhap ma khach hang muon sua: ");
-        int ma = sc.nextInt();
-        for (KhachHang kh : dstam) {
-            if (kh.getMakh() == ma) {
-                System.out.println("Nhap ma moi cua khach hang: ");
-                int count;
-                do {
-                    count = 0;
-                    int makh = sc.nextInt();
-                    if (makh == 0) {
-                        return;
+                if (dstam.size() == 1) {
+                    for (KhachHang kh : dsKhachHang) {
+                        if (kh.getTenkh().equals(tensua)) {
+                            kh.sua();
+                            System.out.println("Sua thanh cong!");
+                            return;
+                        }
                     }
-                    for (KhachHang khg : dsKhachHang) {
-                        if (khg.getMakh() == makh) {
-                            count++;
-                        }
-                        if (ma == makh) {
-                            count = 0;
-                        }
-                        if (count == 1) {
-                            System.out.println("Ma khach hang da ton tai!");
-                            System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
+                } else {
+                    System.out.println("Nhap ma khach hang can sua:");
+                    int makh;
+                    while (true) {                        
+                        if(sc.hasNextInt()){
+                            makh=sc.nextInt();
                             break;
                         }
+                        else{
+                            System.out.println("Ma khach hang phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
                     }
-                    if (count == 0) {
-                        kh.setMakh(makh);
+                    for (KhachHang kh : dstam) {
+                        if (kh.getMakh() == makh) {
+                            kh.sua();
+                            System.out.println("Sua thanh cong!");
+                            return;
+                        }
                     }
-                } while (count == 1);
-                kh.sua();
-                return;
-            }
-        }
-        System.out.printf("Khong ton tai khach hang %s co ma: %d\n", tensua, ma);
-    }
+                    System.out.printf("Khong tim thay khach hang  ten %s co  ma %d",tensua,makh);
+                    return;
 
+                }
+                System.out.println("Khong tim thay ten khach hang");
+                return;
+            case 2:
+                int makh;
+                 while (true) {                        
+                        if(sc.hasNextInt()){
+                            makh=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma khach hang phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                 for(KhachHang kh:dsKhachHang){
+                     if(kh.getMakh()==makh) {
+                         kh.sua();
+                         System.out.println("Sua thanh cong!");
+                         return;
+                     }
+                     
+                 }
+                System.out.println("Khong tim thay ma khach hang.");
+                return;
+            default:
+                System.out.println("Khong hop le!");
+                return;
+        }
+    }
     public void xoa() {
         ArrayList<KhachHang> dstam = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ten khach hang can xoa: ");
-        String tenxoa;
-        int look = 0;
-        tenxoa = sc.nextLine();
-        for (KhachHang kh : dsKhachHang) {
-            if (kh.getTenkh().equals(tenxoa)) {
-                System.out.println("Thong tin khach hang " + tenxoa);
-                kh.xuat();
-                dstam.add(kh);
-                look++;
+        System.out.println("1.Xoa theo ten khach hang");
+        System.out.println("2.Xoa theo ma khach hang");
+        int select;
+        while (true) {
+            if (sc.hasNextInt()) {
+                select = sc.nextInt();
+                break;
+            } else {
+                sc.nextLine();
+                System.out.println("Khong hop le! Vui long nhap lai");
             }
         }
-        if (look == 0) {
-            System.out.println("Khong tim thay thong tin khach hang!");
-            return;
-        }
-        if (look == 1) {
-            for (KhachHang kh : dsKhachHang) {
-                if (kh.getTenkh().equals(tenxoa)) {
-                    dsKhachHang.remove(kh);
-                    System.out.println("Xoa thanh cong!");
+        switch (select) {
+            case 1:
+                System.out.println("Nhap ten khach hang:");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (KhachHang kh : dsKhachHang) {
+                    if (kh.getTenkh().equals(tensua)) {
+                        dstam.add(kh);
+                        kh.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten khach hang!");
                     return;
                 }
-            }
-        }
-        System.out.println("Nhap ma hang san xuat muon xoa: ");
-        int ma = sc.nextInt();
-        for (KhachHang kh : dstam) {
-            if (kh.getMakh() == ma) {
-                dsKhachHang.remove(kh);
-                System.out.println("Xoa thanh cong!");
+                if (dstam.size() == 1) {
+                    for (KhachHang kh : dsKhachHang) {
+                        if (kh.getTenkh().equals(tensua)) {
+                            dsKhachHang.remove(kh);
+                            System.out.println("Xoa thanh cong!");
+                            return;
+                        }
+                    }
+                } else {
+                    System.out.println("Nhap ma khach hang can xoa:");
+                    int makh;
+                    while (true) {                        
+                        if(sc.hasNextInt()){
+                            makh=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma khach hang phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                    for (KhachHang kh : dstam) {
+                        if (kh.getMakh() == makh) {
+                            dsKhachHang.remove(kh);
+                            System.out.println("Xoa thanh cong!");
+                            return;
+                        }
+                    }
+                    System.out.printf("Khong tim thay khach hang  ten %s co  ma %d",tensua,makh);
+                    return;
+
+                }
+                System.out.println("Khong tim thay ten khach hang");
                 return;
-            }
+            case 2:
+                int makh;
+                 while (true) {                        
+                        if(sc.hasNextInt()){
+                            makh=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma khach hang phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                 for(KhachHang kh:dsKhachHang){
+                     if(kh.getMakh()==makh) {
+                         dsKhachHang.remove(kh);
+                         System.out.println("Xoa thanh cong!");
+                         return;
+                     }
+                     
+                 }
+                System.out.println("Khong tim thay ma khach hang.");
+                return;
+            default:
+                System.out.println("Khong hop le!");
+                return;
         }
-        System.out.printf("Khong ton tai hang san xuat %s co ma: %d\n", tenxoa, ma);
     }
 
     public void timkiem() {
-        Scanner s = new Scanner(System.in);
-        System.out.print("Nhap ten khach hang can tim kiem: ");
-        String find = s.nextLine();
-        boolean found = false;
-        for (KhachHang kh : dsKhachHang) {
-            if (kh.getTenkh().contains(find)) {
-                kh.xuat();
-                found = true;
+     ArrayList<KhachHang> dstam = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1.Tim kiem theo ten khach hang");
+        System.out.println("2.Tim theo ma khach hang");
+        int select;
+        while (true) {
+            if (sc.hasNextInt()) {
+                select = sc.nextInt();
+                break;
+            } else {
+                sc.hasNextLine();
+                System.out.println("Khong hop le! Vui long nhap lai");
             }
         }
-        if (!found) {
-            System.out.println("Khong co ten khach hang can tim kiem!");
+        switch (select) {
+            case 1:
+                System.out.println("Nhap ten khach hang:");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (KhachHang kh : dsKhachHang) {
+                    if (kh.getTenkh().equals(tensua)) {
+                        dstam.add(kh);
+                        kh.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten khach hang!");
+                    return;
+                }
+            case 2:
+                int makh;
+                 while (true) {                        
+                        if(sc.hasNextInt()){
+                            makh=sc.nextInt();
+                            break;
+                        }
+                        else{
+                            System.out.println("Ma khach hang phai la so nguyen. Vui long nhap lai");
+                            sc.nextLine();
+                        }
+                    }
+                 for(KhachHang kh:dsKhachHang){
+                     if(kh.getMakh()==makh) {
+                         kh.xuat();
+                         return;
+                     }
+                     
+                 }
+                System.out.println("Khong tim thay ma khach hang.");
+                return;
+            default:
+                System.out.println("Khong hop le!");
+                return;
         }
     }
 

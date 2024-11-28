@@ -158,5 +158,4 @@ public abstract class NhanSu implements INhap,IXuat{
         salary=s.nextInt();
     }
 
-  
 }

@@ -13,7 +13,6 @@ public class Quanly extends NhanSu implements INhap, IXuat {
     private static int soluongnv=0;
 
     public Quanly() {
-        soluongnv++;
     }
     public static void SoLuongQuanLy(){
         System.out.println("So luong quan ly: "+ soluongnv);
@@ -22,6 +21,7 @@ public class Quanly extends NhanSu implements INhap, IXuat {
     public Quanly(int manv, String ten, int age, String sdt, String ChucVu, int salary, int bonus) {
         super(manv, ten, age, sdt, ChucVu, salary);
         this.bonus = bonus;
+         soluongnv++;
     }
 
     public int getBonus() {
@@ -36,8 +36,17 @@ public class Quanly extends NhanSu implements INhap, IXuat {
     public void nhap() {
         Scanner s = new Scanner(System.in);
         super.nhap();
+         soluongnv++;
         System.out.println("Nhap so tien thuong cua quan ly: ");
         bonus = s.nextInt();
+    }
+
+    public static int getSoluongnv() {
+        return soluongnv;
+    }
+
+    public static void setSoluongnv(int soluongnv) {
+        Quanly.soluongnv = soluongnv;
     }
 
     @Override

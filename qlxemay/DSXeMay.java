@@ -60,102 +60,40 @@ class DSXeMay {
     public void them(String filehangsx) {
         Scanner sc = new Scanner(System.in);
         XeMay xm = null;
-        int luachon;
-        System.out.println("Chon loai xe: ");
-        System.out.println("1. Them xe dien ");
-        System.out.println("2. Them xe xang ");
-        System.out.println("Nhap lua chon: ");
+        int maxm = 1;
+        for (XeMay xmay : dsXemay) {
+            maxm = xmay.getMasp() + 1;
+        }
+        System.out.println("Chon loai xe:");
+        System.out.println("1.Xe dien");
+        System.out.println("2.Xe xang");
+        int choice;
         while (true) {
             if (sc.hasNextInt()) {
-                luachon = sc.nextInt();
+                choice = sc.nextInt();
                 break;
+            } else {
+                sc.nextLine();
+                System.out.println("Khong hop le! Vui long nhap lai.");
             }
-            System.out.println("Lua chon khong hop le! . Vui long nhap lai.");
-            sc.nextLine();
         }
-
-        switch (luachon) {
+        switch (choice) {
             case 1:
                 xm = new XeDien();
-                if (xm != null) {
-                    System.out.println("Nhap ma Xe may: ");
-                    // Kiem tra ma xe may co bi trung khong
-                    int count;
-                    do {
-                        count = 0;
-                        int maxm;
-                        while (true) {
-                            if (sc.hasNextInt()) {
-                                maxm = sc.nextInt();
-                                break;
-                            }
-                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
-                            sc.nextLine();
-                        }
-
-                        if (maxm == 0) {
-                            return;
-                        }
-                        for (XeMay xd : dsXemay) {
-                            if (xd.getMasp() == maxm) {
-                                count++;
-                            }
-                            if (count == 1) {
-                                System.out.println("Ma xe may da ton tai!");
-                                System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                                break;
-                            }
-                        }
-                        if (count == 0) {
-                            xm.setMasp(maxm);
-                        }
-                    } while (count == 1);
-                    xm.nhap(filehangsx);
-                    xm.setLoaisp("Xe dien");
-                    dsXemay.add(xm);
-                }
+                xm.setMasp(maxm);
+                xm.setLoaisp("Xe dien");
+                xm.nhap(filehangsx);
+                dsXemay.add(xm);
                 break;
             case 2:
                 xm = new XeXang();
-                if (xm != null) {
-                    System.out.println("Nhap ma xe may: ");
-                    int count;
-                    do {
-                        count = 0;
-                       int maxm;
-                        while (true) {
-                            if (sc.hasNextInt()) {
-                                maxm = sc.nextInt();
-                                break;
-                            }
-                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
-                            sc.nextLine();
-                        }
-
-                        if (maxm == 0) {
-                            return;
-                        }
-                        for (XeMay xx : dsXemay) {
-                            if (xx.getMasp() == maxm) {
-                                count++;
-                            }
-                            if (count == 1) {
-                                System.out.println("Ma xe may da ton tai!");
-                                System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                                break;
-                            }
-                        }
-                        if (count == 0) {
-                            xm.setMasp(maxm);
-                        }
-                    } while (count == 1);
-                    xm.nhap(filehangsx);
-                    xm.setLoaisp("Xe xang");
-                    dsXemay.add(xm);
-                }
+                xm.setMasp(maxm);
+                xm.setLoaisp("Xe xang");
+                xm.nhap(filehangsx);
+                dsXemay.add(xm);
                 break;
             default:
-                System.out.println("Lua chon khong hop le!");
+                System.out.println("Khong hop le");
                 return;
         }
         DSHangSX dshsx = new DSHangSX();
@@ -167,360 +105,400 @@ class DSXeMay {
         }
         dshsx.getDshsx().add(xm.getHangSX());
         dshsx.xuatDanhSachRaFile(filehangsx);
-
     }
 
     public void sua(String filehangsx) {
-        Scanner s = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        DSHangSX dshsx = new DSHangSX();
+        dshsx.taiDanhSachTuFile(filehangsx);
+
         ArrayList<XeMay> dstam = new ArrayList<>();
-        System.out.println("Nhap ten xe may can sua: ");
-        String tensua;
-        int look = 0;
-        tensua = s.nextLine();
-        for (XeMay xm : dsXemay) {
-            if (xm.getTensp().equals(tensua)) {
-                System.out.println("Thong tin xe may: " + tensua);
-                dstam.add(xm);
-                xm.xuat();
-                look++;
-            }
-        }
-        if (look == 0) {
-            System.out.println("Khong tim thay thong tin xe may!");
-            return;
-        }
-        if (look == 1) {
-            for (XeMay xm : dsXemay) {
-                if (xm.getTensp().equals(tensua)) {
-                    int ma = xm.getMasp();
-                    HangSX hsx = new HangSX(xm.getHangSX().getMahsx(), xm.getHangSX().getTenhsx(), xm.getHangSX().getDiachihsx(), xm.getHangSX().getSdthsx());
-
-                    System.out.println("Chon loai xe moi: ");
-                    System.out.println("1.Xe dien ");
-                    System.out.println("2.Xe xang ");
-                    System.out.println("Nhap lua chon: ");
-                    int choice ;
-                     while (true) {
-            if (s.hasNextInt()) {
-                choice = s.nextInt();
+        System.out.println("\t SUA THONG TIN SAN PHAM");
+        System.out.println("1.Sua san pham theo ten");
+        System.out.println("2.Sua san pham theo ma");
+        int choice;
+        while (true) {
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
                 break;
+            } else {
+                System.out.println("Khong hop le! Vui long nhap lai.");
+                sc.nextLine();
             }
-            System.out.println("Lua chon khong hop le! . Vui long nhap lai.");
-            s.nextLine();
         }
-                    switch (choice) {
-                        case 1:
-                            xm = new XeDien();
-                            xm.setMasp(ma);
-                            xm.setLoaisp("Xe dien");
-                            break;
-                        case 2:
-                            xm = new XeXang();
-                            xm.setMasp(ma);
-                            xm.setLoaisp("Xe xang");
-
-                            break;
-                        default:
-                            System.out.println("Lua chon khong hop le!");
-                            return;
-                    }
-                    System.out.println("Nhap ma moi cua xe may: ");
-                    int count;
-                    do {
-                        count = 0;
-                        int masp;
-                        while (true) {
-                            if (s.hasNextInt()) {
-                                masp = s.nextInt();
-                                break;
-                            }
-                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
-                            s.nextLine();
-                        }
-
-                        if (masp == 0) {
-                            return;
-                        }
-                        for (XeMay xmay : dsXemay) {
-                            if (xmay.getMasp() == masp) {
-                                count++;
-                            }
-                            if (masp == ma) {
-                                count = 0;
-                            }
-                            if (count == 1) {
-                                System.out.println("Ma xe may da ton tai!");
-                                System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                                break;
-                            }
-                        }
-                        if (count == 0) {
-                            xm.setMasp(masp);
-                        }
-                    } while (count == 1);
-                    xm.sua();
-                    for (int i = 0; i < dsXemay.size(); i++) {
-                        if (dsXemay.get(i).getTensp().equals(tensua)) {
-
-                            dsXemay.set(i, xm);
-                        }
-                    }
-                    DSHangSX dshsx = new DSHangSX();
-                    dshsx.taiDanhSachTuFile(filehangsx);
-                    if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
-                        for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                            if (dshsx.getDshsx().get(i).getMahsx() == xm.getHangSX().getMahsx()) {
-                                dshsx.getDshsx().set(i, xm.getHangSX());
-                            }
-                            dshsx.xuatDanhSachRaFile(filehangsx);
-                            return;
-                        }
-                    }
-                    for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                        if (dshsx.getDshsx().get(i).getMahsx() == hsx.getMahsx()) {
-                            dshsx.getDshsx().remove(i);
-                        }
-                    }
-                    for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                        if (dshsx.getDshsx().get(i).getMahsx() == xm.getHangSX().getMahsx()) {
-                            dshsx.getDshsx().set(i, xm.getHangSX());
-                            dshsx.xuatDanhSachRaFile(filehangsx);
-                            return;
-                        }
-
-                    }
-                    dshsx.getDshsx().add(xm.getHangSX());
-                    dshsx.xuatDanhSachRaFile(filehangsx);
+        switch (choice) {
+            case 1:
+                System.out.println("Nhap ten san pham");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (XeMay xm : dsXemay) {
+                    dstam.add(xm);
+                    xm.xuat();
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten san pham");
                     return;
                 }
-            }
-        }
-        // Kiem tra xem ma ns moi co trung voi ma ns co trong danh sach khong
-        System.out.println("Nhap ma xe may muon sua: ");
-        int ma;
-                        while (true) {
-                            if (s.hasNextInt()) {
-                                ma = s.nextInt();
-                                break;
+                if (dstam.size() == 1) {
+                    for (XeMay xm : dsXemay) {
+                        if (xm.getTensp().equals(tensua)) {
+                            System.out.println("Chon Loai xe:");
+                            System.out.println("1. Xe dien");
+                            System.out.println("2. Xe xang");
+                            int choic;
+                            while (true) {
+                                if (sc.hasNextInt()) {
+                                    choic = sc.nextInt();
+                                    break;
+                                } else {
+                                    System.out.println("Khong hop le! Vui long nhap lai.");
+                                    sc.nextLine();
+                                }
                             }
-                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
-                            s.nextLine();
-                        }
-        for (XeMay xm : dstam) {
-            if (xm.getMasp() == ma) {
-                System.out.println("Nhap ma moi cua xe may: ");
-                int count;
-                do {
-                    count = 0;
-                    int maxm ;
-                    while (true) {
-                            if (s.hasNextInt()) {
-                                maxm = s.nextInt();
-                                break;
+                            sc.nextLine();
+                            int maxm;
+                            switch (choic) {
+                                case 1:
+                                    maxm = xm.getMasp();
+                                    xm = new XeDien();
+                                    xm.setMasp(maxm);
+                                    xm.setLoaisp("Xe dien");
+                                    xm.sua();
+                                    for (int i = 0; i < dsXemay.size(); i++) {
+                                        if (dsXemay.get(i).getMasp() == xm.getMasp()) {
+                                            dsXemay.set(i, xm);
+                                            for (HangSX hsx : dshsx.getDshsx()) {
+                                                if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
+                                                    return;
+                                                }
+                                            }
+                                            dshsx.getDshsx().add(xm.getHangSX());
+                                            dshsx.xuatDanhSachRaFile(filehangsx);
+                                            System.out.println("Sua thanh cong");
+                                            return;
+                                        }
+                                    }
+                                    return;
+                                case 2:
+                                    maxm = xm.getMasp();
+                                    xm = new XeXang();
+                                    xm.setMasp(maxm);
+                                    xm.setLoaisp("Xe xang");
+                                    xm.sua();
+                                    for (int i = 0; i < dsXemay.size(); i++) {
+                                        if (dsXemay.get(i).getMasp() == xm.getMasp()) {
+                                            dsXemay.set(i, xm);
+                                            for (HangSX hsx : dshsx.getDshsx()) {
+                                                if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
+                                                    return;
+                                                }
+                                            }
+                                            dshsx.getDshsx().add(xm.getHangSX());
+                                            dshsx.xuatDanhSachRaFile(filehangsx);
+                                            System.out.println("Sua thanh cong");
+                                            return;
+                                        }
+                                    }
+                                    return;
+                                default:
+                                    System.out.println("Khong hop le!");
+                                    return;
                             }
-                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
-                            s.nextLine();
-                        }
-                    if (maxm == 0) {
-                        return;
-                    }
-                    for (XeMay xmay : dsXemay) {
-                        if (xmay.getMasp() == maxm) {
-                            count++;
-                        }
-                        if (maxm == ma) {
-                            count = 0;
-                        }
-                        if (count == 1) {
-                            System.out.println("Ma Xe may da ton tai!");
-                            System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                            break;
                         }
                     }
-                    if (count == 0) {
-                        xm.setMasp(maxm);
-                    }
-                } while (count == 1);
-                int maxm = xm.getMasp();
-                HangSX hsx = new HangSX(xm.getHangSX().getMahsx(), xm.getHangSX().getTenhsx(), xm.getHangSX().getDiachihsx(), xm.getHangSX().getSdthsx());;
-                System.out.println("Chon loai xe moi: ");
-                System.out.println("1.Xe dien ");
-                System.out.println("2.Xe xang ");
-                System.out.println("Nhap lua chon: ");
-                int choice;
+                }
+                System.out.println("Nhap ma xe may muon sua");
+                int maxm;
                 while (true) {
-                            if (s.hasNextInt()) {
-                                choice = s.nextInt();
+                    if (sc.hasNextInt()) {
+                        maxm = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (XeMay xm : dstam) {
+                    if (xm.getMasp() == maxm) {
+                        System.out.println("Chon Loai xe:");
+                        System.out.println("1. Xe dien");
+                        System.out.println("2. Xe xang");
+                        int choic;
+                        while (true) {
+                            if (sc.hasNextInt()) {
+                                choic = sc.nextInt();
                                 break;
+                            } else {
+                                System.out.println("Khong hop le! Vui long nhap lai.");
+                                sc.nextLine();
                             }
-                            System.out.println("Khong hop le . Vui long nhap lai.");
-                            s.nextLine();
                         }
-                switch (choice) {
-                    case 1:
-                        xm = new XeDien();
-                        xm.setMasp(maxm);
-                        xm.setLoaisp("Xe dien");
-                        break;
-                    case 2:
-                        xm = new XeXang();
-                        xm.setMasp(maxm);
-                        xm.setLoaisp("Xe xang");
-
-                        break;
-                    default:
-                        System.out.println("Lua chon khong hop le!");
-                        return;
-                }
-
-                xm.sua();
-                for (int i = 0; i < dsXemay.size(); i++) {
-                    if (xm.getMasp() == dsXemay.get(i).getMasp()) {
-                        dsXemay.set(i, xm);
-                    }
-                }
-                DSHangSX dshsx = new DSHangSX();
-                dshsx.taiDanhSachTuFile(filehangsx);
-
-                if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
-                    for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                        if (dshsx.getDshsx().get(i).getMahsx() == xm.getHangSX().getMahsx()) {
-                            dshsx.getDshsx().set(i, xm.getHangSX());
+                        sc.nextLine();
+                        switch (choic) {
+                            case 1:
+                                maxm = xm.getMasp();
+                                xm = new XeDien();
+                                xm.setMasp(maxm);
+                                xm.setLoaisp("Xe dien");
+                                xm.sua();
+                                for (int i = 0; i < dsXemay.size(); i++) {
+                                    if (dsXemay.get(i).getMasp() == xm.getMasp()) {
+                                        dsXemay.set(i, xm);
+                                        for (HangSX hsx : dshsx.getDshsx()) {
+                                            if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
+                                                return;
+                                            }
+                                        }
+                                        dshsx.getDshsx().add(xm.getHangSX());
+                                        dshsx.xuatDanhSachRaFile(filehangsx);
+                                        System.out.println("Sua thanh cong");
+                                        return;
+                                    }
+                                }
+                                return;
+                            case 2:
+                                maxm = xm.getMasp();
+                                xm = new XeXang();
+                                xm.setMasp(maxm);
+                                xm.setLoaisp("Xe xang");
+                                xm.sua();
+                                for (int i = 0; i < dsXemay.size(); i++) {
+                                    if (dsXemay.get(i).getMasp() == xm.getMasp()) {
+                                        dsXemay.set(i, xm);
+                                        for (HangSX hsx : dshsx.getDshsx()) {
+                                            if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
+                                                return;
+                                            }
+                                        }
+                                        dshsx.getDshsx().add(xm.getHangSX());
+                                        dshsx.xuatDanhSachRaFile(filehangsx);
+                                        System.out.println("Sua thanh cong");
+                                        return;
+                                    }
+                                }
+                                return;
+                            default:
+                                System.out.println("Khong hop le!");
+                                return;
                         }
-                        dshsx.xuatDanhSachRaFile(filehangsx);
-                        return;
                     }
                 }
-                for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                    if (dshsx.getDshsx().get(i).getMahsx() == hsx.getMahsx()) {
-                        dshsx.getDshsx().remove(i);
-                    }
-                }
-                for (int i = 0; i < dshsx.getDshsx().size(); i++) {
-                    if (dshsx.getDshsx().get(i).getMahsx() == xm.getHangSX().getMahsx()) {
-                        dshsx.getDshsx().set(i, xm.getHangSX());
-                        dshsx.xuatDanhSachRaFile(filehangsx);
-                        return;
-                    }
-
-                }
-                dshsx.getDshsx().add(xm.getHangSX());
-                dshsx.xuatDanhSachRaFile(filehangsx);
+                System.out.printf("Khong tim thay san pham %s co ma %d", tensua, maxm);
                 return;
-            }
+            case 2:
+                System.out.println("Nhap ma san pham can sua");
+                int maxmay;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        maxmay = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (XeMay xm : dsXemay) {
+                    if (xm.getMasp() == maxmay) {
+                        System.out.println("Chon Loai xe:");
+                        System.out.println("1. Xe dien");
+                        System.out.println("2. Xe xang");
+                        int choic;
+                        while (true) {
+                            if (sc.hasNextInt()) {
+                                choic = sc.nextInt();
+                                break;
+                            } else {
+                                System.out.println("Khong hop le! Vui long nhap lai.");
+                                sc.nextLine();
+                            }
+                        }
+                        sc.nextLine();
+                        switch (choic) {
+                            case 1:
+                                maxmay = xm.getMasp();
+                                xm = new XeDien();
+                                xm.setMasp(maxmay);
+                                xm.setLoaisp("Xe dien");
+                                xm.sua();
+                                for (int i = 0; i < dsXemay.size(); i++) {
+                                    if (dsXemay.get(i).getMasp() == xm.getMasp()) {
+                                        dsXemay.set(i, xm);
+                                        for (HangSX hsx : dshsx.getDshsx()) {
+                                            if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
+                                                return;
+                                            }
+                                        }
+                                        dshsx.getDshsx().add(xm.getHangSX());
+                                        dshsx.xuatDanhSachRaFile(filehangsx);
+                                        System.out.println("Sua thanh cong");
+                                        return;
+                                    }
+                                }
+                                return;
+                            case 2:
+                                maxmay = xm.getMasp();
+                                xm = new XeXang();
+                                xm.setMasp(maxmay);
+                                xm.setLoaisp("Xe xang");
+                                xm.sua();
+                                for (int i = 0; i < dsXemay.size(); i++) {
+                                    if (dsXemay.get(i).getMasp() == xm.getMasp()) {
+                                        dsXemay.set(i, xm);
+                                        for (HangSX hsx : dshsx.getDshsx()) {
+                                            if (hsx.getMahsx() == xm.getHangSX().getMahsx()) {
+                                                return;
+                                            }
+                                        }
+                                        dshsx.getDshsx().add(xm.getHangSX());
+                                        dshsx.xuatDanhSachRaFile(filehangsx);
+                                        System.out.println("Sua thanh cong");
+                                        return;
+                                    }
+                                }
+                                return;
+                            default:
+                                System.out.println("Khong hop le!");
+                                return;
+                        }
+                    }
+                }
+                System.out.println("Khong tim thay ma san pham");
+                return;
+            default:
+                System.out.println("Khong hop le!");
         }
-        System.out.printf("Khong ton tai nhan su %s co ma: %d\n", tensua, ma);
     }
 
     public void xoa() {
-        ArrayList<XeMay> dstam = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ten xe may can xoa: ");
-        String tenxoa;
-        int look = 0;
-        tenxoa = sc.nextLine();
-        for (XeMay xm : dsXemay) {
-            if (xm.getTensp().equals(tenxoa)) {
-                System.out.println("Thong tin xe may " + tenxoa);
-                xm.xuat();
-                dstam.add(xm);
-                look++;
+
+        ArrayList<XeMay> dstam = new ArrayList<>();
+        System.out.println("\t SUA THONG TIN SAN PHAM");
+        System.out.println("1.Xoa san pham theo ten");
+        System.out.println("2.Xoa san pham theo ma");
+        int choice;
+        while (true) {
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+                break;
+            } else {
+                System.out.println("Khong hop le! Vui long nhap lai.");
+                sc.nextLine();
             }
         }
-        if (look == 0) {
-            System.out.println("Khong tim thay thong tin xe may!");
-            return;
-        }
-        if (look == 1) {
-            for (XeMay xm : dsXemay) {
-                if (xm.getTensp().equals(tenxoa)) {
-                    dsXemay.remove(xm);
-                    System.out.println("Xoa thanh cong!");
+        switch (choice) {
+            case 1:
+                System.out.println("Nhap ten san pham");
+                sc.nextLine();
+                String tensua = sc.nextLine();
+                for (XeMay xm : dsXemay) {
+                    dstam.add(xm);
+                    xm.xuat();
+                }
+                if (dstam.size() == 0) {
+                    System.out.println("Khong tim thay ten san pham");
                     return;
                 }
-            }
-        }
-        System.out.println("Nhap ma xe may muon xoa: ");
-        
-        int ma;
-        while (true) {
-                            if (sc.hasNextInt()) {
-                                ma = sc.nextInt();
-                                break;
-                            }
-                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
-                            sc.nextLine();
+                if (dstam.size() == 1) {
+                    for (XeMay xm : dsXemay) {
+                        if (xm.getTensp().equals(tensua)) {
+                            dsXemay.remove(xm);
                         }
-        for (XeMay xm : dstam) {
-            if (xm.getMasp() == ma) {
-                dsXemay.remove(xm);
-                System.out.println("Xoa thanh cong!");
+                    }
+                }
+                System.out.println("Nhap ma xe may muon xoa");
+                int maxm;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        maxm = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (XeMay xm : dstam) {
+                    if (xm.getMasp() == maxm) {
+                       dsXemay.remove(xm);
+                    }
+                }
+                System.out.printf("Khong tim thay san pham %s co ma %d", tensua, maxm);
                 return;
-            }
+            case 2:
+                System.out.println("Nhap ma san pham can xoa");
+                int maxmay;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        maxmay = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (XeMay xm : dsXemay) {
+                    if (xm.getMasp() == maxmay) {
+                        dsXemay.remove(xm);
+                    }
+                }
+                System.out.println("Khong tim thay ma san pham");
+                return;
+            default:
+                System.out.println("Khong hop le!");
         }
-        System.out.printf("Khong ton tai nhan su %s co ma: %d\n", tenxoa, ma);
     }
 
     public void timKiem() {
         Scanner sc = new Scanner(System.in);
-        int luachon;
-        System.out.println("Lua chon phuong thuc tim kiem");
-        System.out.println("1. Theo ma xe may");
-        System.out.println("2. Theo ten xe may");
-        System.out.print("Nhap lua chon: ");
+        ArrayList<XeMay> dstam=new ArrayList<>();
+        System.out.println("\t TIM KIEM THONG TIN NHAN SU");
+        System.out.println("1.Tim kiem san pham theo ten");
+        System.out.println("2.Tim kiem san pham theo ma");
+        int choice;
         while (true) {
-                            if (sc.hasNextInt()) {
-                                luachon= sc.nextInt();
-                                break;
-                            }
-                            System.out.println("Khong hop le! . Vui long nhap lai.");
-                            sc.nextLine();
-                        }
-        sc.nextLine(); // Đọc bỏ dòng mới còn sót sau khi nhập số
-
-        switch (luachon) {
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+                break;
+            } else {
+                System.out.println("Khong hop le! Vui long nhap lai.");
+                sc.nextLine();
+            }
+        }
+        switch (choice) {
             case 1:
-                System.out.print("Nhap ma xe may can tim kiem: ");
-                int maxm;
-                while (true) {
-                            if (sc.hasNextInt()) {
-                                maxm = sc.nextInt();
-                                break;
-                            }
-                            System.out.println("Ma xe may phai la so! . Vui long nhap lai.");
-                            sc.nextLine();
-                        }
-                boolean foundById = false;
+                System.out.println("Nhap ten san pham");
+                sc.nextLine();
+                String tensua = sc.nextLine();
                 for (XeMay xm : dsXemay) {
-                    if (xm.getMasp() == maxm) {
-                        xm.xuat();
-                        foundById = true;
-                        break; // Ngừng tìm kiếm sau khi tìm thấy
-                    }
+                    dstam.add(xm);
+                    xm.xuat();
                 }
-                if (!foundById) {
-                    System.out.println("Khong tim thay xe may co ma so tuong ung.");
+                if(dstam.size()==0){
+                      System.out.printf("Khong tim thay san pham");
+                return;
                 }
-                break;
-
+              return;
             case 2:
-                System.out.print("Nhap ten Xe may can tim kiem: ");
-                String find = sc.nextLine();
-                boolean foundByName = false;
-                for (XeMay xm : dsXemay) {
-                    if (xm.getTensp().contains(find)) {
-                        xm.xuat();
-                        foundByName = true;
+                System.out.println("Nhap ma san pham can tim");
+                int maxmay;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        maxmay = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
                     }
                 }
-                if (!foundByName) {
-                    System.out.println("Khong co xe may can tim kiem!");
+                for (XeMay xm : dsXemay) {
+                    if (xm.getMasp() == maxmay) {
+                       xm.xuat();
+                    }
                 }
-                break;
-
+                System.out.println("Khong tim thay ma san pham");
+                return;
             default:
-                System.out.println("Lua chon khong hop le. Vui long chon lai:");
-                break;
+                System.out.println("Khong hop le!");
         }
     }
 
@@ -575,8 +553,8 @@ class DSXeMay {
             int soluong = Integer.parseInt(parts[1]);
             String tensp = parts[2];
             String loaisp = parts[3];
-            Double gianhap = Double.parseDouble(parts[4]);
-            Double giaban = Double.parseDouble(parts[6]);
+            int gianhap = Integer.parseInt(parts[4]);
+            int giaban = Integer.parseInt(parts[6]);
             int mahsx = Integer.parseInt(parts[7]);
             String sdthsx = parts[8];
             String tenhsx = parts[9];

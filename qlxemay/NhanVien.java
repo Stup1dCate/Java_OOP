@@ -14,7 +14,7 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
     private int TienThuongSP;
 
     public NhanVien() {
-        soluongnv++;
+
     }
     public static void Soluongnhanvien(){
         System.out.println("So luong nhan vien: "+soluongnv);
@@ -24,10 +24,19 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
         super(manv, ten, age, sdt, ChucVu, salary);
         this.SoSPban = SoSPban;
         this.TienThuongSP=TienThuongSP;
+         soluongnv++;
     }
 
     public int getSoSPban() {
         return SoSPban;
+    }
+
+    public static int getSoluongnv() {
+        return soluongnv;
+    }
+
+    public static void setSoluongnv(int soluongnv) {
+        NhanVien.soluongnv = soluongnv;
     }
 
     public void setSoSPban(int SoSPban) {
@@ -50,6 +59,7 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
         SoSPban = s.nextInt();
         System.out.println("Nhap so tien thuong tren moi san pham ban duoc: (ngan dong)");
         TienThuongSP=s.nextInt();
+                soluongnv++;
     }
 
     @Override
@@ -67,7 +77,7 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
         super.Sua();
         System.out.println("Nhap so san pham ban duoc: ");
         SoSPban = sc.nextInt();
-        System.out.println("Nhap tien thuong tren moi san pham ban duoc: ");
+        System.out.println("Nhap tien thuong tren moi san pham ban duoc (ngan dong): ");
         TienThuongSP=sc.nextInt();
         System.out.println("Sua thanh cong!");
     }

@@ -45,6 +45,7 @@ class QLNhanSu {
                 	dsns.Xem();
                     break;
                 case 6:
+                    
                     Quanly.SoLuongQuanLy();
                     NhanVien.Soluongnhanvien();
                     break;

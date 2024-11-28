@@ -11,25 +11,34 @@ public class HoaDon implements IXuat {
 
     private int mahd;
     private String ngaythanhtoan;
-    //masp : key de in ra chi tiet SP
     private XeMay xm;
     // SoSPmua tin gia tien hoa don
     private int SoSPmua;
+    private KhachHang khachhang;
+
+    public KhachHang getKhachhang() {
+        return khachhang;
+    }
+
+    public void setKhachhang(KhachHang khachhang) {
+        this.khachhang = khachhang;
+    }
+
+    public HoaDon(int mahd, String ngaythanhtoan, XeMay xm, int SoSPmua, KhachHang khachhang) {
+        this.mahd = mahd;
+        this.ngaythanhtoan = ngaythanhtoan;
+        this.xm = xm;
+        this.SoSPmua = SoSPmua;
+        this.khachhang = khachhang;
+    }
+
+   
 
     public HoaDon() {
     }
-    public HoaDon(HoaDon hoaDon){
-        this.mahd=hoaDon.mahd;
-        this.SoSPmua=hoaDon.SoSPmua;
-        this.ngaythanhtoan=hoaDon.ngaythanhtoan;
-        this.xm=hoaDon.xm;
-    }
-    public HoaDon(int mahd, String ngaythanhtoan, XeMay dsxm, int SoSPmua) {
-        this.mahd = mahd;
-        this.ngaythanhtoan = ngaythanhtoan;
-        this.xm = dsxm;
-        this.SoSPmua = SoSPmua;
-    }
+
+    
+    
 
     public int getMahd() {
         return mahd;
@@ -67,7 +76,7 @@ public class HoaDon implements IXuat {
         return xm.getGiasp() * SoSPmua;
     }
 
-    public void Nhap(String filedsxm) {
+    public void Nhap(String filedsxm,String filedskh) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap ma xe may: ");
         DSXeMay dsxm = new DSXeMay();
@@ -76,32 +85,36 @@ public class HoaDon implements IXuat {
         do {
             ma = sc.nextInt();
             if (ma == 0) {
-                System.out.println("Khong hop le!");
                 return;
             }
             if (dsxm.timKiemXeMayTheoMa(ma) != null) {
                 xm = dsxm.timKiemXeMayTheoMa(ma);
-                if(xm.getSoluongnhaphang()==0) {
-                	System.out.println("San pham da het hang");
-                	return;
-                }
+                      if(xm.getSoluongnhaphang()==0) {
+                      System.out.println("San pham da het hang");
+                        return;
+                  }
+              
             } else {
                 System.out.println("Khong tim thay ma xe!");
                 System.out.println("Vui long nhap lai hoac nhap 0 de thoat");
             }
         } while (dsxm.timKiemXeMayTheoMa(ma) == null);
         sc.nextLine();
-        System.out.println("Nhap ngay thanh toan: ");
+        System.out.println("Nhap ngay thanh toan");
         ngaythanhtoan = sc.nextLine();
         System.out.println("Nhap so luong xe mua: ");
         boolean test = false;
         do{
              SoSPmua = sc.nextInt();
+             if(SoSPmua==0){
+                 xm=null;
+                 return;
+             }
         for(XeMay xeMay:dsxm.getDsXemay()){
             if(xm.getMasp()==xeMay.getMasp()){
                 if(SoSPmua>xeMay.getSoluongnhaphang()) {
                     test=false;
-                    System.out.println("So luong mua vuot qua so luong ton kho. Vui long nhap lai");
+                    System.out.println("So luong mua vuot qua so luong ton kho. Vui long nhap lai hoac nhap 0 de thoat");
                 }
                 else {
                     xeMay.setSoluongnhaphang(xeMay.getSoluongnhaphang()-SoSPmua);
@@ -109,14 +122,75 @@ public class HoaDon implements IXuat {
                 }
             }
         }
+                dsxm.xuatDanhSachRaFile(filedsxm);
         } while(test==false);
-       dsxm.xuatDanhSachRaFile(filedsxm);
+        System.out.println("NHAP THONG TIN KHACH HANG");
+        DSKhachHang dskh=new DSKhachHang();
+        dskh.taiDanhSachTuFile(filedskh);
+        int choice;
+       do{
+            System.out.println("1.Khach hang cu");
+        System.out.println("2.Khach hang moi");
+        
+        while(true){
+            if(sc.hasNextInt()){
+                choice=sc.nextInt();
+                break;
+            }
+            sc.nextLine();
+            System.out.println("Khong hop le! Vui long nhap lai.");
+        }
+        sc.nextLine();
+        switch (choice) {
+            case 0:
+                xm=null;
+                return;
+            case 1:
+                System.out.println("Nhap ma so khach hang:");
+                int mkh;
+                while (true) {                    
+                    if(sc.hasNextInt()){
+                        mkh=sc.nextInt();
+                        break;
+                    }
+                    sc.nextLine();
+                    System.out.println("Ma khach hang phai la so. Vui long nhap lai.");
+                }
+                for(KhachHang kh:dskh.getdsKhachHang()){
+                    if(kh.getMakh()==mkh){
+                        khachhang=kh;
+                        System.out.println("DA LUU THONG TIN KHACH HANG");
+                        return;
+                    }
+                }
+                System.out.println("Khong tim thay ma khach hang!");
+                return;
+            case 2:
+                dskh.them();
+                dskh.xuatDanhSachRaFile(filedskh);
+                 for(KhachHang kh:dskh.getdsKhachHang()){
+                        khachhang=kh;               
+                }
+                   System.out.println("DA LUU THONG TIN KHACH HANG");
+                        return;    
+            default:
+                System.out.println("Khong hop le! Vui long nhap lai hoac nhap 0 de thoat");
+                
+                
+        }
+       } while(true);
     }
 
     public void xuat() {
         System.out.println("=========THONG TIN HOA DON===========");
         System.out.println("Ma hoa don: " + mahd);
         System.out.println("Ngay thanh toan: " + ngaythanhtoan);
+        System.out.println("CHI TIET THONG TIN KHACH HANG");
+        	System.out.println("Ho va ten: " + khachhang.getTenkh());
+		System.out.println("Gioi tinh: " + khachhang.getPhai());
+		System.out.println("Tuoi: " + khachhang.getAge());
+		System.out.println("So dien thoai: " +khachhang.getSdtkh());
+		System.out.println("Dia chi: " + khachhang.getDiachikh());	
         System.out.println("\tCHI TIET SAN PHAM MUA");
         System.out.println("Ma san pham: " + xm.getMasp());
         System.out.println("Ten san pham: " + xm.getTensp());
@@ -128,10 +202,11 @@ public class HoaDon implements IXuat {
             System.out.println("Dung tich: " + ((XeXang) xm).getDungtich());
         }
         xm.getHangSX().xuat();
+        
         System.out.println("Tong tien: "+ Tong());
     }
 
-    public void sua(String filedsxm) {
+    public void sua(String filedsxm,String filedskh) {
         Scanner sc = new Scanner(System.in);
          DSXeMay dsxm = new DSXeMay();
         dsxm.taiDanhSachTuFile(filedsxm);
@@ -148,10 +223,11 @@ public class HoaDon implements IXuat {
             }
             if (dsxm.timKiemXeMayTheoMa(ma) != null) {
                 xm = dsxm.timKiemXeMayTheoMa(ma);
-   if(xm.getSoluongnhaphang()==0){
-                       System.out.printn("San pham da het hang");
-                return;
-                   }
+                  if(xm.getSoluongnhaphang()==0) {
+                      System.out.println("San pham da het hang");
+                                      return;
+
+                  }
             } else {
                 System.out.println("Khong tim thay ma xe!");
                 System.out.println("Vui long nhap lai hoac nhap 0 de thoat");
@@ -178,5 +254,37 @@ public class HoaDon implements IXuat {
         }
         } while(test==false);
         dsxm.xuatDanhSachRaFile(filedsxm);
+        System.out.println("Nhap phim 0 de sua thong tin khach hang hoac nhap phim bat ky de ket thuc.");
+        sc.nextLine();
+        String continu=sc.nextLine();
+        if(!continu.equals("0")) {
+            return ;
+        }
+        khachhang.sua();
+        System.out.println("Ban co muon luu thong tin khach hang vua sua vao danh sach khach hang khong (y/n)");
+        do{
+              String choice=sc.nextLine();
+        switch (choice) {
+            case "y":
+                DSKhachHang dskh=new DSKhachHang();
+                dskh.taiDanhSachTuFile(filedskh);
+                for (int i = 0; i < dskh.getdsKhachHang().size(); i++) { 
+                    KhachHang kh = dskh.getdsKhachHang().get(i);
+                    if (kh.getMakh() == khachhang.getMakh()) {
+                        dskh.getdsKhachHang().set(i, khachhang); 
+                        dskh.xuatDanhSachRaFile(filedskh);
+                        return;
+                    }
+                }
+                dskh.getdsKhachHang().add(khachhang);
+                dskh.xuatDanhSachRaFile(filedskh);
+                return;
+            case "n":
+                return;
+            default:
+                System.out.println("Khong hop le! Vui long nhap lai");
+        }
+        } while (true);
+      
     }
 }

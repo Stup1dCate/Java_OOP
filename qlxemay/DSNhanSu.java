@@ -28,290 +28,358 @@ class DSNhanSu {
         }
     }
 
-public void XemSoLuong(){
-    if (dsns != null && !dsns.isEmpty()) {
-        System.out.println("\nSO LUONG NHAN SU: ");
-        for (NhanSu ns : dsns) {
-            ns.xuat();
-        }
-    } else {
-        System.out.println("Danh sach trong.\n");
-    }
-}
-
     public void Them() {
         Scanner sc = new Scanner(System.in);
         NhanSu ns = null;
-        int luachon;
-        System.out.println("Them nhan su cho Cua Hang: ");
-        System.out.println("1. Them nhan vien ");
-        System.out.println("2. Them quan ly ");
-        System.out.println("Nhap lua chon: ");
-        luachon = sc.nextInt();
-        switch (luachon) {
-            case 1:
-                ns = new NhanVien();
-                if (ns != null) {
-                    System.out.println("Nhap ma Nhan vien: ");
-                    int count;
-                    int mans;
-                    do {
-                        count = 0;
-                        while (true) {
-                            if (sc.hasNextInt()) {
-                                mans = sc.nextInt();  // Nhập vào giá trị số nguyên
-                                break;  // Nếu là số, thoát vòng lặp
-                                
-                            } else {
-                                System.out.println("Ma so phai la so, vui long nhap lai!");
-                                sc.next();  // Loại bỏ đầu vào không hợp lệ
-                            }
-                        }
-
-                        if (mans == 0) {
-                            return;
-                        }
-                        for (NhanSu nv : dsns) {
-                            if (nv.getManv() == mans) {
-                                count++;
-                            }
-                            if (count == 1) {
-                                System.out.println("Ma Nhan vien da ton tai!");
-                                System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                                break;
-                            }
-                        }
-                        if (count == 0) {
-                            ns.setManv(mans);
-                        }
-                    } while (count == 1);
-                    ns.nhap();
-                    ns.setChucVu("Nhan Vien");
-                    dsns.add(ns);
-                
-                }
+        int mans = 1;
+        for (NhanSu nsu : dsns) {
+            mans = nsu.getManv() + 1;
+        }
+        System.out.println("\tTHEM THONG TIN NHAN SU");
+        System.out.println("1.Them Quan Ly");
+        System.out.println("2.Them Nhan Vien");
+        int choice;
+        while (true) {
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
                 break;
-                        
-                       
-            case 2:
+            } else {
+                System.out.println("Khong hop le! Vui long nhap lai.");
+                sc.nextLine();
+            }
+        }
+        sc.nextLine();
+
+        switch (choice) {
+            case 1:
                 ns = new Quanly();
-                if (ns != null) {
-                    System.out.println("Nhap ma Nhan vien: ");
-                    int count;
-                    do {
-                        count = 0;
-                        int mans = sc.nextInt();
-                        if (mans == 0) {
-                            return;
-                        }
-                        for (NhanSu ql : dsns) {
-                            if (ql.getManv() == mans) {
-                                count++;
-                            }
-                            if (count == 1) {
-                                System.out.println("Ma Nhan vien da ton tai!");
-                                System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                                break;
-                            }
-                        }
-                        if (count == 0) {
-                            ns.setManv(mans);
-                        }
-                    } while (count == 1);
-                    ns.nhap();
-                    ns.setChucVu("Quan Ly");
-                    dsns.add(ns);
-                }
+                ns.setManv(mans);
+                ns.setChucVu("Quan Ly");
+                ns.nhap();
+                dsns.add(ns);
+                    System.out.println("Them thanh cong!");
+                break;
+            case 2:
+                ns = new NhanVien();
+                ns.setManv(mans);
+                ns.setChucVu("Nhan Vien");
+                ns.nhap();
+                dsns.add(ns);
+                    System.out.println("Them thanh cong!");
                 break;
             default:
-                System.out.println("Lua chon khong hop le!");
-                break;
+                System.out.println("Khong hop le!");
         }
-
     }
 
     public void Sua() {
-        Scanner s = new Scanner(System.in);
-        ArrayList<NhanSu> dstam = new ArrayList<>();
-        System.out.println("Nhap ten nhan su can sua: ");
-
-        String tensua;
-        int look = 0;
-        tensua = s.nextLine();
-        for (NhanSu ns : dsns) {
-            if (ns.getTen().equals(tensua)) {
-                System.out.println("Thong tin nhan su: " + tensua);
-                dstam.add(ns);
-                ns.xuat();
-                look++;
-            }
-        }
-        if (look == 0) {
-            System.out.println("Khong tim thay thong tin nhan su!");
-            return;
-        }
-        if (look == 1) {
-            for (NhanSu ns : dsns) {
-                if (ns.getTen().equals(tensua)) {
-                    int ma=ns.getManv();
-                    System.out.println("Chon chuc vu moi: ");
-                    System.out.println("1.nhan vien ");
-                    System.out.println("2.quan ly ");
-                    System.out.println("Nhap lua chon: ");
-                    int choice = s.nextInt();
-                    switch (choice) {
-                        case 1:
-                            ns = new NhanVien();
-                            ns.ChucVu = "Nhan Vien";
-                            break;
-                        case 2:
-                            ns = new Quanly();
-                            ns.ChucVu = "Quan Ly";
-
-                            break;
-                        default:
-                            System.out.println("Lua chon khong hop le!");
-                            return;
-                    }
-                    System.out.println("Nhap ma moi cua nhan su: ");
-                int count;
-                do {
-                    count = 0;
-                    int mans = s.nextInt();
-                    if (mans == 0) {
-                        return;
-                    }
-                    for (NhanSu nsu : dsns) {
-                        if (nsu.getManv() == mans) {
-                            count++;
-                        }
-                        if (mans == ma) {
-                            count = 0;
-                        }
-                        if (count == 1) {
-                            System.out.println("Ma nhan su da ton tai!");
-                            System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                            break;
-                        }
-                    }
-                    if (count == 0) {
-                        ns.setManv(mans);
-                    }
-                } while (count == 1);
-                    ns.Sua();
-                    for (int i = 0; i < dsns.size(); i++) {
-                        if (dsns.get(i).getTen().equals(tensua)) {
-                            
-                            dsns.set(i, ns);
-                        }
-                    }
-                    return;
-                }
-            }
-        }
-        // Kiem tra xem ma ns moi co trung voi ma ns co trong danh sach khong
-        System.out.println("Nhap ma nhan su muon sua: ");
-        int ma = s.nextInt();
-        for (NhanSu ns : dstam) {
-            if (ns.getManv() == ma) {
-                System.out.println("Nhap ma moi cua nhan su: ");
-                int count;
-                do {
-                    count = 0;
-                    int mans = s.nextInt();
-                    if (mans == 0) {
-                        return;
-                    }
-                    for (NhanSu nsu : dsns) {
-                        if (nsu.getManv() == mans) {
-                            count++;
-                        }
-                        if (mans == ma) {
-                            count = 0;
-                        }
-                        if (count == 1) {
-                            System.out.println("Ma nhan su da ton tai!");
-                            System.out.println(" Vui long nhap lai ma moi hoac nhap 0 de thoat.");
-                            break;
-                        }
-                    }
-                    if (count == 0) {
-                        ns.setManv(mans);
-                    }
-                } while (count == 1);
-                int mans=ns.getManv();
-                System.out.println("Chon chuc vu moi: ");
-                System.out.println("1.nhan vien ");
-                System.out.println("2.quan ly ");
-                System.out.println("Nhap lua chon: ");
-                int choice = s.nextInt();
-                switch (choice) {
-                    case 1:
-                        ns = new NhanVien();
-                        ns.setManv(mans);
-                        ns.ChucVu = "Nhan Vien";
-
-                        break;
-                    case 2:
-                        ns = new Quanly();
-                        ns.setManv(mans);
-                        ns.ChucVu = "Quan Ly";
-
-                        break;
-                    default:
-                        System.out.println("Lua chon khong hop le!");
-                        return;
-                }
-                ns.Sua();
-                for (int i = 0; i < dsns.size(); i++) {
-                    if (ns.getManv() == dsns.get(i).getManv()) {
-                        dsns.set(i, ns);
-                    }
-                }
-                return;
-            }
-        }
-        System.out.printf("Khong ton tai nhan su %s co ma: %d\n", tensua, ma);
-    }
-
-    public void Xoa() {
-          ArrayList<NhanSu> dstam = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ten nhan su can xoa: ");
-        String tenxoa;
-        int look = 0;
-        tenxoa = sc.nextLine();
-        for (NhanSu ns:dsns) {
-            if (ns.getTen().equals(tenxoa)) {
-                System.out.println("Thong tin nhan su " + tenxoa);
-                ns.xuat();
-                dstam.add(ns);
-                look++;
+        ArrayList<NhanSu> dstam = new ArrayList<>();
+        System.out.println("\t SUA THONG TIN NHAN SU");
+        System.out.println("1.Sua nhan su theo ten");
+        System.out.println("2.Sua nhan su theo ma");
+        int choice;
+        while (true) {
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+                break;
+            } else {
+                System.out.println("Khong hop le! Vui long nhap lai.");
+                sc.nextLine();
             }
         }
-        if (look == 0) {
-            System.out.println("Khong tim thay thong tin nhan su!");
-            return;
-        }
-        if (look == 1) {
-            for (NhanSu ns:dsns) {
-                if (ns.getTen().equals(tenxoa)) {
-                    dsns.remove(ns);
-                    System.out.println("Xoa thanh cong!");
+        switch (choice) {
+            case 1:
+                sc.nextLine();
+                System.out.println("Nhap ten nhan su can sua:");
+                String tensua = sc.nextLine();
+                for (NhanSu ns : dsns) {
+                    if (ns.getTen().equals(tensua)) {
+                        dstam.add(ns);
+                        ns.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.printf("\nKhong tim thay ten nhan su %s", tensua);
                     return;
                 }
-            }
-        }
-        System.out.println("Nhap ma nhan su muon xoa: ");
-        int ma = sc.nextInt();
-        for (NhanSu ns : dstam) {
-            if (ns.getManv()== ma) {
-                dsns.remove(ns);
-                System.out.println("Xoa thanh cong!");
+                if (dstam.size() == 1) {
+                    for (NhanSu ns : dsns) {
+                        if (ns.getTen().equals(tensua)) {
+                            System.out.println("Chon chuc vu:");
+                            System.out.println("1. Quan Ly");
+                            System.out.println("2. Nhan Vien");
+                            int choic;
+                            while (true) {
+                                if (sc.hasNextInt()) {
+                                    choic = sc.nextInt();
+                                    break;
+                                } else {
+                                    System.out.println("Khong hop le! Vui long nhap lai.");
+                                    sc.nextLine();
+                                }
+                            }
+                            sc.nextLine();
+                            int mans;
+                            switch (choic) {
+                                case 1:
+                                    mans = ns.getManv();
+                                    ns = new Quanly();
+                                    ns.setManv(mans);
+                                    ns.setChucVu("Quan Ly");
+                                    ns.Sua();
+                                    for (int i = 0; i < dsns.size(); i++) {
+                                        if (dsns.get(i).getManv() == ns.getManv()) {
+                                            dsns.set(i, ns);
+                                             System.out.println("Sua thanh cong!");
+                                            return;
+                                        }
+                                    }
+                                    return;
+                                case 2:
+                                    mans = ns.getManv();
+                                    ns = new NhanVien();
+                                    ns.setManv(mans);
+                                    ns.setChucVu("Nhan Vien");
+                                    ns.Sua();
+                                    for (int i = 0; i < dsns.size(); i++) {
+                                        if (dsns.get(i).getManv() == ns.getManv()) {
+                                            dsns.set(i, ns);
+                                                System.out.println("Sua thanh cong!");
+                                            return;
+                                        }
+                                    }
+                                    return;
+                                default:
+                                    System.out.println("Khong hop le!");
+                                    return;
+                            }
+                        }
+                    }
+
+                }
+                System.out.println("Nhap ma nhan su muon sua:");
+                int mans;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        mans = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (NhanSu ns : dstam) {
+                    if (ns.getManv() == mans) {
+                        System.out.println("Chon chuc vu:");
+                        System.out.println("1. Quan Ly");
+                        System.out.println("2. Nhan Vien");
+                        int choic;
+                        while (true) {
+                            if (sc.hasNextInt()) {
+                                choic = sc.nextInt();
+                                break;
+                            } else {
+                                System.out.println("Khong hop le! Vui long nhap lai.");
+                                sc.nextLine();
+                            }
+                        }
+                        sc.nextLine();
+                        switch (choic) {
+                            case 1:
+                                ns = new Quanly();
+                                ns.setManv(mans);
+                                ns.setChucVu("Quan Ly");
+                                ns.Sua();
+                                for (int i = 0; i < dsns.size(); i++) {
+                                    if (dsns.get(i).getManv() == ns.getManv()) {
+                                        dsns.set(i, ns);
+                                        System.out.println("Sua thanh cong!");
+                                        return;
+                                    }
+                                }
+                                return;
+                            case 2:
+                                ns = new NhanVien();
+                                ns.setManv(mans);
+                                ns.setChucVu("Nhan Vien");
+                                ns.Sua();
+                                for (int i = 0; i < dsns.size(); i++) {
+                                    if (dsns.get(i).getManv() == ns.getManv()) {
+                                        dsns.set(i, ns);
+                                            System.out.println("Sua thanh cong!");
+                                        return;
+                                    }
+                                }
+
+                                return;
+                            default:
+                                System.out.println("Khong hop le!");
+                                return;
+                        }
+                    }
+                }
+                System.out.printf("Khong tim thay nhan su ten %s co ma %d", tensua, mans);
                 return;
+            case 2:
+                System.out.println("Nhap ma nhan su muon sua:");
+                int mansu;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        mansu = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (NhanSu ns : dsns) {
+                    if (ns.getManv() == mansu) {
+                        System.out.println("Chon chuc vu:");
+                        System.out.println("1. Quan Ly");
+                        System.out.println("2. Nhan Vien");
+                        int choic;
+                        while (true) {
+                            if (sc.hasNextInt()) {
+                                choic = sc.nextInt();
+                                break;
+                            } else {
+                                System.out.println("Khong hop le! Vui long nhap lai.");
+                                sc.nextLine();
+                            }
+                        }
+                        sc.nextLine();
+                        switch (choic) {
+                            case 1:
+                                ns = new Quanly();
+                                ns.setManv(mansu);
+                                ns.setChucVu("Quan Ly");
+                                ns.Sua();
+                                for (int i = 0; i < dsns.size(); i++) {
+                                    if (dsns.get(i).getManv() == ns.getManv()) {
+                                        dsns.set(i, ns);
+                                            System.out.println("Sua thanh cong!");
+                                        return;
+                                    }
+                                }
+
+                            case 2:
+                                ns = new NhanVien();
+                                ns.setManv(mansu);
+                                ns.setChucVu("Nhan Vien");
+                                ns.Sua();
+                                for (int i = 0; i < dsns.size(); i++) {
+                                    if (dsns.get(i).getManv() == ns.getManv()) {
+                                        dsns.set(i, ns);
+                                            System.out.println("Sua thanh cong!");
+                                        return;
+                                    }
+                                }
+
+                            default:
+                                System.out.println("Khong hop le!");
+                                return;
+                        }
+                    }
+                }
+                    System.out.println("Khong tim thay ma nhan su");
+                    return;
+
+                
+        default:
+                System.out.println("Khong hop le!");
+        }
+
+    }
+    
+    public void Xoa() {
+       Scanner sc = new Scanner(System.in);
+        ArrayList<NhanSu> dstam = new ArrayList<>();
+        System.out.println("\t XOA THONG TIN NHAN SU");
+        System.out.println("1.Xoa nhan su theo ten");
+        System.out.println("2.Xoa nhan su theo ma");
+        int choice;
+        while (true) {
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+                break;
+            } else {
+                System.out.println("Khong hop le! Vui long nhap lai.");
+                sc.nextLine();
             }
         }
-        System.out.printf("Khong ton tai nhan su %s co ma: %d\n", tenxoa, ma);
+        switch (choice) {
+            case 1:
+                sc.nextLine();
+                System.out.println("Nhap ten nhan su can xoa:");
+                String tensua = sc.nextLine();
+                for (NhanSu ns : dsns) {
+                    if (ns.getTen().equals(tensua)) {
+                        dstam.add(ns);
+                        ns.xuat();
+                    }
+                }
+                if (dstam.size() == 0) {
+                    System.out.printf("\nKhong tim thay ten nhan su %s", tensua);
+                    return;
+                }
+                if (dstam.size() == 1) {
+                    for (NhanSu ns : dsns) {
+                        if (ns.getTen().equals(tensua)) {
+                          dsns.remove(ns);
+                          System.out.println("Xoa thanh cong!");
+                          return;
+                        }
+                    }
+
+                }
+                System.out.println("Nhap ma nhan su muon sua:");
+                int mans;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        mans = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (NhanSu ns : dstam) {
+                    if (ns.getManv() == mans) {
+                       dsns.remove(ns);
+                       System.out.println("Xoa thanh cong!");
+                       return;
+                    }
+                }
+                System.out.printf("Khong tim thay nhan su ten %s co ma %d", tensua, mans);
+                return;
+            case 2:
+                System.out.println("Nhap ma nhan su muon xoa:");
+                int mansu;
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        mansu = sc.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        sc.nextLine();
+                    }
+                }
+                for (NhanSu ns : dsns) {
+                    if (ns.getManv() == mansu) {
+                       dsns.remove(ns);
+                       System.out.println("Xoa thanh cong!");
+                       return;
+                    }
+                }
+                    System.out.println("Khong tim thay ma nhan su");
+                    return;
+
+                
+        default:
+                System.out.println("Khong hop le!");
+        }
+
     }
 
     public void TimKiem() {
@@ -363,6 +431,8 @@ public void XemSoLuong(){
     }
 
     public void taiDanhSachTuFile(String fileName) {
+        Quanly.setSoluongnv(0);
+        NhanVien.setSoluongnv(0);
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -372,6 +442,7 @@ public void XemSoLuong(){
                 }
             }
             System.out.println("Da tai danh sach tu tep tin: " + fileName);
+
         } catch (FileNotFoundException e) {
             System.out.println("Khong tim thay tep tin: " + fileName);
         } catch (IOException ex) {
@@ -394,7 +465,7 @@ public void XemSoLuong(){
 
     private NhanSu parseLineToNhanSu(String line) {
         String[] parts = line.split(";");
-        if (parts.length == 8) {
+        if (parts.length == 8 || parts.length == 7) {
             int manv = Integer.parseInt(parts[0]);
             String ten = parts[1];
             int age = Integer.parseInt(parts[2]);
@@ -404,7 +475,7 @@ public void XemSoLuong(){
             if (chucvu.equals("Nhan Vien")) {
                 int SoSPban = Integer.parseInt(parts[6]);
                 int TienThuongSP = Integer.parseInt(parts[7]);
-                return new NhanVien(manv, ten, age, sdt, chucvu, salary, SoSPban,TienThuongSP);
+                return new NhanVien(manv, ten, age, sdt, chucvu, salary, SoSPban, TienThuongSP);
             } else if (chucvu.equals("Quan Ly")) {
                 int bonus = Integer.parseInt(parts[6]);
                 return new Quanly(manv, ten, age, sdt, chucvu, salary, bonus);

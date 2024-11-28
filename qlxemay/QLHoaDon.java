@@ -7,7 +7,7 @@ class QLHoaDon {
     Scanner s = new Scanner(System.in);
     String fileName = "input_HoaDon.txt";
     String fileName_XeMay = "input_XeMay.txt";
-
+    String fileName_Khachhang="input_KhachHang.txt";
     public QLHoaDon() {
         dshd = new DSHoaDon();
     }
@@ -31,10 +31,10 @@ class QLHoaDon {
             s.nextLine();
             switch (select) {
             	case 1:
-	                dshd.them(fileName_XeMay);
+	                dshd.them(fileName_XeMay,fileName_Khachhang);
 	                break;
                 case 2:
-                	dshd.sua(fileName_XeMay);
+                	dshd.sua(fileName_XeMay,fileName_Khachhang);
                     break;
                 case 3:
                 	dshd.xoa();

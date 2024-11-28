@@ -134,9 +134,9 @@ public class XeMay implements IXuat {
              in.nextLine();
         }
       
-        System.out.print("So tien nhap hang (1 san pham): ");
+        System.out.print("So tien nhap hang (ngan dong): ");
          while(true){
-            if(in.hasNextDouble()){
+            if(in.hasNextInt()){
                     tiennhaphang = in.nextInt();
                   break;
             }
@@ -145,9 +145,9 @@ public class XeMay implements IXuat {
         }
       
      
-        System.out.print("Gia ban san pham (1 san pham): ");
+        System.out.print("Gia ban san pham (ngan dong): ");
           while(true){
-            if(in.hasNextDouble()){
+            if(in.hasNextInt()){
                      giasp = in.nextInt();
                   break;
             }
@@ -179,9 +179,13 @@ public class XeMay implements IXuat {
                 return;
             }
         }
-        hangSX.setMahsx(ma);
+        System.out.println("Ma hang san xuat chua co trong danh sach hang san xuat. Vui long nhap thong tin hang san xuat moi.");
+        int mahsx=1;
+        for(HangSX hang:dshsx.getDshsx()){
+            mahsx=hang.getMahsx()+1;
+        }
+        hangSX.setMahsx(mahsx);
         hangSX.nhap();
-        System.out.println("\n===== DA LUU DU LIEU SAN PHAM THANH CONG ! =====\n");
 
     }
 
@@ -220,9 +224,9 @@ public class XeMay implements IXuat {
             in.nextLine();
         }
        
-        System.out.println("Nhap so tien nhap moi: ");
+        System.out.println("Nhap so tien nhap moi(ngan dong): ");
            while(true){
-            if(in.hasNextDouble()){
+            if(in.hasNextInt()){
                    this.setTiennhaphang(in.nextInt());
                   break;
             }
@@ -230,9 +234,9 @@ public class XeMay implements IXuat {
             in.nextLine();
         }
        
-        System.out.println("Nhap so tien ban moi: ");
+        System.out.println("Nhap so tien ban moi (ngan dong): ");
          while(true){
-            if(in.hasNextDouble()){
+            if(in.hasNextInt()){
                    this.setGiasp(in.nextInt());
                   break;
             }
