@@ -92,7 +92,15 @@ class DSNhanSu {
             case 1:
                 sc.nextLine();
                 System.out.println("Nhap ten nhan su can sua:");
-                String tensua = sc.nextLine();
+                String tensua;
+                while(true){
+                    
+                    tensua=sc.nextLine();
+                    if (tensua.matches("[a-zA-Z\\s]+")) {
+                        break;
+                    } else {
+                        System.out.println("Ten chi duoc chua chu cai. Vui long nhap lai!");
+                    }}
                 for (NhanSu ns : dsns) {
                     if (ns.getTen().equals(tensua)) {
                         dstam.add(ns);

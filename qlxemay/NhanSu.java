@@ -147,15 +147,59 @@ public abstract class NhanSu implements INhap,IXuat{
   
     public void Sua(){
         Scanner s=new Scanner(System.in);
-            System.out.println("Nhap ho ten nhan vien moi: ");
+        
+        while(true){
+        System.out.println("Nhap ho ten nhan vien: ");
         ten=s.nextLine();
-        System.out.println("Nhap tuoi: ");
-        age=s.nextInt();
-        System.out.println("Nhap so dien thoai: ");
-        s.nextLine();
-        sdt=s.nextLine();
-        System.out.println("Nhap luong: ");
-        salary=s.nextInt();
+        if (ten.matches("[a-zA-Z\\s]+")) {
+            break;
+        } else {
+            System.out.println("Ten chi duoc chua chu cai. Vui long nhap lai!");
+        }
     }
-
+    while (true) {
+        System.out.println("Nhap tuoi: ");
+        if (s.hasNextInt()) {
+            age = s.nextInt();
+            // Kiểm tra tuổi trong khoảng từ 18 đến 99
+            if (age >= 18 && age <= 99) {
+                break;
+            } else {
+                System.out.println("Tuoi phai tren 18 va duoi 100. Vui long nhap lai!");
+            }
+        } else {
+            System.out.println("Nhap tuoi la so!");
+            s.next(); // Loại bỏ đầu vào không hợp lệ
+        }
+    }
+    s.nextLine();
+    while (true) {
+        System.out.println("Nhap so dien thoai: ");
+        sdt = s.nextLine().trim();  // Loại bỏ khoảng trắng thừa ở đầu và cuối chuỗi
+        if (sdt.length() == 10 && sdt.matches("\\d{10}")) {
+            break;
+        } else {
+            System.out.println("Nhap so dien thoai 10 so!");
+        }
+    }
+    
+    while (true) {
+        System.out.println("Nhap luong: (ngan dong)");
+        if (s.hasNextInt()) {
+            salary = s.nextInt();
+            // Kiểm tra salary là số nguyên và nhỏ hơn 999
+            if (salary < 999999) {
+                break;
+            } else {
+                System.out.println("Luong phai nho hon 999 trieu. Vui long nhap lai!");
+            }
+        } else {
+            System.out.println("Vui long nhap so nguyen hop le cho luong!");
+            s.next(); // Loại bỏ đầu vào không hợp lệ
+        }
+    }
+    
+    }
+    
+              
 }

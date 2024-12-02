@@ -25,12 +25,19 @@ class QLNhanSu {
             System.out.println("6.Xem so luong nhan su");
             System.out.println("7. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
-            select = s.nextInt();
-            s.nextLine(); // Đọc dòng trống sau khi đọc số
-
+            while(true){
+            if(s.hasNextInt()){
+            select=s.nextInt();
+            s.nextLine();
+            break;
+            }
+            System.out.println("Hay nhap so!!");
+            s.nextLine();
+            }
             switch (select) {
             	case 1:
 	                dsns.Them();
+                    
 	                break;
                 case 2:
                 	dsns.Sua();
@@ -68,5 +75,7 @@ class QLNhanSu {
                 }
             }
         } while (true);
-    }
+}
+
+
 }

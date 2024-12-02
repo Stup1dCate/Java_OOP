@@ -1,7 +1,1 @@
-121;0869956512;Vũ Ngọc Tùng;660 Quang Trung 2, P.Đông Vệ, Q.6, TP.HCM;Nam;Quản Lý
-122;0362631410;Trương Văn Long;13/20 đường Nguyễn Thị Minh Khai, P.Bến Thành, Q.1, TP.HCM;Nam;Nhân viên
-123;0941309909;Bùi Văn Nam;33 đường sô 9, P.13, Q.6, TP.HCM;Nam;Nhân viên
-124;0899932766;Pham Minh Trường;123 Nguyễn Huệ,P.Bến Nghé, Q.1, TP.HCM;Nam;Nhân viên
-125;0346031707;Nguyễn Thanh Phát;100/12 đường Nguyễn Văn Hưởng, P.Thảo Điền, Q.2, TP.HCM;Nam;Nhân viên
-126;0963611663;Võ Hùng Thái;51 Đ.Thạnh Lộc 41, P.Thạch Lộc, Q.12, TP. HCM;Nam;Nhân viên
-
+1;asd;23;0938824352;Quan Ly;30000;30000
