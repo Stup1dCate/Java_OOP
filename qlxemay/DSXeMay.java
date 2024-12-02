@@ -132,8 +132,11 @@ class DSXeMay {
                 sc.nextLine();
                 String tensua = sc.nextLine();
                 for (XeMay xm : dsXemay) {
-                    dstam.add(xm);
+                    if(xm.getTensp().equals(tensua)){
+                        dstam.add(xm);
                     xm.xuat();
+                    }
+                    
                 }
                 if (dstam.size() == 0) {
                     System.out.println("Khong tim thay ten san pham");
@@ -163,7 +166,7 @@ class DSXeMay {
                                     xm = new XeDien();
                                     xm.setMasp(maxm);
                                     xm.setLoaisp("Xe dien");
-                                    xm.sua();
+                                    xm.sua(filehangsx);
                                     for (int i = 0; i < dsXemay.size(); i++) {
                                         if (dsXemay.get(i).getMasp() == xm.getMasp()) {
                                             dsXemay.set(i, xm);
@@ -184,7 +187,7 @@ class DSXeMay {
                                     xm = new XeXang();
                                     xm.setMasp(maxm);
                                     xm.setLoaisp("Xe xang");
-                                    xm.sua();
+                                    xm.sua(filehangsx);
                                     for (int i = 0; i < dsXemay.size(); i++) {
                                         if (dsXemay.get(i).getMasp() == xm.getMasp()) {
                                             dsXemay.set(i, xm);
@@ -240,7 +243,7 @@ class DSXeMay {
                                 xm = new XeDien();
                                 xm.setMasp(maxm);
                                 xm.setLoaisp("Xe dien");
-                                xm.sua();
+                                xm.sua(filehangsx);
                                 for (int i = 0; i < dsXemay.size(); i++) {
                                     if (dsXemay.get(i).getMasp() == xm.getMasp()) {
                                         dsXemay.set(i, xm);
@@ -261,7 +264,7 @@ class DSXeMay {
                                 xm = new XeXang();
                                 xm.setMasp(maxm);
                                 xm.setLoaisp("Xe xang");
-                                xm.sua();
+                                xm.sua(filehangsx);
                                 for (int i = 0; i < dsXemay.size(); i++) {
                                     if (dsXemay.get(i).getMasp() == xm.getMasp()) {
                                         dsXemay.set(i, xm);
@@ -293,12 +296,13 @@ class DSXeMay {
                         maxmay = sc.nextInt();
                         break;
                     } else {
-                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        System.out.println("Ma xe may phai la so nguyen. Vui long nhap lai.");
                         sc.nextLine();
                     }
                 }
                 for (XeMay xm : dsXemay) {
                     if (xm.getMasp() == maxmay) {
+                        xm.xuat();
                         System.out.println("Chon Loai xe:");
                         System.out.println("1. Xe dien");
                         System.out.println("2. Xe xang");
@@ -319,7 +323,7 @@ class DSXeMay {
                                 xm = new XeDien();
                                 xm.setMasp(maxmay);
                                 xm.setLoaisp("Xe dien");
-                                xm.sua();
+                                xm.sua(filehangsx);
                                 for (int i = 0; i < dsXemay.size(); i++) {
                                     if (dsXemay.get(i).getMasp() == xm.getMasp()) {
                                         dsXemay.set(i, xm);
@@ -340,7 +344,7 @@ class DSXeMay {
                                 xm = new XeXang();
                                 xm.setMasp(maxmay);
                                 xm.setLoaisp("Xe xang");
-                                xm.sua();
+                                xm.sua(filehangsx);
                                 for (int i = 0; i < dsXemay.size(); i++) {
                                     if (dsXemay.get(i).getMasp() == xm.getMasp()) {
                                         dsXemay.set(i, xm);
@@ -413,7 +417,7 @@ class DSXeMay {
                         maxm = sc.nextInt();
                         break;
                     } else {
-                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        System.out.println("Ma xe may phai la so nguyen. Vui long nhap lai.");
                         sc.nextLine();
                     }
                 }
@@ -432,11 +436,11 @@ class DSXeMay {
                         maxmay = sc.nextInt();
                         break;
                     } else {
-                        System.out.println("Ma nhan su phai la so nguyen. Vui long nhap lai.");
+                        System.out.println("Ma xe may phai la so nguyen. Vui long nhap lai.");
                         sc.nextLine();
                     }
                 }
-                for (XeMay xm : dsXemay) {
+                 for (XeMay xm : dsXemay) {
                     if (xm.getMasp() == maxmay) {
                         dsXemay.remove(xm);
                     }
@@ -451,7 +455,7 @@ class DSXeMay {
     public void timKiem() {
         Scanner sc = new Scanner(System.in);
         ArrayList<XeMay> dstam=new ArrayList<>();
-        System.out.println("\t TIM KIEM THONG TIN NHAN SU");
+        System.out.println("\t TIM KIEM THONG TIN SAN PHAM");
         System.out.println("1.Tim kiem san pham theo ten");
         System.out.println("2.Tim kiem san pham theo ma");
         int choice;
@@ -470,11 +474,14 @@ class DSXeMay {
                 sc.nextLine();
                 String tensua = sc.nextLine();
                 for (XeMay xm : dsXemay) {
-                    dstam.add(xm);
+                    if(xm.getTensp().equals(tensua)){
+                        dstam.add(xm);
                     xm.xuat();
+                    }
+                    
                 }
                 if(dstam.size()==0){
-                      System.out.printf("Khong tim thay san pham");
+                      System.out.println("Khong tim thay san pham");
                 return;
                 }
               return;

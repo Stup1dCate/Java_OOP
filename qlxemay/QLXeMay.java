@@ -24,7 +24,7 @@ class QLXeMay {
         	System.out.println("1. Them xe may");
             System.out.println("2. Sua thong tin xe may");
             System.out.println("3. Xoa mot xe may");
-            System.out.println("4. Tim kiem xe may (theo masp)");
+            System.out.println("4. Tim kiem xe may");
             System.out.println("5. Xem thong tin chi tiet danh sach xe may");         
             System.out.println("6. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");

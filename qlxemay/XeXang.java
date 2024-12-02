@@ -52,7 +52,7 @@ public class XeXang extends XeMay {
     }
 
     @Override
-    public void sua() {
+    public void sua(String filehsx) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap dung tich moi:");
          while(true){
@@ -64,6 +64,6 @@ public class XeXang extends XeMay {
             sc.nextLine();
         }
        
-        super.sua();
+        super.sua(filehsx);
     }
 }

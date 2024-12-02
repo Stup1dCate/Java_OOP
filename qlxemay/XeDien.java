@@ -51,7 +51,7 @@ public class XeDien extends XeMay {
     }
 
     @Override
-    public void sua() {
+    public void sua(String filehsx) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhap dung luong moi:");
          while(true){
@@ -62,6 +62,6 @@ public class XeDien extends XeMay {
             System.out.println("Dung luong pin phai la so . Vui long nhap lai.");
             sc.nextLine();
         }
-        super.sua();
+        super.sua(filehsx);
     }
 }

@@ -125,36 +125,41 @@ public class XeMay implements IXuat {
     public void nhap(String filehsx) {
         Scanner in = new Scanner(System.in);
         System.out.print("So luong hang nhap: ");
-        while(true){
-            if(in.hasNextInt()){
-                  soluongnhaphang = in.nextInt();
-                  break;
+        while (true) {
+            if (in.hasNextInt()) {
+                soluongnhaphang = in.nextInt();
+                if (soluongnhaphang >= 0 && soluongnhaphang <= 1000000) {
+                    break;
+                }
             }
-            System.out.println("So luong nhap hang phai la so nguyen. Vui long nhap lai.");
-             in.nextLine();
+            System.out.println("So luong nhap hang phai la so nguyen co gia tri tu 0 den 1 ty. Vui long nhap lai.");
+            in.nextLine();
         }
-      
+
         System.out.print("So tien nhap hang (ngan dong): ");
-         while(true){
-            if(in.hasNextInt()){
-                    tiennhaphang = in.nextInt();
-                  break;
+        while (true) {
+            if (in.hasNextInt() == true) {
+                tiennhaphang = in.nextInt();
+                if (tiennhaphang >= 0 && tiennhaphang <= 100000000) {
+                    break;
+                }
             }
-            System.out.println("So tien nhap hang phai la so . Vui long nhap lai.");
+            System.out.println("So tien nhap hang phai la so nguyen co gia tri tu 0 den 100 ty. Vui long nhap lai.");
             in.nextLine();
         }
-      
-     
+
         System.out.print("Gia ban san pham (ngan dong): ");
-          while(true){
-            if(in.hasNextInt()){
-                     giasp = in.nextInt();
-                  break;
+        while (true) {
+            if (in.hasNextInt()) {
+                giasp = in.nextInt();
+                if (giasp>= 0 && giasp <= 100000000) {
+                    break;
+                }
             }
-            System.out.println("So tien ban phai la so . Vui long nhap lai.");
+            System.out.println("Gia ban san pham phai la so nguyen co gia tri tu 0 den 100ty . Vui long nhap lai.");
             in.nextLine();
         }
-       
+
         in.nextLine();
         System.out.print("Ten san pham: ");
         tensp = in.nextLine();
@@ -162,27 +167,27 @@ public class XeMay implements IXuat {
         System.out.println("\tNHAP THONG TIN HANG SAN XUAT TUONG UNG:");
         System.out.println("Nhap ma so hang san xuat");
         int ma;
-          while(true){
-            if(in.hasNextInt()){
-                   ma = in.nextInt();
-                  break;
+        while (true) {
+            if (in.hasNextInt()) {
+                ma = in.nextInt();
+                break;
             }
             System.out.println("Ma hang san xuat phai la so . Vui long nhap lai.");
             in.nextLine();
         }
-       
+
         DSHangSX dshsx = new DSHangSX();
         dshsx.taiDanhSachTuFile(filehsx);
-        for(HangSX hang:dshsx.getDshsx()){
-            if(ma==hang.getMahsx()){
-                hangSX=hang;
+        for (HangSX hang : dshsx.getDshsx()) {
+            if (ma == hang.getMahsx()) {
+                hangSX = hang;
                 return;
             }
         }
         System.out.println("Ma hang san xuat chua co trong danh sach hang san xuat. Vui long nhap thong tin hang san xuat moi.");
-        int mahsx=1;
-        for(HangSX hang:dshsx.getDshsx()){
-            mahsx=hang.getMahsx()+1;
+        int mahsx = 1;
+        for (HangSX hang : dshsx.getDshsx()) {
+            mahsx = hang.getMahsx() + 1;
         }
         hangSX.setMahsx(mahsx);
         hangSX.nhap();
@@ -191,7 +196,7 @@ public class XeMay implements IXuat {
 
     @Override
     public void xuat() {
-  
+
         System.out.println("\tMa san pham: " + masp);
         System.out.println("\tSo luong nhap: " + soluongnhaphang);
         System.out.println("\tGia ban: " + giasp);
@@ -207,56 +212,75 @@ public class XeMay implements IXuat {
         return "SanPham [masp:" + masp + ", soluongnhaphang:" + soluongnhaphang + ", tensp:" + tensp + ", loaisp:" + loaisp + ", tiennhaphang:" + tiennhaphang + ", giasp:" + giasp + ", HangSX:" + hangSX + ", mahsx:" + mahsx + ", tenhsx:" + tenhsx + ", diachihsx:" + diachihsx + ", sdthsx:" + sdthsx + "]";
     }
 
-    public void sua() {
+    public void sua(String filedshsx) {
         // Sửa thông tin mã sản phẩm, tên sản phẩm, loại sản phẩm, số lượng nhập hàng, giá tiền, và thông tin nhà cung cấp
         Scanner in = new Scanner(System.in);
         System.out.println("Nhap ten san pham moi: ");
-        
+
         this.setTensp(in.nextLine());
         System.out.println("Nhap so luong hang nhap moi: ");
-       
-          while(true){
-            if(in.hasNextInt()){
-                   this.setSoluongnhaphang(in.nextInt());
-                  break;
+
+        while (true) {
+            if (in.hasNextInt()) {
+                this.setSoluongnhaphang(in.nextInt());
+                if (soluongnhaphang >= 0 && soluongnhaphang <= 1000000) {
+                    break;
+                }
             }
-            System.out.println("So luong hang nhap phai la so nguyen . Vui long nhap lai.");
+            System.out.println("So luong hang nhap phai la so nguyen va co gia tri tu 0 den 1 ty. Vui long nhap lai.");
             in.nextLine();
         }
-       
+
         System.out.println("Nhap so tien nhap moi(ngan dong): ");
-           while(true){
-            if(in.hasNextInt()){
-                   this.setTiennhaphang(in.nextInt());
-                  break;
+        while (true) {
+            if (in.hasNextInt()) {
+                this.setTiennhaphang(in.nextInt());
+               if (tiennhaphang >= 0 && tiennhaphang <= 100000000) {
+                    break;
+                }
             }
-            System.out.println("So tien nhap hang phai la so . Vui long nhap lai.");
+            System.out.println("So tien nhap hang phai la so nguyen co gia tri tu 0 den 100ty . Vui long nhap lai.");
             in.nextLine();
         }
-       
+
         System.out.println("Nhap so tien ban moi (ngan dong): ");
-         while(true){
-            if(in.hasNextInt()){
-                   this.setGiasp(in.nextInt());
-                  break;
+        while (true) {
+            if (in.hasNextInt()) {
+                this.setGiasp(in.nextInt());
+                if (giasp >= 0 && giasp <= 100000000) {
+                    break;
+                }
             }
-            System.out.println("So tien ban phai la so . Vui long nhap lai.");
+            System.out.println("Gia ban san pham phai la so nguyen co gia tri tu 0 den 100ty. Vui long nhap lai.");
             in.nextLine();
         }
-       
-       
-          System.out.println("Nhap ma so hang san xuat:");
+
+        System.out.println("Nhap ma so hang san xuat:");
         int ma;
-         while(true){
-            if(in.hasNextDouble()){
-                 ma = in.nextInt();
-                  break;
+        while (true) {
+            if (in.hasNextDouble()) {
+                ma = in.nextInt();
+                break;
             }
-            System.out.println("Ma so hang san xuat phai la so . Vui long nhap lai.");
+            System.out.println("Ma so hang san xuat khong hop le. Vui long nhap lai.");
             in.nextLine();
         }
-   
-        hangSX.setMahsx(ma);
+
+                DSHangSX dshsx = new DSHangSX();
+        dshsx.taiDanhSachTuFile(filedshsx);
+        for (HangSX hang : dshsx.getDshsx()) {
+            if (ma == hang.getMahsx()) {
+                hangSX = hang;
+                return;
+            }
+        }
+        System.out.println("Ma hang san xuat chua co trong danh sach hang san xuat. Vui long nhap thong tin hang san xuat moi.");
+        int mahsx = 1;
+        for (HangSX hang : dshsx.getDshsx()) {
+            mahsx = hang.getMahsx() + 1;
+        }
+        hangSX.setMahsx(mahsx);
+        
         // Sửa thông tin nhà cung cấp
         hangSX.sua();
     }
