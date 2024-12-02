@@ -145,7 +145,7 @@ public class DSHoaDon {
                 System.out.println("Nhap ten khach hang");
                 String name=sc.nextLine();
                 for(HoaDon hd:dshd){
-                    if(hd.getKhachhang().getTenkh()==name){
+                    if(hd.getKhachhang().getTenkh().equals(name){
                        hd.xuat();
                        found=true;
                     }
