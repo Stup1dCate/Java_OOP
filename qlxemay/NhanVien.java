@@ -20,7 +20,7 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
         System.out.println("So luong nhan vien: "+soluongnv);
     }
 
-    public NhanVien(int manv, String ten, int age, String sdt, String ChucVu, int salary, int SoSPban,int TienThuongSP) {
+    public NhanVien(int manv, String ten, String age, String sdt, String ChucVu, int salary, int SoSPban,int TienThuongSP) {
         super(manv, ten, age, sdt, ChucVu, salary);
         this.SoSPban = SoSPban;
         this.TienThuongSP=TienThuongSP;

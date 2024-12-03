@@ -497,7 +497,7 @@ class DSNhanSu {
         if (parts.length == 8 || parts.length == 7) {
             int manv = Integer.parseInt(parts[0]);
             String ten = parts[1];
-            int age = Integer.parseInt(parts[2]);
+            String age = parts[2];
             String sdt = parts[3];
             String chucvu = parts[4];
             int salary = Integer.parseInt(parts[5]);

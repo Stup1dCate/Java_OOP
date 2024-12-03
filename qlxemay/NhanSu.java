@@ -8,7 +8,7 @@ import java.util.Scanner;
 public abstract class NhanSu implements INhap,IXuat{
     private int manv;
     private String ten;
-    private int age;
+    private String age;
     private String sdt;
     protected String ChucVu;
     private int salary;
@@ -17,7 +17,7 @@ public abstract class NhanSu implements INhap,IXuat{
     }
     
 
-    public NhanSu(int manv,String ten, int age,String sdt ,String ChucVu, int salary) {
+    public NhanSu(int manv,String ten, String age,String sdt ,String ChucVu, int salary) {
         this.manv=manv;
         this.ten = ten;
         this.age = age;
@@ -42,11 +42,11 @@ public abstract class NhanSu implements INhap,IXuat{
         this.ten = ten;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -90,21 +90,16 @@ public abstract class NhanSu implements INhap,IXuat{
         }
     }
     while (true) {
-        System.out.println("Nhap tuoi: ");
-        if (s.hasNextInt()) {
-            age = s.nextInt();
-            // Kiểm tra tuổi trong khoảng từ 18 đến 99
-            if (age >= 18 && age <= 99) {
+        System.out.println("Nhap ngay thang nam sinh(dd/mm/yyyy): ");
+            age = s.nextLine();
+            if (age.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$")) {
                 break;
             } else {
-                System.out.println("Tuoi phai tren 18 va duoi 100. Vui long nhap lai!");
+                System.out.println("Ngay thang nam sinh phai theo dung dinh dang!");
             }
-        } else {
-            System.out.println("Nhap tuoi la so!");
-            s.next(); // Loại bỏ đầu vào không hợp lệ
-        }
     }
-    s.nextLine();
+  
+
     while (true) {
         System.out.println("Nhap so dien thoai: ");
         sdt = s.nextLine().trim();  // Loại bỏ khoảng trắng thừa ở đầu và cuối chuỗi
@@ -136,7 +131,7 @@ public abstract class NhanSu implements INhap,IXuat{
     public void xuat(){
         System.out.println("Ma nhan vien: "+manv);
         System.out.println("Ho ten: " +ten);
-        System.out.println("Tuoi: " +age);
+        System.out.println("Ngay thang nam sinh (dd/mm/yyyy): " +age);
         System.out.println("So dien thoai: "+sdt);
         System.out.println("Chuc vu: "+ ChucVu);
         System.out.println("Luong co ban: " +salary);
@@ -157,22 +152,18 @@ public abstract class NhanSu implements INhap,IXuat{
             System.out.println("Ten chi duoc chua chu cai. Vui long nhap lai!");
         }
     }
-    while (true) {
-        System.out.println("Nhap tuoi: ");
-        if (s.hasNextInt()) {
-            age = s.nextInt();
-            // Kiểm tra tuổi trong khoảng từ 18 đến 99
-            if (age >= 18 && age <= 99) {
+
+       while (true) {
+        System.out.println("Nhap ngay thang nam sinh(dd/mm/yyyy): ");
+            age = s.nextLine();
+            if (age.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$")) {
                 break;
             } else {
-                System.out.println("Tuoi phai tren 18 va duoi 100. Vui long nhap lai!");
+                System.out.println("Ngay thang nam sinh phai theo dung dinh dang!");
             }
-        } else {
-            System.out.println("Nhap tuoi la so!");
-            s.next(); // Loại bỏ đầu vào không hợp lệ
-        }
     }
-    s.nextLine();
+
+
     while (true) {
         System.out.println("Nhap so dien thoai: ");
         sdt = s.nextLine().trim();  // Loại bỏ khoảng trắng thừa ở đầu và cuối chuỗi
