@@ -109,7 +109,6 @@ public class DSHoaDon {
         Scanner sc = new Scanner(System.in);
         System.out.println("1.Tim kiem theo ma hoa don");
         System.out.println("2.Tim kiem theo ten khach hang");
-        System.out.println("3.Tim kiem theo ma khach hang");
         int choice;
         while (true) {
             if (sc.hasNextInt()) {
@@ -145,7 +144,7 @@ public class DSHoaDon {
                 System.out.println("Nhap ten khach hang");
                 String name=sc.nextLine();
                 for(HoaDon hd:dshd){
-                    if(hd.getKhachhang().getTenkh().equals(name)){
+                    if(hd.getKhachhang().getTenkh()==name){
                        hd.xuat();
                        found=true;
                     }
@@ -245,14 +244,14 @@ public class DSHoaDon {
             String sdthsx = parts[11];
             String tenhsx = parts[12];
             String diachi = parts[13];
-             int makh = Integer.parseInt(parts[14]);
+            int makh = Integer.parseInt(parts[14]);
             String sdtkh = parts[15];
             String tenkh = parts[16];
-            int age = Integer.parseInt(parts[17]);
+            String age = parts[17];
 
             String diachikh = parts[18];
             String phaikh = parts[19];
-            KhachHang kh=new KhachHang(makh, age, sdtkh, tenkh, diachikh, phaikh);
+            KhachHang kh = new KhachHang(makh, age, sdtkh, tenkh, diachikh, phaikh);
             Double dtodl = Double.parseDouble(parts[8]);
             HangSX hangsx = new HangSX(mahsx, tenhsx, diachi, sdthsx);
             XeMay xm = null;
@@ -264,7 +263,7 @@ public class DSHoaDon {
             }
             return new HoaDon(mahd, ntt, xm, soSPmua,kh);
         } catch (Exception e) {
-            System.out.println("Lỗi khi phân tích dữ liệu: " + line);
+            System.out.println("Loi khi phan tich du lieu: " + line);
             e.printStackTrace();
             return null;
         }

@@ -32,13 +32,8 @@ public class HoaDon implements IXuat {
         this.khachhang = khachhang;
     }
 
-   
-
     public HoaDon() {
     }
-
-    
-    
 
     public int getMahd() {
         return mahd;
@@ -186,9 +181,9 @@ public class HoaDon implements IXuat {
         System.out.println("Ma hoa don: " + mahd);
         System.out.println("Ngay thanh toan: " + ngaythanhtoan);
         System.out.println("CHI TIET THONG TIN KHACH HANG");
-        	System.out.println("Ho va ten: " + khachhang.getTenkh());
+        System.out.println("Ho va ten: " + khachhang.getTenkh());
 		System.out.println("Gioi tinh: " + khachhang.getPhai());
-		System.out.println("Tuoi: " + khachhang.getAge());
+		System.out.println("Ngay sinh: " + khachhang.getAge());
 		System.out.println("So dien thoai: " +khachhang.getSdtkh());
 		System.out.println("Dia chi: " + khachhang.getDiachikh());	
         System.out.println("\tCHI TIET SAN PHAM MUA");
