@@ -320,7 +320,13 @@ class DSNhanSu {
             case 1:
                 sc.nextLine();
                 System.out.println("Nhap ten nhan su can xoa:");
-                String tensua = sc.nextLine();
+                String tensua;
+                while(true){
+                    tensua=sc.nextLine();
+                    if(tensua.matches("[a-zA-z//s]+")){
+                break;
+                }System.out.println("Ten phai la chu cai!!");
+                }
                 for (NhanSu ns : dsns) {
                     if (ns.getTen().equals(tensua)) {
                         dstam.add(ns);
@@ -341,7 +347,7 @@ class DSNhanSu {
                     }
 
                 }
-                System.out.println("Nhap ma nhan su muon sua:");
+                System.out.println("Nhap ma nhan su muon xoa:");
                 int mans;
                 while (true) {
                     if (sc.hasNextInt()) {
@@ -403,7 +409,14 @@ class DSNhanSu {
         switch (luachon) {
             case 1:
                 System.out.print("Nhap ma nhan vien can tim kiem: ");
-                int manv = sc.nextInt();
+                int manv;
+                while(true){
+                    if(sc.hasNextInt()){
+                        manv = sc.nextInt();
+                        break;
+                    }System.out.println("Nhap ma nhan vien la so !!");
+                    sc.nextLine();
+                }
                 boolean foundById = false;
                 for (NhanSu ns : dsns) {
                     if (ns.getManv() == manv) {
@@ -419,10 +432,18 @@ class DSNhanSu {
 
             case 2:
                 System.out.print("Nhap ten nhan vien can tim kiem: ");
-                String find = sc.nextLine();
+                String find;
+                while(true){
+                    find=sc.nextLine().trim();
+                    if(find.matches("[a-zA-Z\\s]+")){
+                        break;
+                    }System.out.println("Ten nhan vien la chu cai!!");
+                  
+                }
+                
                 boolean foundByName = false;
                 for (NhanSu ns : dsns) {
-                    if (ns.getTen().contains(find)) {
+                    if (ns.getTen().contains(find.toLowerCase())) {
                         ns.xuat();
                         foundByName = true;
                     }
