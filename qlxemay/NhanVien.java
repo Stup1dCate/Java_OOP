@@ -56,10 +56,25 @@ public class NhanVien extends NhanSu implements INhap, IXuat {
         Scanner s = new Scanner(System.in);
         super.nhap();
         System.out.println("Nhap so san pham ban duoc: ");
-        SoSPban = s.nextInt();
+        while(true){
+        if(s.hasNextInt()){
+            SoSPban = s.nextInt();
+            break;
+        }System.out.println("Nhap so san pham la so!!");
+        s.nextLine();
+        }
+
         System.out.println("Nhap so tien thuong tren moi san pham ban duoc: (ngan dong)");
-        TienThuongSP=s.nextInt();
-                soluongnv++;
+        
+        while(true){
+            if(s.hasNextInt()){
+            TienThuongSP=s.nextInt();
+                break;
+        }System.out.println("Nhap so tien thuong la so!!");
+        s.nextLine();
+    }
+        
+        soluongnv++;
     }
 
     @Override

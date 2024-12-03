@@ -38,7 +38,13 @@ public class Quanly extends NhanSu implements INhap, IXuat {
         super.nhap();
          soluongnv++;
         System.out.println("Nhap so tien thuong cua quan ly: ");
-        bonus = s.nextInt();
+        while(true){
+            if(s.hasNextInt()){
+            bonus = s.nextInt();
+        break;
+        }System.out.println("Nhap so tien la so!!");
+        s.nextLine();
+        }
     }
 
     public static int getSoluongnv() {

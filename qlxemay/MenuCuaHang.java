@@ -40,9 +40,13 @@ public class MenuCuaHang {
             System.out.println("5. Quan ly Hoa Don");
             System.out.println("6. Luu Thay doi va thoat chuong trinh");
             System.out.print("Chon: ");
-
-            select = s.nextInt();
-            s.nextLine();
+			while(true){
+            if(s.hasNextInt()){
+			select = s.nextInt();
+			break;
+				}System.out.println("Nhap lua chon phai la so!!");
+				s.nextLine();
+			}
 			switch(select) {
 			case 1:
 				 QLXeMay ql1 = new QLXeMay();
