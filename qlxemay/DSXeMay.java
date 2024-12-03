@@ -377,7 +377,7 @@ class DSXeMay {
         Scanner sc = new Scanner(System.in);
 
         ArrayList<XeMay> dstam = new ArrayList<>();
-        System.out.println("\t SUA THONG TIN SAN PHAM");
+        System.out.println("\t XOA SAN PHAM");
         System.out.println("1.Xoa san pham theo ten");
         System.out.println("2.Xoa san pham theo ma");
         int choice;
@@ -396,8 +396,11 @@ class DSXeMay {
                 sc.nextLine();
                 String tensua = sc.nextLine();
                 for (XeMay xm : dsXemay) {
-                    dstam.add(xm);
-                    xm.xuat();
+                    if(xm.getTensp().equals(tensua)){
+                        dstam.add(xm);
+                    xm.xuat(); 
+                    }
+                   
                 }
                 if (dstam.size() == 0) {
                     System.out.println("Khong tim thay ten san pham");
@@ -443,6 +446,8 @@ class DSXeMay {
                  for (XeMay xm : dsXemay) {
                     if (xm.getMasp() == maxmay) {
                         dsXemay.remove(xm);
+                        System.out.println("Xoa thanh cong");
+                        return;
                     }
                 }
                 System.out.println("Khong tim thay ma san pham");
