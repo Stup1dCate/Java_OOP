@@ -1,4 +1,3 @@
-131;0906784655;Lộc Vạn Xuân;51/230, P.Thanh Lộc, Q.12, TP. HCM
-132;0963611663;Auto Tech;68 Nguyễn Thái Học, P Tân Thành, Q Tân Phú, TP.HCM
-133;02838219437;SUNTORY RESICO Việt Nam; 88 Đường Đồng Khởi, Quận 1, TP.HCM
-134;02513836729;Sài Gòn Car;Cao ốc An Khánh, 52 Song Hành, An Phú, Quận 2, TP. HCM
+1;0911231123;YADEA;3/4 Pham Ngu Lao
+2;0911354122;Honda;43 Truong Chinh
+3;0912312311;Yamaha;12 An Duong Vuong
