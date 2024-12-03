@@ -78,6 +78,11 @@ public class HoaDon implements IXuat {
         dsxm.taiDanhSachTuFile(filedsxm);
         int ma;
         do {
+        	while(!sc.hasNextInt()) {
+        		System.out.println("Du lieu nhap vao can la so nguyen");
+        		System.out.print("Vui long nhap lai: ");
+        		sc.next();
+        	}
             ma = sc.nextInt();
             if (ma == 0) {
                 return;
@@ -91,13 +96,13 @@ public class HoaDon implements IXuat {
               
             } else {
                 System.out.println("Khong tim thay ma xe!");
-                System.out.println("Vui long nhap lai hoac nhap 0 de thoat");
+                System.out.print("Vui long nhap lai hoac nhap 0 de thoat: ");
             }
         } while (dsxm.timKiemXeMayTheoMa(ma) == null);
         sc.nextLine();
-        System.out.println("Nhap ngay thanh toan");
+        System.out.print("Nhap ngay thanh toan: ");
         ngaythanhtoan = sc.nextLine();
-        System.out.println("Nhap so luong xe mua: ");
+        System.out.print("Nhap so luong xe mua: ");
         boolean test = false;
         do{
              SoSPmua = sc.nextInt();
@@ -109,7 +114,7 @@ public class HoaDon implements IXuat {
             if(xm.getMasp()==xeMay.getMasp()){
                 if(SoSPmua>xeMay.getSoluongnhaphang()) {
                     test=false;
-                    System.out.println("So luong mua vuot qua so luong ton kho. Vui long nhap lai hoac nhap 0 de thoat");
+                    System.out.print("So luong mua vuot qua so luong ton kho. Vui long nhap lai hoac nhap 0 de thoat: ");
                 }
                 else {
                     xeMay.setSoluongnhaphang(xeMay.getSoluongnhaphang()-SoSPmua);
@@ -125,7 +130,8 @@ public class HoaDon implements IXuat {
         int choice;
        do{
             System.out.println("1.Khach hang cu");
-        System.out.println("2.Khach hang moi");
+            System.out.println("2.Khach hang moi");
+            System.out.print("Chon: ");
         
         while(true){
             if(sc.hasNextInt()){
@@ -133,7 +139,7 @@ public class HoaDon implements IXuat {
                 break;
             }
             sc.nextLine();
-            System.out.println("Khong hop le! Vui long nhap lai.");
+            System.out.println("Khong hop le! Vui long nhap lai: ");
         }
         sc.nextLine();
         switch (choice) {
@@ -141,7 +147,7 @@ public class HoaDon implements IXuat {
                 xm=null;
                 return;
             case 1:
-                System.out.println("Nhap ma so khach hang:");
+                System.out.println("Nhap ma so khach hang: ");
                 int mkh;
                 while (true) {                    
                     if(sc.hasNextInt()){
@@ -149,7 +155,7 @@ public class HoaDon implements IXuat {
                         break;
                     }
                     sc.nextLine();
-                    System.out.println("Ma khach hang phai la so. Vui long nhap lai.");
+                    System.out.println("Ma khach hang phai la so. Vui long nhap lai: ");
                 }
                 for(KhachHang kh:dskh.getdsKhachHang()){
                     if(kh.getMakh()==mkh){
@@ -208,7 +214,7 @@ public class HoaDon implements IXuat {
         for(XeMay xeMay:dsxm.getDsXemay()){
             if(xm.getMasp()==xeMay.getMasp()) xeMay.setSoluongnhaphang(xeMay.getSoluongnhaphang()+SoSPmua);
         }
-          System.out.println("Nhap ma xe may moi: ");
+          System.out.print("Nhap ma xe may moi: ");
         int ma;
         do {
             ma = sc.nextInt();
@@ -225,13 +231,13 @@ public class HoaDon implements IXuat {
                   }
             } else {
                 System.out.println("Khong tim thay ma xe!");
-                System.out.println("Vui long nhap lai hoac nhap 0 de thoat");
+                System.out.print("Vui long nhap lai hoac nhap 0 de thoat: ");
             }
         } while (dsxm.timKiemXeMayTheoMa(ma) == null);
         sc.nextLine();
-        System.out.println("Nhap ngay thanh toan:");
+        System.out.print("Nhap ngay thanh toan: ");
         ngaythanhtoan=sc.nextLine();
-         System.out.println("Nhap so luong xe mua: ");
+         System.out.print("Nhap so luong xe mua: ");
         boolean test = false;
         do{
              SoSPmua = sc.nextInt();
@@ -239,7 +245,7 @@ public class HoaDon implements IXuat {
             if(xm.getMasp()==xeMay.getMasp()){
                 if(SoSPmua>xeMay.getSoluongnhaphang()) {
                     test=false;
-                    System.out.println("So luong mua vuot qua so luong ton kho. Vui long nhap lai");
+                    System.out.print("So luong mua vuot qua so luong ton kho. Vui long nhap lai: ");
                 }
                 else {
                     xeMay.setSoluongnhaphang(xeMay.getSoluongnhaphang()-SoSPmua);
@@ -249,14 +255,14 @@ public class HoaDon implements IXuat {
         }
         } while(test==false);
         dsxm.xuatDanhSachRaFile(filedsxm);
-        System.out.println("Nhap phim 0 de sua thong tin khach hang hoac nhap phim bat ky de ket thuc.");
+        System.out.print("Nhap phim 0 de sua thong tin khach hang hoac nhap phim bat ky de ket thuc: ");
         sc.nextLine();
         String continu=sc.nextLine();
         if(!continu.equals("0")) {
             return ;
         }
         khachhang.sua();
-        System.out.println("Ban co muon luu thong tin khach hang vua sua vao danh sach khach hang khong (y/n)");
+        System.out.print("Ban co muon luu thong tin khach hang vua sua vao danh sach khach hang khong (y/n): ");
         do{
               String choice=sc.nextLine();
         switch (choice) {

@@ -61,14 +61,14 @@ public class DSHoaDon {
 
     public void sua(String filedsxm,String filedskh) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ma hoa don can sua:");
+        System.out.print("Nhap ma hoa don can sua: ");
         int mahd;
         while (true) {
             if (sc.hasNextInt()) {
                 mahd = sc.nextInt();
                 break;
             }
-            System.out.println("Ma hoa don phai la so nguyen. Vui long nhap lai.");
+            System.out.print("Ma hoa don phai la so nguyen. Vui long nhap lai: ");
             sc.nextLine();
         }
         sc.nextLine();
@@ -84,14 +84,14 @@ public class DSHoaDon {
 
     public void xoa() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ma hoa don can xoa:");
+        System.out.print("Nhap ma hoa don can xoa: ");
         int mahd;
         while (true) {
             if (sc.hasNextInt()) {
                 mahd = sc.nextInt();
                 break;
             }
-            System.out.println("Ma hoa don phai la so nguyen. Vui long nhap lai.");
+            System.out.print("Ma hoa don phai la so nguyen. Vui long nhap lai: ");
             sc.nextLine();
         }
         sc.nextLine();
@@ -109,6 +109,7 @@ public class DSHoaDon {
         Scanner sc = new Scanner(System.in);
         System.out.println("1.Tim kiem theo ma hoa don");
         System.out.println("2.Tim kiem theo ten khach hang");
+        System.out.print("Chon: ");
         int choice;
         while (true) {
             if (sc.hasNextInt()) {
@@ -141,10 +142,10 @@ public class DSHoaDon {
                 return;
             case 2:
                 boolean found=false;
-                System.out.println("Nhap ten khach hang");
+                System.out.print("Nhap ten khach hang: ");
                 String name=sc.nextLine();
                 for(HoaDon hd:dshd){
-                    if(hd.getKhachhang().getTenkh()==name){
+                    if(hd.getKhachhang().getTenkh().equals(name)){
                        hd.xuat();
                        found=true;
                     }
@@ -154,25 +155,6 @@ public class DSHoaDon {
                         System.out.println("Khong tim thay ten khach hang");
                         return;
                     }
-            case 3:
-                System.out.println("Nhap ma khach hang:");
-                int makh;
-                while(true){
-                    if(sc.hasNextInt()){
-                        makh=sc.nextInt();
-                        break;
-                    }
-                    System.out.println("Ma khach hang phai la so. Vui long nhap lai.");
-                    sc.nextLine();
-                }
-                for(HoaDon hd:dshd){
-                    if(hd.getKhachhang().getMakh()==makh){
-                        hd.xuat();
-                        return;
-                    }
-                }
-                System.out.println("Khong tim thay ma khach hang");
-                return;
             default:
                 System.out.println("Khong hop le");
                 return;
