@@ -39,7 +39,7 @@ public class DSHangSX {
             System.out.println("\nTHONG TIN DANH SACH HANG SAN XUAT: ");
             for (HangSX hsx : dshsx) {
                 hsx.xuat();
-                System.out.println("____________________________________________________________________");
+                System.out.println("____________________________________________________________");
             }
             System.out.println("\n");
         } else {
@@ -61,65 +61,34 @@ public class DSHangSX {
           hsx.nhap();
           dshsx.add(hsx);
         }
-        System.out.println("\n===== DA LUU DU LIEU HANG SAN XUAT THANH CONG ! =====\n");
+        System.out.println("===== DA LUU DU LIEU HANG SAN XUAT THANH CONG ! =====");
     }
 
     public void sua() {
-        ArrayList<HangSX> dstam = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Sua theo ten hang san xuat");
         System.out.println("2. Sua theo ma hang san xuat");
         System.out.print("Lua chon: ");
-        
+    
         int select;
         while (true) {
             if (sc.hasNextInt()) {
                 select = sc.nextInt();
+                sc.nextLine(); 
                 break;
             } else {
-                sc.nextLine();
-                System.out.println("Lua chon khong hop le! Vui long nhap lai: ");
+                System.out.print("Lua chon khong hop le! Vui long nhap lai: ");
+                sc.nextLine(); 
             }
         }
-        
+    
         switch (select) {
             case 1:
                 System.out.print("Nhap ten hang san xuat can chinh sua: ");
-                sc.nextLine(); 
                 String tensua = sc.nextLine();
-                
+    
                 for (HangSX hsx : dshsx) {
                     if (hsx.getTenhsx().equals(tensua)) {
-                        dstam.add(hsx);
-                        hsx.xuat(); // Hiển thị thông tin hãng sản xuất
-                    }
-                }
-    
-                if (dstam.isEmpty()) {
-                    System.out.println("Khong tim thay ten hang san xuat can chinh sua!");
-                    return;
-                }
-    
-                if (dstam.size() == 1) {
-                    dstam.get(0).sua();
-                    System.out.println("Sua thanh cong thong tin hang san xuat!");
-                    return;
-                }
-    
-                System.out.print("Co nhieu hang san xuat trung ten. Nhap ma hang san xuat can sua: ");
-                int mahsx;
-                while (true) {                        
-                    if (sc.hasNextInt()) {
-                        mahsx = sc.nextInt();
-                        break;
-                    } else {
-                        System.out.print("Ma hang san xuat phai la so nguyen! Vui long nhap lai: ");
-                        sc.nextLine();
-                    }
-                }
-    
-                for (HangSX hsx : dstam) {
-                    if (hsx.getMahsx() == mahsx) {
                         hsx.xuat(); // Hiển thị thông tin trước khi sửa
                         hsx.sua();
                         System.out.println("Sua thanh cong thong tin hang san xuat!");
@@ -127,25 +96,26 @@ public class DSHangSX {
                     }
                 }
     
-                System.out.printf("Khong tim thay hang san xuat co ten %s va ma %d!\n", tensua, mahsx);
+                System.out.println("Khong tim thay ten hang san xuat can chinh sua!");
                 break;
     
             case 2:
                 System.out.print("Nhap ma hang san xuat can sua: ");
-                int mahsx2;
-                while (true) {                        
+                int mahsx;
+                while (true) {
                     if (sc.hasNextInt()) {
-                        mahsx2 = sc.nextInt();
+                        mahsx = sc.nextInt();
+                        sc.nextLine(); // Làm sạch bộ đệm
                         break;
                     } else {
-                        System.out.println("Ma hang san xuat phai la so nguyen. Vui long nhap lai");
-                        sc.nextLine();
+                        System.out.print("Ma hang san xuat phai la so nguyen. Vui long nhap lai: ");
+                        sc.nextLine(); 
                     }
                 }
     
                 for (HangSX hsx : dshsx) {
-                    if (hsx.getMahsx() == mahsx2) {
-                        hsx.xuat(); // Hiển thị thông tin trước khi sửa
+                    if (hsx.getMahsx() == mahsx) {
+                        hsx.xuat(); 
                         hsx.sua();
                         System.out.println("Sua thanh cong thong tin hang san xuat!");
                         return;
@@ -159,6 +129,7 @@ public class DSHangSX {
                 System.out.println("Yeu cau khong hop le!");
         }
     }
+    
     
     public void xoa() {
         ArrayList<HangSX> dstam = new ArrayList<>();
@@ -321,7 +292,6 @@ public class DSHangSX {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Chuyển dòng văn bản thành đối tượng HangSX và thêm vào danh sách
                 HangSX hsx = parseLineToHangSX(line);
                 if (hsx != null) {
 
@@ -339,7 +309,6 @@ public class DSHangSX {
     public void xuatDanhSachRaFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (HangSX hsx : dshsx) {
-                // Ghi đối tượng HangSX thành dòng văn bản và xuống dòng
                 writer.write(parseHangSXToLine(hsx));
                 writer.newLine();
             }
@@ -348,9 +317,8 @@ public class DSHangSX {
         }
     }
 
-    // Hàm chuyển dòng văn bản thành đối tượng HangSX
     private HangSX parseLineToHangSX(String line) {
-        String[] parts = line.split(";"); // Giả sử dữ liệu được phân tách bằng dấu chấm phẩy
+        String[] parts = line.split(";"); 
         if (parts.length == 4) {
             int mahsx = Integer.parseInt(parts[0]);
             String sdthsx = parts[1];
@@ -361,7 +329,6 @@ public class DSHangSX {
         return null;
     }
 
-    // Hàm chuyển đối tượng HangSX thành dòng văn bản
     private String parseHangSXToLine(HangSX hsx) {
         return hsx.getMahsx() + ";" + hsx.getSdthsx() + ";" + hsx.getTenhsx() + ";" + hsx.getDiachihsx();
     }

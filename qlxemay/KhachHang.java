@@ -78,17 +78,48 @@ public class KhachHang implements INhap, IXuat {
     @Override
     public void nhap() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Nhap so dien thoai: ");
-        sdtkh = in.nextLine();
-        System.out.print("Nhap ngay thang nam sinh: ");
-        age = in.nextLine();  
+        String newsdt;
+        while (true) { 
+            System.out.print("Nhap so dien thoai: ");
+            newsdt = in.nextLine();
+            if (newsdt.matches("\\d{10}")) { 
+                break;
+            } else {
+                System.out.println("So dien thoai khong hop le. Vui long nhap lai!");
+            }
+        }
+        sdtkh = newsdt;
+    
+        String newage;
+        while (true) { 
+            System.out.print("Nhap ngay thang nam sinh: ");
+            newage = in.nextLine();
+            if (newage.matches("\\d{2}/\\d{2}/\\d{4}")) { 
+                break;
+            } else {
+                System.out.println("Ngay sinh khong hop le. Vui long nhap lai!");
+            }
+        }
+        age = newage;
+    
         System.out.print("Nhap ho ten khach hang: ");
         tenkh = in.nextLine();
-        System.out.print("Nhap gioi tinh: ");
-        phai = in.nextLine();
+    
+        String newgioitinh;
+        while (true) { 
+            System.out.print("Nhap gioi tinh: ");
+            newgioitinh = in.nextLine();
+            if (newgioitinh.matches("[a-zA-Z ]+")) { 
+                break;
+            } else {
+                System.out.println("Gioi tinh khong hop le. Vui long nhap lai!");
+            }
+        }
+        phai = newgioitinh;
         System.out.print("Nhap dia chi: ");
         diachikh = in.nextLine();
     }
+    
 
     @Override
     public void xuat() {
@@ -113,15 +144,56 @@ public class KhachHang implements INhap, IXuat {
 
     public void sua() {
         Scanner s = new Scanner(System.in);
-        System.out.print("Nhap ten khach hang moi: ");
-        this.setTenkh(s.nextLine());
-        System.out.print("Nhap ngay thang nam sinh: ");
-        this.setAge(s.nextLine());  
-        System.out.print("Nhap so dien thoai: ");
-        this.setSdtkh(s.nextLine());
-        System.out.print("Nhap gioi tinh: ");
-        this.setPhai(s.nextLine());
+
+        String newtenkh;
+        while (true) { 
+            System.out.print("Nhap ten khach hang moi: ");
+            newtenkh = s.nextLine();
+            if (newtenkh.matches("[a-zA-Z ]+")) {
+                break;
+            } else {
+                System.out.println("Ten khach hang khong hop le. Vui long nhap lai!");
+            }
+        }
+        this.setTenkh(newtenkh);
+    
+        String newage;
+        while (true) { 
+            System.out.print("Nhap ngay thang nam sinh: ");
+            newage = s.nextLine();
+            if (newage.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                break;
+            } else {
+                System.out.println("Ngay sinh khong hop le. Vui long nhap lai!");
+            }
+        }
+        this.setAge(newage);
+        String newsdt;
+        while (true) { 
+            System.out.print("Nhap so dien thoai: ");
+            newsdt = s.nextLine();
+            if (newsdt.matches("\\d{10}")) {
+                break;
+            } else {
+                System.out.println("So dien thoai khong hop le. Vui long nhap lai!");
+            }
+        }
+        this.setSdtkh(newsdt);
+    
+        String newgioitinh;
+        while (true) { 
+            System.out.print("Nhap gioi tinh: ");
+            newgioitinh = s.nextLine();
+            // Kiểm tra giới tính chỉ chứa chữ cái
+            if (newgioitinh.matches("[a-zA-Z ]+")) {
+                break;
+            } else {
+                System.out.println("Gioi tinh khong hop le. Vui long nhap lai!");
+            }
+        }
+        this.setPhai(newgioitinh);
         System.out.print("Nhap dia chi: ");
         this.setDiachikh(s.nextLine());
     }
+    
 }

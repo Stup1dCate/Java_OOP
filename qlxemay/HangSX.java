@@ -79,13 +79,24 @@ public class HangSX implements INhap,IXuat{
 	}
         
         
-    public void sua() { 
-        Scanner s = new Scanner(System.in);
-        System.out.print("Nhap ten moi cua hang san xuat: ");
-        this.setTenhsx(s.nextLine());
-        System.out.print("Nhap so dien thoai moi cua hang san xuat: ");
-        this.setSdthsx(s.nextLine());
-        System.out.print("Nhap dia chi moi cua hang san xuat: ");
-        this.setDiachihsx(s.nextLine());
-    }
+    public void sua() {
+		Scanner s = new Scanner(System.in);
+		System.out.print("Nhap ten moi cua hang san xuat: ");
+		this.setTenhsx(s.nextLine());
+		
+		String newsdt;
+		while (true) { 
+			System.out.print("Nhap so dien thoai moi cua hang san xuat: ");
+			newsdt = s.nextLine();
+			if (newsdt.matches("\\d{10}")) { 
+				break; 
+			} else {
+				System.out.println("So dien thoai khong hop le. Vui long nhap lai!");
+			}
+		}
+		this.setSdthsx(newsdt);
+		System.out.print("Nhap dia chi moi cua hang san xuat: ");
+		this.setDiachihsx(s.nextLine());
+	}
+	
 }

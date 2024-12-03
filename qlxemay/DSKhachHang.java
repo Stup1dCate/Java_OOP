@@ -343,10 +343,9 @@ class DSKhachHang {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Chuyển dòng văn bản thành đối tượng KhachHang và thêm vào danh sách ds3
                 KhachHang kh = parseLineToKhachHang(line);
                 if (kh != null) {
-                    dsKhachHang.add(kh);  // Thêm vào danh sách dsKhachHang
+                    dsKhachHang.add(kh);  
                 }
             }
             System.out.println("Da tai danh sach tu tap tin: " + fileName + "\n");
@@ -360,7 +359,6 @@ class DSKhachHang {
     public void xuatDanhSachRaFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (KhachHang kh : dsKhachHang) {
-                // Ghi đối tượng NhaCungCap thành dòng văn bản và xuống dòng
                 writer.write(parseKhachHangToLine(kh));
                 writer.newLine();
             }
@@ -369,9 +367,8 @@ class DSKhachHang {
         }
     }
 
-    // Hàm chuyển dòng văn bản thành đối tượng hangSX
     private KhachHang parseLineToKhachHang(String line) {
-        String[] parts = line.split(";"); // Giả sử dữ liệu được phân tách bằng dấu chấm phẩy
+        String[] parts = line.split(";"); 
         if (parts.length == 6) {
             int makh = Integer.parseInt(parts[0]);
             String sdtkh = parts[1];
@@ -397,6 +394,6 @@ class DSKhachHang {
             }
         }
         System.out.println("Khong tim thay khach hang voi ma so: " + maKhachHang);
-        return null; // Trả về null nếu không tìm thấy
+        return null; 
     }
 }
