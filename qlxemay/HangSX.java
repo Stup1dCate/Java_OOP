@@ -46,7 +46,7 @@ public class HangSX implements INhap,IXuat{
 		while (true) {
 			System.out.print("Nhap so dien thoai hang san xuat: ");
 			sdthsx = s.nextLine().trim();
-			if (!sdthsx.isEmpty() && sdthsx.matches("\\d+")) {
+			if (!sdthsx.isEmpty() && sdthsx.matches("\\d{10}")) {
 				break; 
 			}
 			System.out.println("So dien thoai phai la cac chu so va khong duoc de trong. Vui long nhap lai!");
