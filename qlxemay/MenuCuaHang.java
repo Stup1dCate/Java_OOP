@@ -23,60 +23,61 @@ yêu cầu trong terminal:
 */
 
 package qlxemay;
+
 import java.util.Scanner;
 
 public class MenuCuaHang {
-	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		int select;
-		do {
-			System.out.println("[======================]");
-			System.out.println("\t  MENU");
-			System.out.println("[======================]");
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int select;
+
+        do {
+            System.out.println("[======================]");
+            System.out.println("\t  MENU");
+            System.out.println("[======================]");
             System.out.println("1. Quan ly Xe May");
-	    System.out.println("2. Quan ly Hang San Xuat");
+            System.out.println("2. Quan ly Hang San Xuat");
             System.out.println("3. Quan ly Nhan Su");
             System.out.println("4. Quan ly Khach Hang");
             System.out.println("5. Quan ly Hoa Don");
             System.out.println("6. Luu Thay doi va thoat chuong trinh");
             System.out.print("Chon: ");
-			while(true){
-            if(s.hasNextInt()){
-			select = s.nextInt();
-			break;
-				}System.out.println("Nhap lua chon phai la so!!");
-				s.nextLine();
-			}
-			switch(select) {
-			case 1:
-				 QLXeMay ql1 = new QLXeMay();
-				ql1.menu();
-				break;
-			case 2:
-				 QLHangSX ql2 = new QLHangSX();
-				ql2.menu();
-				break;
-			case 3:
-				QLNhanSu ql3 = new QLNhanSu();
-				ql3.menu();
-				break;
-			case 4:
-				 QLKhachHang ql4 = new QLKhachHang();
-				ql4.menu();
-				break;
-			case 5:
-				QLHoaDon ql5 = new QLHoaDon();
-				ql5.menu();
-				break;
-			case 6:
-				System.out.println("DA LUU THAY DOI VA THOAT CHUONG TRINH !\n");
-				break;
-			default:
-	            System.out.println("Lua chon khong hop le. Vui long nhap lai \n");
-                    
-			}
-		} 
-		while (select != 6);
-		s.close();
-	}
+            while (!s.hasNextInt()) {
+                System.out.print("Nhap sai dinh dang! Vui long nhap so tu 1 den 6: ");
+                s.nextLine(); 
+            }
+            select = s.nextInt();
+            s.nextLine(); 
+
+            switch (select) {
+                case 1:
+                    QLXeMay ql1 = new QLXeMay();
+                    ql1.menu();
+                    break;
+                case 2:
+                    QLHangSX ql2 = new QLHangSX();
+                    ql2.menu();
+                    break;
+                case 3:
+                    QLNhanSu ql3 = new QLNhanSu();
+                    ql3.menu();
+                    break;
+                case 4:
+                    QLKhachHang ql4 = new QLKhachHang();
+                    ql4.menu();
+                    break;
+                case 5:
+                    QLHoaDon ql5 = new QLHoaDon();
+                    ql5.menu();
+                    break;
+                case 6:
+                    System.out.println("DA LUU THAY DOI VA THOAT CHUONG TRINH!\n");
+                    break;
+                default:
+                    System.out.println("Lua chon khong hop le. Vui long nhap lai.\n");
+            }
+        } while (select != 6);
+
+        s.close();
+    }
 }

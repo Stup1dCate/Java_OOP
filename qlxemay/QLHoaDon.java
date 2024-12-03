@@ -26,7 +26,10 @@ class QLHoaDon {
             System.out.println("5. Xem thong tin chi tiet danh sach hoa don");
             System.out.println("6. Quay tro ve giao dien Menu chinh");
             System.out.print("Chon: ");
-            
+            while (!s.hasNextInt()) {
+                System.out.print("Nhap sai dinh dang! Vui long nhap so tu 1 den 6: ");
+                s.nextLine(); 
+            }
             select = s.nextInt();
             s.nextLine();
             switch (select) {
