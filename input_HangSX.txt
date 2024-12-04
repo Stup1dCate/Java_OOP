@@ -1,3 +1,5 @@
 1;0911231123;YADEA;3/4 Pham Ngu Lao
 2;0911354122;Honda;43 Truong Chinh
 3;0912312311;Yamaha;12 An Duong Vuong
+4;0328141313;Exciter;330 Le Van Quoi
+5;0311639438;Honda;4 Ton Duc Thang
