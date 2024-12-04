@@ -122,7 +122,7 @@ public class DSHoaDon {
         sc.nextLine();
         switch (choice) {
             case 1:
-                System.out.println("Nhap ma hoa don:");
+                System.out.print("Nhap ma hoa don: ");
                 int mahd;
                 while(true){
                     if(sc.hasNextInt()){
